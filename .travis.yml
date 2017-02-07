@@ -1,7 +1,14 @@
 language: ruby
+sudo: false
 cache: bundler
 
+before_install:
+  - gem update --system
+  - gem update bundler
+
 rvm:
+  - 2.2
+  - 2.3.3
   - 2.4.0
 
 services:
@@ -11,9 +18,10 @@ before_script:
   - cp config/database.yml.travis config/database.yml
 
 script:
-  - 'bundle exec rake db:create'
-  - 'bundle exec rake db:migrate'
-  - 'bundle exec rake'
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+  - bundle exec rake
+  - bundle exec rubocop
 
 notifications:
   email:
