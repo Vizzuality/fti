@@ -1,0 +1,14 @@
+nav
+  ul.inline-list
+    li = link_to t('navbar.home'), root_url
+
+    - if user_signed_in?
+      li
+        = link_to t('navbar.edit_account'), edit_user_registration_path
+      li
+        = link_to t('navbar.logout'), destroy_user_session_path, method: 'delete'
+
+    - else
+      li = link_to t('navbar.login'), new_user_session_path
+      li = link_to t('navbar.register'), new_user_registration_path
+
