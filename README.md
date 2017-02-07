@@ -1,6 +1,6 @@
 # FTI #
 
-[![Build Status](https://travis-ci.org/Vizzuality/fti.svg?branch=develop)](https://travis-ci.org/Vizzuality/fti)
+[![Build Status](https://travis-ci.org/Vizzuality/fti.svg?branch=develop)](https://travis-ci.org/Vizzuality/fti) [![Code Climate](https://codeclimate.com/github/Vizzuality/fti/badges/gpa.svg)](https://codeclimate.com/github/Vizzuality/fti)
 
 ## USAGE ##
 
@@ -18,7 +18,7 @@ cd fti
 ### REQUIREMENTS ###
 
   - **Ruby version:** 2.4.0
-  - **PostgreSQL 9+** [How to install](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/)
+  - **PostgreSQL 9.4+** [How to install](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/)
 
 **Just execute the script file in `bin/setup`**
 
