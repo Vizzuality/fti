@@ -1,6 +1,6 @@
 # FTI #
 
-[![Build Status](https://travis-ci.org/Vizzuality/fti.svg?branch=develop)](https://travis-ci.org/Vizzuality/fti) [![Code Climate](https://codeclimate.com/github/Vizzuality/fti/badges/gpa.svg)](https://codeclimate.com/github/Vizzuality/fti)
+[![Build Status](https://travis-ci.org/Vizzuality/fti.svg?branch=master)](https://travis-ci.org/Vizzuality/fti) [![Code Climate](https://codeclimate.com/github/Vizzuality/fti/badges/gpa.svg)](https://codeclimate.com/github/Vizzuality/fti)
 
 ## USAGE ##
 
