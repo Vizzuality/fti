@@ -34,7 +34,7 @@ class UserPermissionsController < ApplicationController
     end
 
     def permissions_params
-      params.require(:user_permission).permit!
+      params.require(:user_permission).permit(:user_id, :user_role, :permissions)
     end
 
     def menu_highlight
