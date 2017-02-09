@@ -21,6 +21,8 @@
 #  active                 :boolean          default(TRUE)
 #  web_url                :string
 #  deactivated_at         :datetime
+#  permissions_request    :integer
+#  permissions_accepted   :datetime
 #
 
 require 'rails_helper'

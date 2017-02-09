@@ -12,6 +12,11 @@
         .column.medium-8.medium-offset-1
           .row
             .column.medium-4
+              = f.label :permissions_request, label: 'You are operator or ngo?', class: 'right inline'
+            .column.medium-8
+              = f.input :permissions_request, collection: ['operator', 'ngo'], as: :select, include_blank: 'Please select if You are an Operator or a NGO', label: false
+          .row
+            .column.medium-4
               = f.label :name, label: 'Name', class: 'right inline'
             .column.medium-8
               = f.input :name, label: false

@@ -22,10 +22,13 @@
 #  active                 :boolean          default(TRUE)
 #  web_url                :string
 #  deactivated_at         :datetime
+#  permissions_request    :integer
+#  permissions_accepted   :datetime
 #
 
 # frozen_string_literal: true
 class User < ApplicationRecord
+  enum permissions_request: { operator: 1, ngo: 2 }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
