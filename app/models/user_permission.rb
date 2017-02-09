@@ -16,7 +16,8 @@ class UserPermission < ApplicationRecord
 
   belongs_to :user
 
-  before_update :change_permissions, if: 'user_role_changed?'
+  before_update :change_permissions,         if: 'user_role_changed?'
+  after_update  :accept_permissions_request, if: 'user.permissions_request.present? && user.permissions_accepted.blank?'
 
   private
 
@@ -32,5 +33,9 @@ class UserPermission < ApplicationRecord
       else
         { all: { all: [:read] }, user: { id: [:manage] } }
       end
+    end
+
+    def accept_permissions_request
+      self.user.update(permissions_accepted: Time.now)
     end
 end
