@@ -10,7 +10,7 @@
         .data-primary
           span.data.-primary
             = link_to user.name, user_path(user)
-          - if (can? :manage, UserPermission) && user.permissions_request.present?
+          - if (can? :manage, UserPermission) && user.permissions_request.present? && user.permissions_accepted.blank?
             span.data
               = "#{t('shared.permissions_request')}: #{user.permissions_request}"
             span.data.-linkdata
