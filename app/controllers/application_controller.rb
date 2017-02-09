@@ -26,8 +26,7 @@ class ApplicationController < ActionController::Base
 
     def store_location
       return unless request.get?
-      if request.fullpath.match(root_path) &&
-        request.fullpath.match('/account/login') &&
+      if request.fullpath.match('/account/login') &&
         request.fullpath.match('/account/register') &&
         request.fullpath.match('/account/secret/new') &&
         request.fullpath.match('/account/secret/edit') &&
