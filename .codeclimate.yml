@@ -1,0 +1,19 @@
+languages:
+  Ruby: true
+  JavaScript: true
+engines:
+  rubocop:
+    enabled: true
+  eslint:
+    enabled: true
+  bundler-audit:
+    enabled: true
+ratings:
+  paths:
+  - "**.rb"
+  - "**.js"
+  - "**.jsx"
+  - Gemfile.lock
+exclude_paths:
+- "db/schema.rb"
+- ".rubocop"
