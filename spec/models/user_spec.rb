@@ -50,11 +50,11 @@ RSpec.describe User, type: :model do
     @user = User.new(name: '', username: '', email: 'user@example.com', password: 'password', password_confirmation: 'password')
 
     @user.valid?
-    expect { @user.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Username can't be blank, Name can't be blank")
+    expect { @user.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Username can't be blank, Username is invalid, Name can't be blank")
   end
 
   it 'Username is email validation' do
-    @user = User.new(name: 'Test user', username: 'user@example.com', email: 'user@example.com', password: 'password', password_confirmation: 'password')
+    @user = User.new(name: 'Test user', username: 'blabla@example.com', email: 'user@example.com', password: 'password', password_confirmation: 'password')
 
     @user.valid?
     expect { @user.save! }.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Username is invalid')

@@ -4,7 +4,6 @@
     = link_to t('shared.edit_info'), edit_user_url(@user), class: "button -large -type-e"
     - if can? :manage, UserPermission
       = link_to t('shared.permissions'), user_permission_url(@user, @user.user_permission), class: "button -large -type-e"
-
 .form-actions
   .row
     .column.medium-8.medium-offset-1
@@ -14,6 +13,15 @@
             = @user.name || 'User'
             |
             = " (admin)" if @user.admin?
+          - if (can? :manage, UserPermission) && @user.permissions_request.present? && @user.permissions_accepted.blank?
+            h3.form-title
+              span
+                = "#{t('shared.permissions_request')}: #{@user.permissions_request}"
+              span
+                = link_to edit_user_permission_url(@user, @user.user_permission) do
+                  = image_tag 'edit.svg', class: 'icon'
+                  span
+                    = t('shared.edit_permissions')
 
   = simple_form_for @user do |f|
     = render partial: f

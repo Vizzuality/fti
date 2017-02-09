@@ -16,6 +16,11 @@
           - if @user.permissions_request.present? && @user.permissions_accepted.blank?
             h3.form-title
               = "#{t('shared.permissions_request')}: #{@user.permissions_request}"
+              span
+                = link_to edit_user_permission_url(@user, @user.user_permission) do
+                  = image_tag 'edit.svg', class: 'icon'
+                  span
+                    = t('shared.edit_permissions')
 
   = simple_form_for @permission do |f|
     .row

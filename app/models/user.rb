@@ -43,7 +43,9 @@ class User < ApplicationRecord
   validates :name,     presence: true
   validate  :validate_username
 
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
+  validates_format_of :username, with: /\A[a-z0-9_\.][-a-z0-9]{1,19}\Z/i,
+                                 exclusion: { in: %w(admin superuser about root fti faq conntact user operator ngo) },
+                                 multiline: true
 
   scope :recent, -> { order('updated_at DESC') }
 
