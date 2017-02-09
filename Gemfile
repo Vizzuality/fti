@@ -60,5 +60,5 @@ end
 
 # Server
 gem 'puma'
-gem 'tzinfo-data'
 gem 'rails_12factor', group: :production
+gem 'tzinfo-data'
