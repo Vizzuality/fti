@@ -11,17 +11,26 @@ end
 gem 'pg',    '~> 0.18'
 gem 'rails', '~> 5.0-stable'
 
+# Assets managment
 gem 'coffee-rails', '~> 4.2'
+gem 'gon'
 gem 'jbuilder',     '~> 2.5'
 gem 'jquery-rails'
+gem 'jquery-ui-sass-rails'
 gem 'sass-rails',   '~> 5.0'
-gem 'slim'
 gem 'slim-rails'
 gem 'turbolinks',   '~> 5'
 gem 'uglifier',     '>= 1.3.0'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-foundation'
+end
+
 gem 'cancancan'
+gem 'country_select'
 gem 'devise'
+gem 'kaminari'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug',                platform: :mri
@@ -52,3 +61,4 @@ end
 # Server
 gem 'puma'
 gem 'tzinfo-data'
+gem 'rails_12factor', group: :production

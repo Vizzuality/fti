@@ -1,17 +1,39 @@
 doctype html
-html
+html lang='en'
   head
+    meta charset='utf-8'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
     title
-      | FTI
+      = content_for?(:title) ? yield(:title) : 'FTI'
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    p.notice
-      = notice
-    p.alert
-      = alert
-    .div
-      = render 'shared/navbar'
-    .div
-      = yield
+    .l-page
+      .l-header
+        .row: .small-12.medium-12.large-12.columns#header
+          #undp-logo
+            = link_to 'FTI', root_url
+          = render 'shared/navbar'
+
+      - if notice || alert
+        .l-alerts
+          .row: .small-12.medium-12.large-12.columns
+            - if alert
+              .alert-box.alert data-alert='true'
+                div
+                  = image_tag 'alert.svg', class: 'circle-icon'
+                  = alert
+                a.close href='#' &times;
+            - else
+              .alert-box.success data-alert='true'
+                div
+                  = image_tag 'success.svg', class: 'circle-icon'
+                  = notice
+                a.close href='#' &times;
+
+      .l-content
+        .row: .small-12.medium-12.large-12.columns
+          = yield
+        .footer-helper
+
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

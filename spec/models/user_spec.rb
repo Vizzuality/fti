@@ -43,4 +43,32 @@ RSpec.describe User, type: :model do
     expect(@user.activated?).to be(true)
     expect(User.filter_actives.count).to be(1)
   end
+
+  it 'User name and username validation' do
+    @user = User.new(name: '', username: '', email: 'user@example.com', password: 'password', password_confirmation: 'password')
+
+    @user.valid?
+    expect { @user.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Username can't be blank, Name can't be blank")
+  end
+
+  it 'Username is email validation' do
+    @user = User.new(name: 'Test user', username: 'user@example.com', email: 'user@example.com', password: 'password', password_confirmation: 'password')
+
+    @user.valid?
+    expect { @user.save! }.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Username is invalid')
+  end
+
+  it 'Username specific validation' do
+    @user = User.new(name: 'Test user', username: 'admin 333', email: 'user@example.com', password: 'password', password_confirmation: 'password')
+
+    @user.valid?
+    expect { @user.save! }.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Username is invalid')
+  end
+
+  it 'Username uniqueness validation' do
+    @user = User.new(name: 'Test user', username: 'Testuser', email: 'user@example.com', password: 'password', password_confirmation: 'password')
+
+    @user.valid?
+    expect { @user.save! }.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Username has already been taken')
+  end
 end

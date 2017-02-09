@@ -1,0 +1,53 @@
+.section-container {
+  margin-top: 50px;
+
+  .section {
+    margin-top: 15px;
+    margin-bottom: 30px;
+
+    &.-centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    &.links-section {
+      text-align: center;
+      align-items: center;
+    }
+
+    &.title-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-double {
+      display: inline;
+      float: left;
+
+      .indexletter {
+        @include font(helvetica, xsmall, medium, 2.6);
+        margin: 0;
+        position: absolute;
+        margin-left: -40px;
+        width: 10px;
+        text-align: center;
+      }
+
+      li:last-of-type {
+        margin-bottom: 30px;
+      }
+
+      &.-indexed {
+        margin-right: 200px;
+        padding-left: 40px; // to leave space for absolute-position index letters
+
+        li:last-of-type {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}

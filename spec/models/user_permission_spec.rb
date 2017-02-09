@@ -18,11 +18,11 @@ RSpec.describe UserPermission, type: :model do
   end
 
   let!(:user_permissions) {
-    {"all"=>{"all"=>["read"]}, "user"=>{"id"=>["manage"]}, "user_permission"=>{"user_id"=>["manage"]}}
+    {"all"=>{"all"=>["read"]}, "user"=>{"id"=>["manage"]}}
   }
 
   let!(:admin_permissions) {
-    {"all"=>{"all"=>["manage"]}, "user"=>{"id"=>["manage"]}, "user_permission"=>{"user_id"=>["manage"]}}
+    {"admin"=>{"all"=>["read"]},"all"=>{"all"=>["manage"]}}
   }
 
   it 'Check default user permissions' do
@@ -35,5 +35,11 @@ RSpec.describe UserPermission, type: :model do
 
     expect(@user.user_permission.user_role).to   eq('admin')
     expect(@user.user_permission.permissions).to eq(admin_permissions)
+  end
+
+  it 'Is a user an user? Show the role name' do
+    expect(@user.admin?).to    eq(false)
+    expect(@user.user?).to     eq(true)
+    expect(@user.role_name).to eq('User')
   end
 end

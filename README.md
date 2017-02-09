@@ -13,7 +13,7 @@ cd fti
 
   You can either run the application natively, or inside a docker container.
 
-### NATIVELY ##
+## NATIVELY ##
 
 ### REQUIREMENTS ###
 
@@ -24,6 +24,8 @@ cd fti
 
   Depends on FTI [repository](https://github.com/Vizzuality/fti)
 
+**or install the dependencies manually:**
+
 ### Install global dependencies: ###
 
     gem install bundler
@@ -32,7 +34,7 @@ cd fti
 
     bundle install
 
-## Set up the database ##
+### Set up the database ###
 
     cp config/database.yml.sample config/database.yml
     cp env.sample .env
