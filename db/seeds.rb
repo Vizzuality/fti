@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -9,11 +10,8 @@
 unless User.find_by(username: 'admin')
   @user = User.new(email: 'admin@example.com', password: 'password', password_confirmation: 'password', name: 'Admin', username: 'admin')
   @user.save
-  @user.user_permission.update(user_role: 'admin', permissions: { admin: { all: [:read] }, all: { all: [:manage] }})
+  @user.user_permission.update(user_role: 'admin', permissions: { admin: { all: [:read] }, all: { all: [:manage] } })
 
-  puts "Admin user created! Please login with: email: 'admin@example.com', password: 'password'"
-
-  puts ''
   puts '*************************************************************************'
   puts '*                                                                       *'
   puts '* Admin user created (email: "admin@example.com", password: "password") *'

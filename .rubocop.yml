@@ -11,7 +11,8 @@ AllCops:
   # Exclude some GitLab files
   Exclude:
     - 'vendor/**/*'
-    - 'db/**/*'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
     - 'tmp/**/*'
     - 'bin/**/*'
     - 'lib/backup/**/*'
