@@ -1,0 +1,24 @@
+.section-container#forgot_pw
+  .form-actions
+    .row
+      .column.medium-8.medium-offset-1
+        .row
+          .column.medium-8.medium-offset-4
+            h2.form-title= t('users.forgot_pw')
+
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = f.error_notification
+      .row
+        .column.medium-8.medium-offset-1
+          .row
+            .column.medium-4
+              = f.label :email, class: 'right inline', required: true
+            .column.medium-8
+              = f.input :email, label: false, required: true, autofocus: true
+
+          .row
+            .column.medium-8.medium-offset-4
+              .submit
+                = f.button :submit, t('users.send_instructions'), class: '-type-a'
+              .interaction-box
+                = render 'users/shared/links'

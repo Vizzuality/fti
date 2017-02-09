@@ -1,0 +1,8 @@
+li.dropdown-anchor
+  = link_to t('locale_name'), '#', class: 'label'
+  ul class='dropdown-list'
+    li.arrowhelper
+    li
+      = link_to('English', locale: 'en')
+    li
+      = link_to('Français', locale: 'fr')

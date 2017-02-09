@@ -1,0 +1,29 @@
+.section-container
+  .section.links-section
+    = link_to t('shared.view'), user_url(@user), class: "button -large -type-e"
+    = link_to t('shared.edit_info'), edit_user_url(@user), class: "button -large -type-d"
+    - if can? :manage, UserPermission
+      = link_to t('shared.permissions'), user_permission_url(@user, @user.user_permission), class: "button -large -type-e"
+.form-actions
+  .row
+    .column.medium-8.medium-offset-1
+      .row
+        .column.medium-8.medium-offset-4
+          h2.form-title
+            | Edit
+            '
+            = @user.name || @user.username || 'User'
+            '
+            |
+            = " (admin)" if @user.admin?
+
+  = simple_form_for @user do |f|
+    = render partial: f
+
+    .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        - if current_user.admin?
+          = render 'shared/deactivatable_links', location: @user
+
+        = f.button :submit, t('shared.update'), class: '-primary'

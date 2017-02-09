@@ -1,0 +1,37 @@
+.section-container
+  .section.links-section
+    = link_to t('shared.view'), user_url(@user), class: 'button -large -type-e'
+    = link_to t('shared.edit_info'), edit_user_url(@user), class: 'button -large -type-e'
+    = link_to t('shared.permissions'), user_permission_url(@user, @permission), class: 'button -large -type-d'
+
+.form-actions
+  .row
+    .column.medium-8.medium-offset-1
+      .row
+        .column.medium-8.medium-offset-4
+          h2.form-title
+            = "Permissions of #{@user.name}" || 'Permissions of user'
+            |
+            = ' (admin)' if @user.admin?
+
+  = simple_form_for @permission do |f|
+    .row
+      .column.medium-8.medium-offset-1
+        = f.error_notification
+        .form-inputs
+          .row
+            .column.medium-4
+              = f.label :user_role, label: 'Role', class: 'right inline', disabled: common_form?
+            .column.medium-8
+              = f.input :user_role, collection: @roles, as: :select, include_blank: 'Role', label: false, disabled: common_form?
+          .row
+            .column.medium-4
+              = f.label :permissions, label: 'Permissions', class: 'right inline', disabled: common_form?
+            .column.medium-8
+              = f.text_field :permissions, label: false, disabled: true
+
+    .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        - if can? :update, UserPermission
+          = f.button :submit, t('shared.update'), class: '-primary'

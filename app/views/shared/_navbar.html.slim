@@ -1,14 +1,31 @@
 nav
   ul.inline-list
-    li = link_to t('navbar.home'), root_url
-
     - if user_signed_in?
       li
-        = link_to t('navbar.edit_account'), edit_user_registration_path
+        = link_to t('navbar.home'), dashboard_url, class: "#{'is-active' if menu_highlight?(:home)}"
+    - if current_user && current_user.admin?
       li
-        = link_to t('navbar.logout'), destroy_user_session_path, method: 'delete'
+        = link_to t('navbar.users'), users_url, class: "#{'is-active' if menu_highlight?(:users)}"
 
+    - if user_signed_in?
+      li.dropdown-anchor
+        span class='icon'
+        a.label.-with-icon href="#{user_url(current_user)}"
+          = current_user.name
+        ul class='dropdown-list'
+          li.arrowhelper
+          li
+            = link_to edit_user_registration_url, class: "#{'is-active' if menu_highlight?(:account)}" do
+              = t('navbar.edit_account')
+              span.link-helper
+          li
+            = link_to destroy_user_session_url, method: 'delete' do
+              = t('navbar.logout')
+              span.link-helper
     - else
-      li = link_to t('navbar.login'), new_user_session_path
-      li = link_to t('navbar.register'), new_user_registration_path
+      li
+        = link_to t('navbar.login'), new_user_session_url, class: "#{'is-active' if menu_highlight?(:login)}"
+      li
+        = link_to t('navbar.register'), new_user_registration_url, class: "#{'is-active' if menu_highlight?(:account)}"
 
+    = render 'shared/locals'

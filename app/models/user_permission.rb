@@ -15,4 +15,22 @@ class UserPermission < ApplicationRecord
   enum user_role: { user: 0, operator: 1, ngo: 2, admin: 3 }
 
   belongs_to :user
+
+  before_update :change_permissions, if: 'user_role_changed?'
+
+  private
+
+    def change_permissions
+      self.permissions = role_permissions
+    end
+
+    def role_permissions
+      case self.user_role
+      when 'admin'    then { admin: { all: [:read] }, all: { all: [:manage] } }
+      when 'operator' then { all: { all: [:read] }, user: { id: [:manage] } }
+      when 'ngo'      then { all: { all: [:read] }, user: { id: [:manage] } }
+      else
+        { all: { all: [:read] }, user: { id: [:manage] } }
+      end
+    end
 end

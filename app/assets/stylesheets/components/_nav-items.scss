@@ -1,0 +1,31 @@
+.inline-list {
+  margin: 0;
+
+  li {
+    margin-left: 0px;
+  }
+
+  a {
+    @include font(null, xsmall, medium, 1);
+    text-transform: uppercase;
+    color: $color-3;
+    border-top: 4px solid transparent;
+    padding: 30px 15px 6px;
+
+    @media screen and (max-width: 1060px) {
+      padding: 30px 8px 6px;
+    }
+
+    &.is-active {
+      border-color: $color-8;
+    }
+
+    &:hover {
+      border-color: $grey-2;
+
+      &.is-active {
+        border-color: $color-8;
+      }
+    }
+  }
+}
