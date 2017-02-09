@@ -14,7 +14,8 @@ require 'rails_helper'
 
 RSpec.describe UserPermission, type: :model do
   before :each do
-    @user = create(:user)
+    @user     = create(:user)
+    @user_ngo = create(:user, permissions_request: 'ngo')
   end
 
   let!(:user_permissions) {
@@ -35,6 +36,13 @@ RSpec.describe UserPermission, type: :model do
 
     expect(@user.user_permission.user_role).to   eq('admin')
     expect(@user.user_permission.permissions).to eq(admin_permissions)
+  end
+
+  it 'Accept user role request' do
+    @user_ngo.user_permission.update(user_role: 'ngo', permissions: user_permissions)
+
+    expect(@user_ngo.user_permission.user_role).to   eq('ngo')
+    expect(@user_ngo.user_permission.permissions).to eq(user_permissions)
   end
 
   it 'Is a user an user? Show the role name' do

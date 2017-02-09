@@ -13,8 +13,9 @@
             = "Permissions of #{@user.name}" || 'Permissions of user'
             |
             = " (admin)" if @user.admin?
-          h3.form-title
-            = "#{t('shared.permissions_request')}: #{@user.permissions_request}"
+          - if @user.permissions_request.present? && @user.permissions_accepted.blank?
+            h3.form-title
+              = "#{t('shared.permissions_request')}: #{@user.permissions_request}"
 
   = simple_form_for @permission do |f|
     .row

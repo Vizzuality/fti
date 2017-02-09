@@ -36,6 +36,8 @@ class UserPermission < ApplicationRecord
     end
 
     def accept_permissions_request
-      self.user.update(permissions_accepted: Time.now)
+      if user_role == user.permissions_request
+        self.user.update(permissions_accepted: Time.now)
+      end
     end
 end
