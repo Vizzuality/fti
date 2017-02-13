@@ -54,6 +54,18 @@ GEM
       uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     cancancan (1.15.0)
+    capybara (2.12.0)
+      addressable
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    capybara-webkit (1.12.0)
+      capybara (>= 2.3.0, < 2.13.0)
+      json
+    codeclimate-test-reporter (1.0.5)
+      simplecov
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -63,15 +75,25 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
-    countries (1.2.5)
-      currencies (~> 0.4.2)
-      i18n_data (~> 0.7.0)
-    country_select (2.5.2)
-      countries (~> 1.2.0)
-      sort_alphabetical (~> 1.0)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    currencies (0.4.2)
+    cucumber (2.4.0)
+      builder (>= 2.1.2)
+      cucumber-core (~> 1.5.0)
+      cucumber-wire (~> 0.0.1)
+      diff-lcs (>= 1.1.3)
+      gherkin (~> 4.0)
+      multi_json (>= 1.7.5, < 2.0)
+      multi_test (>= 0.1.2)
+    cucumber-core (1.5.0)
+      gherkin (~> 4.0)
+    cucumber-rails (1.4.5)
+      capybara (>= 1.1.2, < 3)
+      cucumber (>= 1.3.8, < 4)
+      mime-types (>= 1.16, < 4)
+      nokogiri (~> 1.5)
+      railties (>= 3, < 5.1)
+    cucumber-wire (0.0.1)
     database_cleaner (1.5.3)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -80,10 +102,15 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    docile (1.1.5)
     dotenv (2.2.0)
     dotenv-rails (2.2.0)
       dotenv (= 2.2.0)
       railties (>= 3.2, < 5.1)
+    email_spec (2.1.0)
+      htmlentities (~> 4.3.3)
+      launchy (~> 2.1)
+      mail (~> 2.6.3)
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
@@ -94,6 +121,7 @@ GEM
     faker (1.7.3)
       i18n (~> 0.5)
     ffi (1.9.17)
+    gherkin (4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gon (6.1.0)
@@ -102,8 +130,8 @@ GEM
       multi_json
       request_store (>= 1.0)
     hashdiff (0.3.2)
+    htmlentities (4.3.4)
     i18n (0.8.0)
-    i18n_data (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -131,6 +159,8 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -145,11 +175,12 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
+    multi_test (0.1.2)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
-    parser (2.3.3.1)
+    parser (2.4.0.0)
       ast (~> 2.2)
     pg (0.19.0)
     powerpack (0.1.1)
@@ -248,9 +279,17 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    seed-fu (2.3.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    simplecov (0.13.0)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slim (3.0.7)
       temple (~> 0.7.6)
       tilt (>= 1.3.3, < 2.1)
@@ -259,8 +298,6 @@ GEM
       railties (>= 3.1)
       slim (~> 3.0)
     slop (3.6.0)
-    sort_alphabetical (1.1.0)
-      unicode_utils (>= 1.2.2)
     spring (2.0.1)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -288,7 +325,6 @@ GEM
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.1.3)
-    unicode_utils (1.4.0)
     uniform_notifier (1.10.0)
     warden (1.2.7)
       rack (>= 1.0)
@@ -299,6 +335,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -309,11 +347,15 @@ DEPENDENCIES
   bullet
   byebug
   cancancan
+  capybara
+  capybara-webkit
+  codeclimate-test-reporter (~> 1.0.0)
   coffee-rails (~> 4.2)
-  country_select
+  cucumber-rails
   database_cleaner
   devise
   dotenv-rails
+  email_spec
   factory_girl_rails
   faker
   gon
@@ -332,7 +374,9 @@ DEPENDENCIES
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
+  seed-fu
   simple_form
+  simplecov
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)

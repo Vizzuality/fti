@@ -22,6 +22,14 @@ RSpec.describe UserPermission, type: :model do
     {"all"=>{"all"=>["read"]}, "user"=>{"id"=>["manage"]}}
   }
 
+  let!(:ngo_permissions) {
+    {"all"=>{"all"=>["read"]}, "user"=>{"id"=>["manage"]}}
+  }
+
+  let!(:operator_permissions) {
+    {"all"=>{"all"=>["read"]}, "user"=>{"id"=>["manage"]}}
+  }
+
   let!(:admin_permissions) {
     {"admin"=>{"all"=>["read"]},"all"=>{"all"=>["manage"]}}
   }
@@ -31,11 +39,33 @@ RSpec.describe UserPermission, type: :model do
     expect(@user.user_permission.permissions).to eq(user_permissions)
   end
 
-  it 'Change user permissions and role' do
+  it 'Change user permissions and role to admin' do
     @user.user_permission.update(user_role: 'admin', permissions: admin_permissions)
 
     expect(@user.user_permission.user_role).to   eq('admin')
     expect(@user.user_permission.permissions).to eq(admin_permissions)
+  end
+
+  it 'Change user permissions and role to ngo' do
+    @user.user_permission.update(user_role: 'ngo', permissions: ngo_permissions)
+
+    expect(@user.user_permission.user_role).to   eq('ngo')
+    expect(@user.user_permission.permissions).to eq(ngo_permissions)
+  end
+
+  it 'Change user permissions and role to operator' do
+    @user.user_permission.update(user_role: 'operator', permissions: operator_permissions)
+
+    expect(@user.user_permission.user_role).to   eq('operator')
+    expect(@user.user_permission.permissions).to eq(operator_permissions)
+  end
+
+  it 'Change ngo user permissions and role to user' do
+    @user_ngo.user_permission.update(user_role: 'ngo',  permissions: ngo_permissions)
+    @user_ngo.user_permission.update(user_role: 'user', permissions: user_permissions)
+
+    expect(@user_ngo.user_permission.user_role).to   eq('user')
+    expect(@user_ngo.user_permission.permissions).to eq(user_permissions)
   end
 
   it 'Accept user role request' do

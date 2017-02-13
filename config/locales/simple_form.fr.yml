@@ -29,3 +29,6 @@ fr:
       tea_api_session:
         email: Identifiant
         bookstore: Libraire
+      username: Username
+      name: Name
+      institution: Institution

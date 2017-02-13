@@ -211,3 +211,58 @@ fr:
       long: "%A %d %B %Y %Hh%M"
       short: "%d %b %Hh%M"
     pm: pm
+
+  shared:
+    edit_permissions: Edit permissions
+    permissions_request: Permissions request
+    edit: 'Edit'
+    update: 'Update'
+    delete: 'Delete'
+    create: 'Create'
+    back: 'Back'
+    confirm_message: 'Are you sure?'
+    view: 'View'
+    edit_info: 'Edit info'
+    edit_relations: 'Edit relations'
+    add_localization: 'Add locations'
+    add_location: 'Add location'
+    remove_location: 'Remove location'
+    name: 'Name'
+    status: 'Status'
+    remove: 'Remove'
+    add: 'Add'
+    general_info: 'General Info'
+    activate: 'Activate'
+    deactivate: 'Deactivate'
+    deactivated_at: 'Deactivated at'
+    relation_details: 'Relation details'
+    view_map: 'View on map'
+    updated: 'Updated'
+    created: 'Created'
+    can_not_be_deleted: 'Can not be deleted!'
+    role: 'Role'
+    admin: 'Admin'
+    ngo: 'NGO'
+    user: 'User'
+    operator: 'Operator'
+    add_other_domain: 'Add a new domain'
+    no_entries: 'No entries'
+
+  navbar:
+    dashboard: 'Dashboard'
+    home: 'Home'
+    users: 'Users'
+    categories: 'Categories'
+    edit_account: 'Edit account'
+    logout: 'Logout'
+    login: 'Login'
+    register: 'Register'
+    settings: 'Settings'
+
+  users:
+    user: 'User'
+    users: 'Users'
+    edit_user: 'Edit User'
+    forgot_pw: 'Forgot your Password?'
+    send_instructions: 'Send me reset password instructions'
+    login_action: 'login'

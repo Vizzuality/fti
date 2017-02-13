@@ -8,5 +8,7 @@ class CreateUserPermissions < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    add_foreign_key :user_permissions, :users
   end
 end

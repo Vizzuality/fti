@@ -27,17 +27,15 @@ source 'https://rails-assets.org' do
 end
 
 gem 'cancancan'
-gem 'country_select'
 gem 'devise'
 gem 'kaminari'
+gem 'seed-fu'
 gem 'simple_form'
 
 group :development, :test do
   gem 'byebug',                platform: :mri
   gem 'dotenv-rails'
   gem 'faker'
-  gem 'rspec-activejob'
-  gem 'rspec-rails'
   gem 'rubocop',               require: false
   gem 'webmock'
 end
@@ -53,8 +51,16 @@ end
 
 group :test do
   gem 'bullet'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
+  gem 'cucumber-rails',           require: false
   gem 'database_cleaner'
+  gem 'email_spec'
   gem 'factory_girl_rails'
+  gem 'rspec-activejob'
+  gem 'rspec-rails'
+  gem 'simplecov'
   gem 'timecop'
 end
 

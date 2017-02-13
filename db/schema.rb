@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209094605) do
+ActiveRecord::Schema.define(version: 20170210113144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "countries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "region_name"
+    t.string   "iso"
+    t.string   "region_iso"
+    t.jsonb    "country_centroid"
+    t.jsonb    "region_centroid"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "user_permissions", force: :cascade do |t|
     t.integer  "user_id"
@@ -37,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170209094605) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
-    t.string   "username",               default: "",   null: false
+    t.string   "username"
     t.string   "name"
     t.string   "institution"
     t.boolean  "active",                 default: true
@@ -45,8 +55,11 @@ ActiveRecord::Schema.define(version: 20170209094605) do
     t.datetime "deactivated_at"
     t.integer  "permissions_request"
     t.datetime "permissions_accepted"
+    t.integer  "country_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "user_permissions", "users"
+  add_foreign_key "users", "countries"
 end

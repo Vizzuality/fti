@@ -19,6 +19,8 @@ Bundler.require(*Rails.groups)
 
 module Fti
   class Application < Rails::Application
+    # config.active_record.schema_format = :sql
+
     config.generators do |g|
       g.test_framework  :rspec
       g.template_engine :slim
