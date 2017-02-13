@@ -28,6 +28,7 @@ spec/.DS_Store
 /public/assets
 /public/uploads
 /public/system
+/coverage
 
 # Ignore environment variables
 /.env

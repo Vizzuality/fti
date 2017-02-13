@@ -3,12 +3,25 @@ module Roleable
   extend ActiveSupport::Concern
 
   included do
-    has_one :user_permission
+    has_one :user_permission, dependent: :destroy
 
     after_create :set_permissions, if: '!self.user_permission'
 
+    scope :filter_admins,    -> { joins(:user_permission).where(user_permissions: { user_role: 'admin' })    }
+    scope :filter_ngos,      -> { joins(:user_permission).where(user_permissions: { user_role: 'ngo' })      }
+    scope :filter_operators, -> { joins(:user_permission).where(user_permissions: { user_role: 'operator' }) }
+    scope :filter_users,     -> { joins(:user_permission).where(user_permissions: { user_role: 'user' })     }
+
     def admin?
       user_permission.user_role.in?('admin')
+    end
+
+    def ngo?
+      user_permission.user_role.in?('ngo')
+    end
+
+    def operator?
+      user_permission.user_role.in?('operator')
     end
 
     def user?

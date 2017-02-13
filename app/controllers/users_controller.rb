@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :username, :institution, :web_url, :email)
+      params.require(:user).permit(:name, :username, :institution, :web_url, :email, :country_id)
     end
 
     def menu_highlight

@@ -7,15 +7,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-unless User.find_by(username: 'admin')
-  @user = User.new(email: 'admin@example.com', password: 'password', password_confirmation: 'password', name: 'Admin', username: 'admin')
-  @user.save
-  @user.user_permission.update(user_role: 'admin', permissions: { admin: { all: [:read] }, all: { all: [:manage] } })
-
-  puts '*************************************************************************'
-  puts '*                                                                       *'
-  puts '* Admin user created (email: "admin@example.com", password: "password") *'
-  puts '* visit http://localhost:3000/                                          *'
-  puts '*                                                                       *'
-  puts '*************************************************************************'
-end
+# Find and create new seed files in db/fixtures
+Rake::Task['db:seed_fu'].invoke

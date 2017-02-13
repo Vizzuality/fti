@@ -11,14 +11,14 @@
           span.data.-primary
             = link_to user.name, user_path(user)
           - if (can? :manage, UserPermission) && user.permissions_request.present? && user.permissions_accepted.blank?
-            span.data
-              = "#{t('shared.permissions_request')}: #{user.permissions_request}"
-            span.data.-linkdata
-              = link_to edit_user_permission_url(user, user.user_permission) do
-                = image_tag 'edit.svg', class: 'icon'
-                span
-                  = t('shared.edit_permissions')
-            hr
+            p
+              span.data
+                = "#{t('shared.permissions_request')}: #{user.permissions_request} "
+              span.data.-linkdata
+                = link_to edit_user_permission_url(user, user.user_permission) do
+                  = image_tag 'edit.svg', class: 'icon'
+                  span
+                    = t('shared.edit_permissions')
           span.data
             = "#{t('shared.created')}: #{user.created_at.to_formatted_s(:create_update_date).to_s} / "
           span.data

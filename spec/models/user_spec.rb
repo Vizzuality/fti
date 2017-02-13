@@ -15,7 +15,7 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  username               :string           default(""), not null
+#  username               :string
 #  name                   :string
 #  institution            :string
 #  active                 :boolean          default(TRUE)
@@ -23,6 +23,7 @@
 #  deactivated_at         :datetime
 #  permissions_request    :integer
 #  permissions_accepted   :datetime
+#  country_id             :integer
 #
 
 require 'rails_helper'

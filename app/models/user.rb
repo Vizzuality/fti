@@ -16,7 +16,7 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  username               :string           default(""), not null
+#  username               :string
 #  name                   :string
 #  institution            :string
 #  active                 :boolean          default(TRUE)
@@ -24,6 +24,7 @@
 #  deactivated_at         :datetime
 #  permissions_request    :integer
 #  permissions_accepted   :datetime
+#  country_id             :integer
 #
 
 # frozen_string_literal: true
@@ -38,6 +39,8 @@ class User < ApplicationRecord
 
   include Activable
   include Roleable
+
+  belongs_to :country, inverse_of: :users, optional: true
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :name,     presence: true

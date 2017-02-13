@@ -23,6 +23,7 @@ AllCops:
     - 'lib/gitlab/upgrader.rb'
     - 'lib/gitlab/seeder.rb'
     - 'spec/**/*'
+    - "db/fixtures/**/*"
 
 ##################### Style ##################################
 
