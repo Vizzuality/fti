@@ -30,7 +30,7 @@
             .column.medium-4
               = f.label :country_id, label: 'Country', class: 'right inline'
             .column.medium-8
-              = f.input :country_id, collection: Country.country_select, as: :select, include_blank: 'Please select Your country', label: false
+              = f.input :country_id, collection: Country.country_select(params[:locale]), as: :select, include_blank: 'Please select Your country', label: false
           .row
             .column.medium-4
               = f.label :email, class: 'right inline'

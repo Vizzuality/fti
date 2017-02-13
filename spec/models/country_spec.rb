@@ -3,8 +3,6 @@
 # Table name: countries
 #
 #  id               :integer          not null, primary key
-#  name             :string
-#  region_name      :string
 #  iso              :string
 #  region_iso       :string
 #  country_centroid :jsonb

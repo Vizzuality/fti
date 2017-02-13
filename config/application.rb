@@ -20,6 +20,7 @@ Bundler.require(*Rails.groups)
 module Fti
   class Application < Rails::Application
     # config.active_record.schema_format = :sql
+    config.i18n.fallbacks = true
 
     config.generators do |g|
       g.test_framework  :rspec

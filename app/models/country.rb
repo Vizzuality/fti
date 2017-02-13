@@ -4,8 +4,6 @@
 # Table name: countries
 #
 #  id               :integer          not null, primary key
-#  name             :string
-#  region_name      :string
 #  iso              :string
 #  region_iso       :string
 #  country_centroid :jsonb
@@ -15,12 +13,14 @@
 #
 
 class Country < ApplicationRecord
+  translates :name, :region_name, fallbacks_for_empty_translations: true
+
   has_many :users, inverse_of: :country
 
   class << self
-    def country_select
-      select(:id, :name).order('countries.name ASC')
-                        .map { |c| [c.name, c.id] }
+    def country_select(current_locale)
+      with_translations(current_locale.to_s).order('country_translations.name ASC')
+                                            .map { |c| [c.name, c.id] }
     end
   end
 end

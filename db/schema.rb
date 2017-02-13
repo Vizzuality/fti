@@ -10,20 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210113144) do
+ActiveRecord::Schema.define(version: 20170213112834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "countries", force: :cascade do |t|
-    t.string   "name"
-    t.string   "region_name"
     t.string   "iso"
     t.string   "region_iso"
     t.jsonb    "country_centroid"
     t.jsonb    "region_centroid"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "country_translations", force: :cascade do |t|
+    t.integer  "country_id",  null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.string   "region_name"
+    t.index ["country_id"], name: "index_country_translations_on_country_id", using: :btree
+    t.index ["locale"], name: "index_country_translations_on_locale", using: :btree
   end
 
   create_table "user_permissions", force: :cascade do |t|
