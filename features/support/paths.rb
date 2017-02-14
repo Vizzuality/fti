@@ -10,23 +10,29 @@ module NavigationHelpers
     case page_name
 
     when /the home\s?page/
-      '/en'
+      root_path(locale: I18n.locale)
     when /the login page/
-      '/en/account/login'
-    when /the logout page/
-      '/en/account/logout'
+      new_user_session_path(locale: I18n.locale)
     when /the register page/
-      '/en/account/register'
+      new_user_registration_path(locale: I18n.locale)
     when /the profile edit page for "(.*)"$/
       edit_user_registration_path(User.find_by(email: $1))
     when /the dashboard page/
-      dashboard_path(locale: 'en')
+      dashboard_path(locale: I18n.locale)
     when /the users page/
-      users_path(locale: 'en')
+      users_path(locale: I18n.locale)
     when /the user page for "(.*)"$/
-      user_path(User.find_by(email: $1), locale: 'en')
+      user_path(User.find_by(email: $1), locale: I18n.locale)
     when /the edit user page for "(.*)"$/
-      edit_user_path(User.find_by(email: $1), locale: 'en')
+      edit_user_path(User.find_by(email: $1), locale: I18n.locale)
+    when /the countries page/
+      countries_path(locale: I18n.locale)
+    when /the country page for "(.*)"$/
+      country_path(Country.find_by(name: $1), locale: I18n.locale)
+    when /the edit country page for "(.*)"$/
+      edit_country_path(Country.find_by(name: $1), locale: I18n.locale)
+    when /the new country page/
+      new_country_path(locale: I18n.locale)
     else
       begin
         page_name =~ /the (.*) page/

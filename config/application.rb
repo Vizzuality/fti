@@ -20,7 +20,9 @@ Bundler.require(*Rails.groups)
 module Fti
   class Application < Rails::Application
     # config.active_record.schema_format = :sql
-    config.i18n.fallbacks = true
+    config.i18n.fallbacks                 = true
+    config.i18n.enforce_available_locales = true
+    config.i18n.fallbacks                 = { 'en' => 'fr', 'fr' => 'en' }
 
     config.generators do |g|
       g.test_framework  :rspec

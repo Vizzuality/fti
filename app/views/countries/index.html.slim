@@ -1,0 +1,36 @@
+.section-container#countries
+  .section.title-section
+    div
+      h2.title
+        = t('countries.countries')
+
+  .section.table-container
+    - @countries.each do |country|
+      .table-row
+        .data-primary
+          span.data.-primary
+            = country.name
+          span.data
+            = "#{t('shared.created')}: #{country.created_at.to_formatted_s(:create_update_date).to_s} / "
+          span.data
+            = "#{t('shared.updated')}: #{country.updated_at.to_formatted_s(:short).to_s} / "
+
+        .data-secondary
+          span.data._hidden
+          span.data._hidden
+          - if can?(:edit, country)
+            span.data.-linkdata
+              = link_to edit_country_path(country) do
+                = image_tag "edit.svg", class: 'icon'
+                span
+                  = t('shared.edit')
+          - if can?(:destroy, country)
+            span.data.-linkdata
+              = link_to country_path(country), data: { confirm: t('shared.confirm_message') }, method: :delete do
+                = image_tag 'delete.svg', class: 'icon'
+                span
+                  = t('shared.delete')
+  .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = link_to t('shared.create'), new_country_url, class: "button -large -type-e"

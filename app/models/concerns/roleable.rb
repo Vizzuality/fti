@@ -39,7 +39,7 @@ module Roleable
     private
 
       def set_permissions
-        self.create_user_permission(user_role: :user, permissions: { all: { all: [:read] }, user: { id: [:manage] } })
+        self.create_user_permission(user_role: :user, permissions: { user: { id: [:manage] } })
       end
   end
 

@@ -1,0 +1,34 @@
+.row
+  .column.medium-8.medium-offset-1
+    = form.error_notification
+    .form-inputs
+      .row
+        .column.medium-4
+          = form.label :name, label: "Name", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :name, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :region_name, label: "Region name", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :region_name, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :iso, class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :iso, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :region_iso, class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :region_iso, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :country_centroid, label: 'Country centroid', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.text_field :country_centroid, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :region_centroid, label: 'Region centroid', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.text_field :region_centroid, label: false, disabled: common_form?

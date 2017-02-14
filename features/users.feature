@@ -1,7 +1,7 @@
 Feature: Users
 In order to manage users
 As an adminuser
-I want to edit, view, activate, deactivate and make a user admin
+I want to edit, view, activate, deactivate and change user permissions
 
   Scenario: User can view users page and user page
     Given I am authenticated adminuser

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :get_locale
   after_action  :store_location
 
-  def default_url_options(options={})
+  def self.default_url_options
     { locale: I18n.locale }
   end
 
@@ -35,12 +35,12 @@ class ApplicationController < ActionController::Base
         request.fullpath.match('/account/password') &&
         request.fullpath.match('/account/cancel') &&
         !request.xhr? # don't store ajax calls
-        session[:previous_url] = request.fullpath
+        session['user_return_to'] = request.fullpath
       end
     end
 
-    def after_sign_in_path_for(*)
-      session[:previous_url] || dashboard_url
+    def after_sign_in_path_for(resource)
+      session['user_return_to'] || dashboard_url
     end
 
     def menu_highlight

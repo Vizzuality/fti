@@ -15,7 +15,7 @@ class UserPermissionsController < ApplicationController
     if @user.user_permission.update(permissions_params)
       redirect_to user_url(@user), notice: 'User permissions updated.'
     else
-      render :edit, notice: "User permissions can't be updated."
+      render :edit, notice: @user.user_permission.errors.full_messages
     end
   end
 

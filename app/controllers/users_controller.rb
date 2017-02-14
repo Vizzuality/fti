@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_url(@user), notice: 'User succesfully updated.'
     else
-      render :edit, notice: "User can't be updated."
+      render :edit, notice: @user.errors.full_messages
     end
   end
 

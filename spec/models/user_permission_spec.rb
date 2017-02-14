@@ -19,15 +19,15 @@ RSpec.describe UserPermission, type: :model do
   end
 
   let!(:user_permissions) {
-    {"all"=>{"all"=>["read"]}, "user"=>{"id"=>["manage"]}}
+    {"user"=>{"id"=>["manage"]}}
   }
 
   let!(:ngo_permissions) {
-    {"all"=>{"all"=>["read"]}, "user"=>{"id"=>["manage"]}}
+    {"user"=>{"id"=>["manage"]}}
   }
 
   let!(:operator_permissions) {
-    {"all"=>{"all"=>["read"]}, "user"=>{"id"=>["manage"]}}
+    {"user"=>{"id"=>["manage"]}}
   }
 
   let!(:admin_permissions) {

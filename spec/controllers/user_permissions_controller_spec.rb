@@ -12,7 +12,7 @@ RSpec.describe UserPermissionsController, type: :controller do
   end
 
   let!(:attri) do
-    { user_permission: { user_role: 'ngo', permissions: {"all"=>{"all"=>["read"]}, "user"=>{"id"=>["manage"]}}}}
+    { user_permission: { user_role: 'ngo', permissions: {"user"=>{"id"=>["manage"]}}}}
   end
 
   let!(:attri_failed) do
