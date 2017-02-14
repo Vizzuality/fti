@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/globalize/globalize.git
+  revision: 5b0ff2c92e7536f908dc82a4c2a15b04be79e821
+  specs:
+    globalize (5.1.0)
+      activemodel (>= 4.2, < 5.1)
+      activerecord (>= 4.2, < 5.1)
+      request_store (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -30,6 +39,11 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.0.1)
       activesupport (= 5.0.1)
+    activemodel-serializers-xml (1.0.1)
+      activemodel (> 5.x)
+      activerecord (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (5.0.1)
       activemodel (= 5.0.1)
       activesupport (= 5.0.1)
@@ -53,7 +67,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
-    cancancan (1.15.0)
+    cancancan (1.16.0)
     capybara (2.12.0)
       addressable
       mime-types (>= 1.16)
@@ -225,6 +239,9 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (5.0.3)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -342,6 +359,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemodel-serializers-xml
   annotate
   brakeman
   bullet
@@ -358,6 +376,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   faker
+  globalize!
   gon
   jbuilder (~> 2.5)
   jquery-rails
@@ -369,6 +388,7 @@ DEPENDENCIES
   puma
   rails (~> 5.0.pre.stable)
   rails-assets-foundation!
+  rails-i18n
   rails_12factor
   rspec-activejob
   rspec-rails

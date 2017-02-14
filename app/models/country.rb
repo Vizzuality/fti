@@ -4,8 +4,6 @@
 # Table name: countries
 #
 #  id               :integer          not null, primary key
-#  name             :string
-#  region_name      :string
 #  iso              :string
 #  region_iso       :string
 #  country_centroid :jsonb
@@ -15,12 +13,24 @@
 #
 
 class Country < ApplicationRecord
+  translates :name, :region_name
+
   has_many :users, inverse_of: :country
 
+  validates :name, :iso, presence: true, uniqueness: { case_sensitive: false }
+
+  scope :by_name_asc, -> {
+    includes(:translations).with_translations(I18n.available_locales)
+                           .order('country_translations.name ASC')
+  }
+
   class << self
-    def country_select
-      select(:id, :name).order('countries.name ASC')
-                        .map { |c| [c.name, c.id] }
+    def country_select(current_locale)
+      by_name_asc.map { |c| [c.name, c.id] }
     end
+  end
+
+  def cache_key
+    super + '-' + Globalize.locale.to_s
   end
 end

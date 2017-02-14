@@ -14,7 +14,6 @@ RSpec.describe Ability, type: :model do
       end
 
       it 'Can manage owned profile' do
-        expect_any_instance_of(Ability).to receive(:can).with([:read], :all)
         expect_any_instance_of(Ability).to receive(:can).with([:manage], User, id: @user.id)
         expect_any_instance_of(Ability).to receive(:cannot).with([:activate, :deactivate, :destroy], User, id: @user.id)
         expect_any_instance_of(Ability).to receive(:cannot).with([:edit, :update], UserPermission, user_id: @user.id)

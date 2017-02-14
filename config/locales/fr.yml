@@ -258,6 +258,8 @@ fr:
     login: 'Login'
     register: 'Register'
     settings: 'Settings'
+    admin: 'Administration'
+    countries: 'Countries'
 
   users:
     user: 'User'

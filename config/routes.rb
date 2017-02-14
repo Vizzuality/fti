@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
-  scope '(:locale)', locale: /en|fr/  do
+  scope '(:locale)', locale: /en|fr/ do
     devise_for :users, path: 'account',
                        path_names: {
                          sign_in: 'login', sign_out: 'logout',
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
         patch 'activate',   on: :member
         resources :user_permissions, only: [:show, :edit, :update], on: :member, as: :permission
       end
+
+      resources :countries
     end
 
     get 'dashboard', to: 'users#dashboard', as: :dashboard

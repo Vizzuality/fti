@@ -26,7 +26,7 @@ RSpec.describe UsersController, type: :controller do
       sign_in @adminuser
     end
 
-    it 'GET root_path returns http success' do
+    it 'GET dashboard_path returns http success' do
       get :dashboard
       expect(response).to be_success
       expect(response).to have_http_status(200)

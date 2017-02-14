@@ -26,9 +26,12 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-foundation'
 end
 
+gem 'activemodel-serializers-xml'
 gem 'cancancan'
 gem 'devise'
+gem 'globalize', github: 'globalize/globalize'
 gem 'kaminari'
+gem 'rails-i18n'
 gem 'seed-fu'
 gem 'simple_form'
 

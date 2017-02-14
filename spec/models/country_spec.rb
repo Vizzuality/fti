@@ -3,8 +3,6 @@
 # Table name: countries
 #
 #  id               :integer          not null, primary key
-#  name             :string
-#  region_name      :string
 #  iso              :string
 #  region_iso       :string
 #  country_centroid :jsonb
@@ -23,8 +21,20 @@ RSpec.describe Country, type: :model do
     end
 
     it 'Count on country' do
-      expect(User.count).to                 eq(1)
-      expect(@country.users.size).to        eq(1)
+      expect(User.count).to          eq(1)
+      expect(@country.users.size).to eq(1)
+      expect(@user.country.name).to  eq('Australia')
+    end
+
+    it 'Fallbacks for empty translations on country' do
+      expect(@user.country.name).to eq('Australia')
+    end
+
+    it 'Translate country to fr' do
+      @country.update(name: 'Australia FR', locale: :fr)
+      I18n.locale = :fr
+      expect(@user.country.name).to eq('Australia FR')
+      I18n.locale = :en
       expect(@user.country.name).to eq('Australia')
     end
   end
