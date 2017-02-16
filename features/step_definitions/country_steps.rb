@@ -8,5 +8,5 @@ Then /^I should have zero countries$/ do
 end
 
 Given /^country$/ do
-  FactoryGirl.create(:country)
+  FactoryGirl.create(:country, name: 'Australia', iso: 'AUS')
 end

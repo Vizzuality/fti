@@ -12,15 +12,15 @@ gem 'pg',    '~> 0.18'
 gem 'rails', '~> 5.0-stable'
 
 # Assets managment
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails',                '~> 4.2'
 gem 'gon'
-gem 'jbuilder',     '~> 2.5'
+gem 'jbuilder',                    '~> 2.5'
 gem 'jquery-rails'
 gem 'jquery-ui-sass-rails'
-gem 'sass-rails',   '~> 5.0'
+gem 'sass-rails',                  '~> 5.0'
 gem 'slim-rails'
-gem 'turbolinks',   '~> 5'
-gem 'uglifier',     '>= 1.3.0'
+gem 'turbolinks',                  '~> 5'
+gem 'uglifier',                    '>= 1.3.0'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-foundation'
@@ -28,28 +28,30 @@ end
 
 gem 'activemodel-serializers-xml'
 gem 'cancancan'
+gem 'carrierwave', '~> 1.0'
+gem 'cloudinary'
 gem 'devise'
-gem 'globalize', github: 'globalize/globalize'
+gem 'globalize',                   github: 'globalize/globalize'
 gem 'kaminari'
 gem 'rails-i18n'
 gem 'seed-fu'
 gem 'simple_form'
 
 group :development, :test do
-  gem 'byebug',                platform: :mri
+  gem 'byebug',                    platform: :mri
   gem 'dotenv-rails'
   gem 'faker'
-  gem 'rubocop',               require: false
+  gem 'rubocop',                   require: false
   gem 'webmock'
 end
 
 group :development do
   gem 'annotate'
-  gem 'brakeman',              require: false
-  gem 'listen',                '~> 3.0.5'
+  gem 'brakeman',                  require: false
+  gem 'listen',                    '~> 3.0.5'
   gem 'pry-rails'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen',     '~> 2.0.0'
 end
 
 group :test do
@@ -57,7 +59,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'codeclimate-test-reporter', '~> 1.0.0'
-  gem 'cucumber-rails',           require: false
+  gem 'cucumber-rails',            require: false
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'factory_girl_rails'
@@ -69,5 +71,5 @@ end
 
 # Server
 gem 'puma'
-gem 'rails_12factor', group: :production
+gem 'rails_12factor',              group: :production
 gem 'tzinfo-data'

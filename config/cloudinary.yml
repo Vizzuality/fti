@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hvzzd3orl
+  api_key: '438872855771354'
+  api_secret: Hl-Z3KSfA4tF6KOP9eseGerkZRk
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hvzzd3orl
+  api_key: '438872855771354'
+  api_secret: Hl-Z3KSfA4tF6KOP9eseGerkZRk
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hvzzd3orl
+  api_key: '438872855771354'
+  api_secret: Hl-Z3KSfA4tF6KOP9eseGerkZRk
+  enhance_image_tag: true
+  static_image_support: false

@@ -1,0 +1,11 @@
+# frozen_string_literal: true
+class CreateSpeciesObservations < ActiveRecord::Migration[5.0]
+  def change
+    create_table :species_observations do |t|
+      t.integer :observation_id
+      t.integer :species_id
+
+      t.timestamps
+    end
+  end
+end

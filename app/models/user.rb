@@ -42,6 +42,9 @@ class User < ApplicationRecord
 
   belongs_to :country, inverse_of: :users, optional: true
 
+  has_many :observations, inverse_of: :user
+  has_many :comments,     inverse_of: :user
+
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :name,     presence: true
   validate  :validate_username

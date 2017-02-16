@@ -15,7 +15,13 @@
 class Country < ApplicationRecord
   translates :name, :region_name
 
-  has_many :users, inverse_of: :country
+  has_many :users,           inverse_of: :country
+  has_many :observations,    inverse_of: :country
+  has_many :observers,       inverse_of: :country
+  has_many :annex_operators, inverse_of: :country
+  has_many :laws,            inverse_of: :country
+  has_many :governments,     inverse_of: :country
+  has_many :operators,       inverse_of: :country
 
   validates :name, :iso, presence: true, uniqueness: { case_sensitive: false }
 

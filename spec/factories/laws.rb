@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: laws
+#
+#  id         :integer          not null, primary key
+#  country_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+FactoryGirl.define do
+  factory :law do
+    legal_reference 'Lorem'
+    legal_penalty   'Lorem ipsum..'
+    vpa_indicator   'Indicator one'
+
+    after(:create) do |law|
+      law.update(country: FactoryGirl.create(:country))
+    end
+  end
+end
