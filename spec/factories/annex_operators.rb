@@ -15,7 +15,9 @@ FactoryGirl.define do
     details    'Lorem ipsum..'
 
     after(:create) do |annex|
-      annex.update(country: FactoryGirl.create(:country), law: FactoryGirl.create(:law))
+      annex.update(country: FactoryGirl.create(:country, name: "Country #{Faker::Lorem.sentence}",
+                                                         iso: "C#{Faker::Lorem.sentence}"),
+                                                         law: FactoryGirl.create(:law))
     end
   end
 end

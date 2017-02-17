@@ -13,7 +13,13 @@
 #
 
 class Document < ApplicationRecord
-  mount_uploader :document, DocumentUploader
+  mount_uploader :attachment, DocumentUploader
 
   belongs_to :attacheable, polymorphic: true
+
+  after_destroy :remove_attachment_id_directory
+
+  def remove_attachment_id_directory
+    FileUtils.rm_rf(File.join('public', 'uploads', 'document', 'attachment', self.id.to_s)) if self.attachment
+  end
 end

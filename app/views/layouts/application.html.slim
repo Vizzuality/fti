@@ -7,6 +7,7 @@ html lang='en'
       = content_for?(:title) ? yield(:title) : 'FTI'
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .l-page
       .l-header
@@ -35,5 +36,3 @@ html lang='en'
         .row: .small-12.medium-12.large-12.columns
           = yield
         .footer-helper
-
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

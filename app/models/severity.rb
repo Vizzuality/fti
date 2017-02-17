@@ -35,6 +35,10 @@ class Severity < ApplicationRecord
       severities = by_level_asc
       severities
     end
+
+    def severity_select
+      by_level_asc.map { |c| [c.details, c.id] }
+    end
   end
 
   def cache_key

@@ -1,0 +1,42 @@
+.section-container#observations
+  .section.title-section
+    div
+      h2.title
+        = t('observations.observations')
+
+  .section.table-container
+    - @observations.each do |observation|
+      .table-row
+        .data-primary
+          p
+            - observation.photos.each do |photo|
+              = image_tag(photo.attachment_url(:thumbnail))
+          p
+            - observation.documents.each do |document|
+              = link_to document.name, document.attachment_url
+          span.data.-primary
+            = observation.illegality
+          span.data
+            = "#{t('shared.created')}: #{observation.created_at.to_formatted_s(:create_update_date).to_s} / "
+          span.data
+            = "#{t('shared.updated')}: #{observation.updated_at.to_formatted_s(:short).to_s} / "
+
+        .data-secondary
+          span.data._hidden
+          span.data._hidden
+          - if can?(:edit, observation)
+            span.data.-linkdata
+              = link_to edit_observation_path(observation) do
+                = image_tag "edit.svg", class: 'icon'
+                span
+                  = t('shared.edit')
+          - if can?(:destroy, observation)
+            span.data.-linkdata
+              = link_to observation_path(observation), data: { confirm: t('shared.confirm_message') }, method: :delete do
+                = image_tag 'delete.svg', class: 'icon'
+                span
+                  = t('shared.delete')
+  .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = link_to t('shared.create'), new_observation_url, class: "button -large -type-e"

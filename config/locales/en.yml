@@ -248,6 +248,8 @@ en:
     operator: 'Operator'
     add_other_domain: 'Add a new domain'
     no_entries: 'No entries'
+    select_file: 'Select file'
+    title: 'Title'
 
   navbar:
     dashboard: 'Dashboard'
@@ -261,6 +263,7 @@ en:
     settings: 'Settings'
     admin: 'Administration'
     countries: 'Countries'
+    observations: 'Observations'
 
   users:
     user: 'User'
@@ -269,3 +272,16 @@ en:
     forgot_pw: 'Forgot your Password?'
     send_instructions: 'Send me reset password instructions'
     login_action: 'login'
+
+  countries:
+    countries: 'Countries'
+
+  observations:
+    observations: 'Observations'
+
+  # Page specific entries
+  observation_types:
+    ? "AnnexGovernance"
+    : "Governance illegality"
+    ? "AnnexOperator"
+    : "Illegality"

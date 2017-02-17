@@ -1,0 +1,59 @@
+.row
+  .column.medium-4
+    = form.label :severity_id, label: 'Illegality', class: 'right inline', disabled: common_form?
+  .column.medium-8
+    = form.input :severity_id, collection: Severity.severity_select, as: :select, include_blank: 'Please select the severity', label: false, disabled: common_form?
+.row
+  .column.medium-4
+    = form.label :observer_id, label: 'Monitor', class: 'right inline', disabled: common_form?
+  .column.medium-8
+    = form.input :observer_id, collection: Observer.observer_select, as: :select, include_blank: 'Please select the monitor', label: false, disabled: common_form?
+.row
+  .column.medium-4
+    = form.label :operator_id, label: 'Company', class: 'right inline', disabled: common_form?
+  .column.medium-8
+    = form.input :operator_id, collection: Operator.operator_select, as: :select, include_blank: 'Please select the company/operator', label: false, disabled: common_form?
+.row
+  .column.medium-4
+    = form.label :government_id, label: 'Government entity', class: 'right inline', disabled: common_form?
+  .column.medium-8
+    = form.input :government_id, collection: Government.entity_select, as: :select, include_blank: 'Please select the government entity', label: false, disabled: common_form?
+.row
+  .column.medium-4
+    = form.label :publication_date, class: 'right inline', disabled: common_form?
+  .column.medium-8
+    = form.text_field :publication_date, class: 'js-datepicker', disabled: common_form?
+.row
+  .column.medium-4
+    = form.label :evidence, label: 'Evidence', class: 'right inline', disabled: common_form?
+  .column.medium-8
+    = form.input :evidence, label: false, disabled: common_form?
+.row
+  .column.medium-4
+    = form.label :details, label: 'Details', class: 'right inline', disabled: common_form?
+  .column.medium-8
+    = form.input :details, as: :text, label: false, disabled: common_form?
+- if current_user.present? && current_user.admin?
+  .row
+    .column.medium-4
+      = form.label :active, label: 'Active', class: 'right inline', disabled: common_form?
+    .column.medium-8
+      = form.input :active, label: false, disabled: common_form?
+#photos.row
+  .column.medium-4
+    = form.label :photos, label: 'Photos', class: 'right inline', disabled: common_form?
+  .column.medium-8
+    = form.fields_for :photos do |photo|
+      = render 'photo_fields', f: photo
+    - unless common_form?
+      .links.text-right
+        = link_to_add_association 'Add photo', form, :photos, class: 'button -primary'
+#documents.row
+  .column.medium-4
+    = form.label :documents, label: 'Documents', class: 'right inline', disabled: common_form?
+  .column.medium-8
+    = form.fields_for :documents do |document|
+      = render 'document_fields', f: document
+    - unless common_form?
+      .links.text-right
+        = link_to_add_association 'Add document', form, :documents, class: 'button -primary'

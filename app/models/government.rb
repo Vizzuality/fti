@@ -28,6 +28,10 @@ class Government < ApplicationRecord
       governments = by_name_asc
       governments
     end
+
+    def entity_select
+      by_name_asc.map { |c| [c.name, c.id] }
+    end
   end
 
   def cache_key

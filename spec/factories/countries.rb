@@ -13,8 +13,8 @@
 
 FactoryGirl.define do
   factory :country do
-    sequence(:name) { |n| "Country-#{n}" }
-    sequence(:iso)  { |n| "CO#{n}" }
+    sequence(:name) { |n| "Country #{Faker::Address.country}" }
+    sequence(:iso)  { |n| "C#{Faker::Address.country_code}" }
     region_name 'Australia/New Zealand'
     region_iso  'AZ'
     country_centroid '{ "type":"Point", "coordinates":[-25,135] }'

@@ -11,6 +11,7 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   before :each do
+    Country.delete_all
     I18n.locale = :en
     FactoryGirl.create(:category, name: 'Z Category')
     @category = create(:category)

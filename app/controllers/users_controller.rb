@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:index, :dashboard]
 
   def index
-    @users = User.all
+    @users = User.includes(:user_permission)
   end
 
   def show; end

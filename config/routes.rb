@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       end
 
       resources :countries
+      resources :observations
     end
 
     get 'dashboard', to: 'users#dashboard', as: :dashboard

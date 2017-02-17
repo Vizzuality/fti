@@ -7,7 +7,8 @@
 
   &>.ui-datepicker-header {
     border: none;
-    background: none;
+    background: $color-1 !important;
+    text-align: right !important;
   }
 
   .ui-state-default {
@@ -21,6 +22,10 @@
     color: $color-1;
   }
 
+  .ui-datepicker-title {
+    margin-top: 30px;
+  }
+
   .ui-datepicker-next,
   .ui-datepicker-prev {
     border: none !important;
@@ -28,14 +33,16 @@
     background: none !important;
   }
 
-  .ui-datepicker-next {
+  a.ui-datepicker-next {
     right: 2px !important;
     top: 2px !important;
+    position: absolute;
   }
 
-  .ui-datepicker-prev {
+  a.ui-datepicker-prev {
     left: 2px !important;
     top: 2px !important;
+    position: absolute;
   }
 
   select {

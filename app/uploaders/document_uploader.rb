@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 class DocumentUploader < CarrierWave::Uploader::Base
-  include Cloudinary::CarrierWave
+  storage :file
 
-  def extension_whitelist
-    %w(pdf doc docx xls xlsx txt xml csv)
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def content_type_whitelist
-    /document\//
+  def extension_white_list
+    %w(pdf doc htm html docx)
   end
 end

@@ -31,9 +31,13 @@ class Observation < ApplicationRecord
   has_many :species, through: :species_observations
 
   has_many :comments,  as: :commentable
-  has_many :photos,    as: :attacheable
-  has_many :documents, as: :attacheable
+  has_many :photos,    as: :attacheable, dependent: :destroy
+  has_many :documents, as: :attacheable, dependent: :destroy
 
+  accepts_nested_attributes_for :photos,    allow_destroy: true
+  accepts_nested_attributes_for :documents, allow_destroy: true
+
+  validates :country_id, presence: true
   validates :observation_type, presence: true, inclusion: { in: %w(AnnexGovernance AnnexOperator),
                                                             message: "%{value} is not a valid observation type" }
 
@@ -46,14 +50,26 @@ class Observation < ApplicationRecord
       observations = by_date_asc
       observations
     end
+
+    def types
+      %w(AnnexGovernance AnnexOperator)
+    end
+
+    def translated_types
+      types.map { |t| [I18n.t("observation_types.#{t.constantize}", default: t.constantize), t.camelize] }
+    end
   end
 
   def illegality
-    severity.severable.illegality
+    severity.try(:severable).try(:illegality)
   end
 
   def law
-    severity.severable.law
+    severity.try(:severable).try(:law)
+  end
+
+  def user_name
+    self.try(:user).try(:name)
   end
 
   def cache_key

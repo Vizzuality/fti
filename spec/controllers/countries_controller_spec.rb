@@ -56,12 +56,15 @@ RSpec.describe CountriesController, type: :controller do
       expect(Country.last.name).to eq('New country')
     end
 
-    it 'delete country' do
-      delete :destroy, params: { id: @country.id }
-      expect(response).to         be_redirect
-      expect(response).to         have_http_status(302)
-      expect(response).to         redirect_to(countries_path)
-      expect(Country.all.size).to eq(0)
+    context 'allows to delete not relationed country' do
+      let!(:country) { create(:country, name: 'Acountry', iso: 'ACC') }
+      it 'delete country' do
+        delete :destroy, params: { id: country.id }
+        expect(response).to         be_redirect
+        expect(response).to         have_http_status(302)
+        expect(response).to         redirect_to(countries_path)
+        expect(Country.where(name: 'Acountry')).to eq([])
+      end
     end
 
     render_views

@@ -15,7 +15,8 @@ FactoryGirl.define do
     vpa_indicator   'Indicator one'
 
     after(:create) do |law|
-      law.update(country: FactoryGirl.create(:country))
+      law.update(country: FactoryGirl.create(:country, name: "Country #{Faker::Lorem.sentence}",
+                                                       iso: "C#{Faker::Lorem.sentence}"))
     end
   end
 end

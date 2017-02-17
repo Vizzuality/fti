@@ -31,7 +31,7 @@ class Country < ApplicationRecord
   }
 
   class << self
-    def country_select(current_locale)
+    def country_select
       by_name_asc.map { |c| [c.name, c.id] }
     end
   end

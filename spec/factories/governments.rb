@@ -15,7 +15,8 @@ FactoryGirl.define do
     details           'Indicator one'
 
     after(:create) do |government|
-      government.update(country: FactoryGirl.create(:country))
+      government.update(country: FactoryGirl.create(:country, name: "Country #{Faker::Lorem.sentence}",
+                                                              iso: "C#{Faker::Lorem.sentence}"))
     end
   end
 end

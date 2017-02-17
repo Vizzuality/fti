@@ -12,6 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.datepicker
 //= require foundation
+//= require cocoon
 //= require turbolinks
 //= require_tree .
+
+var showDatepicker = function() {
+  $('.js-datepicker').datepicker();
+};
+
+function onReady() {
+  showDatepicker();
+}
+
+document.addEventListener('DOMContentLoaded', onReady);

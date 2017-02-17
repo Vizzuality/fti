@@ -30,6 +30,10 @@ class Operator < ApplicationRecord
       operators = by_name_asc
       operators
     end
+
+    def operator_select
+      by_name_asc.map { |c| [c.name, c.id] }
+    end
   end
 
   def cache_key

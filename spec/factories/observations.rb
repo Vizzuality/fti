@@ -22,12 +22,12 @@ FactoryGirl.define do
     active            true
     evidence         'Lorem ipsum..'
     publication_date DateTime.now.to_date
+    association :country, factory: :country
 
     after(:create) do |observation|
       annex = FactoryGirl.create(:annex_operator)
 
-      observation.update(country: FactoryGirl.create(:country),
-                         severity: FactoryGirl.create(:severity, severable: annex),
+      observation.update(severity: FactoryGirl.create(:severity, severable: annex),
                          user: FactoryGirl.create(:admin),
                          observer: FactoryGirl.create(:observer),
                          operator: FactoryGirl.create(:operator),
@@ -40,12 +40,12 @@ FactoryGirl.define do
     active            true
     evidence         'Lorem ipsum..'
     publication_date (DateTime.now - 1.days).to_date
+    association :country, factory: :country
 
     after(:create) do |observation|
       annex = FactoryGirl.create(:annex_governance)
 
-      observation.update(country: FactoryGirl.create(:country),
-                         severity: FactoryGirl.create(:severity, severable: annex),
+      observation.update(severity: FactoryGirl.create(:severity, severable: annex),
                          user: FactoryGirl.create(:admin),
                          observer: FactoryGirl.create(:observer),
                          government: FactoryGirl.create(:government),

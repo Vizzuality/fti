@@ -41,6 +41,14 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  if ENV['BULLET'] == 'enabled'
+    config.after_initialize do
+      Bullet.enable = true
+      Bullet.bullet_logger = true
+      Bullet.raise = true
+    end
+  end
+
   config.after_initialize do
     # Set Time.now to September 1, 2015 12:00:00 AM (at this instant)
     t = Time.local(2015, 9, 1, 12, 0, 0, 0)
