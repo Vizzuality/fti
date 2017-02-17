@@ -15,8 +15,8 @@ FactoryGirl.define do
     name 'Operator'
 
     after(:create) do |operator|
-      operator.update(country: FactoryGirl.create(:country, name: "Country #{Faker::Address.country}",
-                                                            iso: "C#{Faker::Address.country_code}"))
+      operator.update(country: FactoryGirl.create(:country, name: "Country #{Faker::Lorem.sentence}",
+                                                            iso: "C#{Faker::Lorem.sentence}"))
     end
   end
 end
