@@ -2,8 +2,15 @@
 class CreateSpecies < ActiveRecord::Migration[5.0]
   def change
     create_table :species do |t|
-      t.integer :iucn_status,  index: true
-      t.integer :cites_status, index: true
+      t.string  :name
+      t.string  :species_class
+      t.string  :sub_species
+      t.string  :species_family
+      t.string  :species_kingdom
+      t.string  :scientific_name
+      t.string  :cites_status
+      t.integer :cites_id
+      t.integer :iucn_status
 
       t.timestamps
     end
@@ -11,8 +18,7 @@ class CreateSpecies < ActiveRecord::Migration[5.0]
     reversible do |dir|
       dir.up do
         Species.create_translation_table!({
-          common_name: :string,
-          scientific_name: :string
+          common_name: :string
         })
       end
 

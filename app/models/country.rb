@@ -23,6 +23,9 @@ class Country < ApplicationRecord
   has_many :governments,     inverse_of: :country
   has_many :operators,       inverse_of: :country
 
+  has_many :species_countries
+  has_many :species, through: :species_countries
+
   validates :name, :iso, presence: true, uniqueness: { case_sensitive: false }
 
   scope :by_name_asc, -> {

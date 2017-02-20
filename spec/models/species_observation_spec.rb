@@ -18,6 +18,6 @@ RSpec.describe SpeciesObservation, type: :model do
   end
 
   it 'Count on observation species' do
-    expect(@observation.species.count).to  eq(1)
+    expect(@observation.species.count).to eq(1)
   end
 end

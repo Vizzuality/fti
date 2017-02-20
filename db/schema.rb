@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215091425) do
+ActiveRecord::Schema.define(version: 20170220124946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -258,12 +258,26 @@ ActiveRecord::Schema.define(version: 20170215091425) do
   end
 
   create_table "species", force: :cascade do |t|
+    t.string   "name"
+    t.string   "species_class"
+    t.string   "sub_species"
+    t.string   "species_family"
+    t.string   "species_kingdom"
+    t.string   "scientific_name"
+    t.string   "cites_status"
+    t.integer  "cites_id"
     t.integer  "iucn_status"
-    t.integer  "cites_status"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["cites_status"], name: "index_species_on_cites_status", using: :btree
-    t.index ["iucn_status"], name: "index_species_on_iucn_status", using: :btree
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "species_countries", force: :cascade do |t|
+    t.integer  "country_id"
+    t.integer  "species_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_species_countries_on_country_id", using: :btree
+    t.index ["species_id"], name: "index_species_countries_on_species_id", using: :btree
   end
 
   create_table "species_observations", force: :cascade do |t|
@@ -271,15 +285,16 @@ ActiveRecord::Schema.define(version: 20170215091425) do
     t.integer  "species_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["observation_id"], name: "index_species_observations_on_observation_id", using: :btree
+    t.index ["species_id"], name: "index_species_observations_on_species_id", using: :btree
   end
 
   create_table "species_translations", force: :cascade do |t|
-    t.integer  "species_id",      null: false
-    t.string   "locale",          null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "species_id",  null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "common_name"
-    t.string   "scientific_name"
     t.index ["locale"], name: "index_species_translations_on_locale", using: :btree
     t.index ["species_id"], name: "index_species_translations_on_species_id", using: :btree
   end

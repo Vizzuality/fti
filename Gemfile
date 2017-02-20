@@ -29,6 +29,7 @@ end
 gem 'activemodel-serializers-xml'
 gem 'cancancan'
 gem 'carrierwave', '~> 1.0'
+gem 'chosen-rails'
 gem 'cocoon'
 gem 'devise'
 gem 'globalize',                   github: 'globalize/globalize'
