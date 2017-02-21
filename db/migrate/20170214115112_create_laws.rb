@@ -3,6 +3,7 @@ class CreateLaws < ActiveRecord::Migration[5.0]
   def change
     create_table :laws do |t|
       t.integer :country_id, index: true
+      t.string  :vpa_indicator
 
       t.timestamps
     end
@@ -14,8 +15,7 @@ class CreateLaws < ActiveRecord::Migration[5.0]
       dir.up do
         Law.create_translation_table!({
           legal_reference: :string,
-          legal_penalty: :string,
-          vpa_indicator: :string
+          legal_penalty: :string
         })
       end
 

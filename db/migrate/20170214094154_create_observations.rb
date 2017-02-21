@@ -2,15 +2,18 @@
 class CreateObservations < ActiveRecord::Migration[5.0]
   def change
     create_table :observations do |t|
-      t.integer  :severity_id,      index: true
-      t.string   :observation_type, null: false
+      t.integer  :annex_operator_id,   index: true
+      t.integer  :annex_governance_id, index: true
+      t.integer  :severity_id,         index: true
+      t.string   :observation_type,    null: false
       t.integer  :user_id
       t.datetime :publication_date
-      t.integer  :country_id,       index: true
-      t.integer  :observer_id,      index: true
-      t.integer  :operator_id,      index: true
-      t.integer  :government_id,    index: true
-      t.boolean  :active,           default: true
+      t.integer  :country_id,          index: true
+      t.integer  :observer_id,         index: true
+      t.integer  :operator_id,         index: true
+      t.integer  :government_id,       index: true
+      t.string   :pv
+      t.boolean  :active,              default: true
 
       t.timestamps
     end
@@ -21,7 +24,9 @@ class CreateObservations < ActiveRecord::Migration[5.0]
       dir.up do
         Observation.create_translation_table!({
           details: :text,
-          evidence: :string
+          evidence: :string,
+          operator_opinion: :text,
+          litigation_status: :string
         })
       end
 

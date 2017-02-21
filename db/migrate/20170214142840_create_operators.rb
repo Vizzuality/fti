@@ -5,6 +5,7 @@ class CreateOperators < ActiveRecord::Migration[5.0]
       t.integer :user_id
       t.string  :operator_type
       t.integer :country_id,    index: true
+      t.string  :concession
 
       t.timestamps
     end

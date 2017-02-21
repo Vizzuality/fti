@@ -7,6 +7,7 @@
 #  user_id       :integer
 #  operator_type :string
 #  country_id    :integer
+#  concession    :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

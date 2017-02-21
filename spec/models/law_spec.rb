@@ -2,10 +2,11 @@
 #
 # Table name: laws
 #
-#  id         :integer          not null, primary key
-#  country_id :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :integer          not null, primary key
+#  country_id    :integer
+#  vpa_indicator :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 
 require 'rails_helper'

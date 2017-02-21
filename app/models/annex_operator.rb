@@ -16,10 +16,15 @@ class AnnexOperator < ApplicationRecord
   belongs_to :country, inverse_of: :annex_operators
   belongs_to :law,     inverse_of: :annex_operators
 
-  has_many :severities,  as: :severable
-  has_many :categorings, as: :categorizable
-  has_many :categories,  through: :categorings
-  has_many :comments,    as: :commentable
+  has_many :severities,   as: :severable
+  has_many :categorings,  as: :categorizable
+  has_many :categories,   through: :categorings
+  has_many :comments,     as: :commentable
+  has_many :observations, inverse_of: :annex_operator
+
+  accepts_nested_attributes_for :severities,  allow_destroy: true
+  accepts_nested_attributes_for :categorings, allow_destroy: true
+  accepts_nested_attributes_for :law,         allow_destroy: true
 
   validates :illegality, presence: true
 
@@ -32,6 +37,10 @@ class AnnexOperator < ApplicationRecord
     def fetch_all(options)
       annex_operators = by_illegality_asc
       annex_operators
+    end
+
+    def illegality_select
+      by_illegality_asc.map { |il| [il.illegality, il.id] }
     end
   end
 

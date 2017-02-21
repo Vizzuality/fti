@@ -25,8 +25,6 @@ class Species < ApplicationRecord
   has_many :observations, through: :species_observations
   has_many :countries,    through: :species_countries
 
-  accepts_nested_attributes_for :countries, allow_destroy: true
-
   validates :name, presence: true
 
   scope :by_name_asc, -> {

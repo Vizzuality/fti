@@ -7,7 +7,7 @@ class ObservationsController < ApplicationController
   before_action :set_user,        except: [:index, :show]
 
   def index
-    @observations = Observation.by_date_desc
+    @observations = Observation.by_date_desc.page params[:page]
   end
 
   def show; end
@@ -54,7 +54,8 @@ class ObservationsController < ApplicationController
     end
 
     def observation_params
-      params.require(:observation).permit(:observation_type, :user_id, :publication_date, :country_id,
+      params.require(:observation).permit(:pv, :operator_opinion, :litigation_status, :observation_type, :id,
+                                          :user_id, :publication_date, :country_id, :annex_operator_id, :annex_governance_id,
                                           :observer_id, :operator_id, :government_id, :severity_id, :active, :locale,
                                           :details, :evidence, { photos_attributes: [:id, :name, :attachment, :_destroy] },
                                           { documents_attributes: [:id, :name, :attachment, :_destroy] }, :species_ids)

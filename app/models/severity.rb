@@ -36,8 +36,17 @@ class Severity < ApplicationRecord
       severities
     end
 
-    def severity_select
-      by_level_asc.map { |c| [c.details, c.id] }
+    def severity_select(options)
+      annex_operator_id   = options[:annex_operator_id]   if options[:annex_operator_id].present?
+      annex_governance_id = options[:annex_governance_id] if options[:annex_governance_id].present?
+      severable_type      = if options[:annex_operator_id].present?
+                              'AnnexOperator'
+                            else
+                              'AnnexGovernance'
+                            end
+      annex_id = annex_operator_id || annex_governance_id
+
+      where(severable_id: annex_id, severable_type: severable_type).by_level_asc.map { |c| ["#{c.level} - #{c.details}", c.id] }
     end
   end
 

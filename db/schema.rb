@@ -145,41 +145,48 @@ ActiveRecord::Schema.define(version: 20170220124946) do
     t.datetime "updated_at",      null: false
     t.string   "legal_reference"
     t.string   "legal_penalty"
-    t.string   "vpa_indicator"
     t.index ["law_id"], name: "index_law_translations_on_law_id", using: :btree
     t.index ["locale"], name: "index_law_translations_on_locale", using: :btree
   end
 
   create_table "laws", force: :cascade do |t|
     t.integer  "country_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "vpa_indicator"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["country_id"], name: "index_laws_on_country_id", using: :btree
   end
 
   create_table "observation_translations", force: :cascade do |t|
-    t.integer  "observation_id", null: false
-    t.string   "locale",         null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "observation_id",    null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.text     "details"
     t.string   "evidence"
+    t.text     "operator_opinion"
+    t.string   "litigation_status"
     t.index ["locale"], name: "index_observation_translations_on_locale", using: :btree
     t.index ["observation_id"], name: "index_observation_translations_on_observation_id", using: :btree
   end
 
   create_table "observations", force: :cascade do |t|
+    t.integer  "annex_operator_id"
+    t.integer  "annex_governance_id"
     t.integer  "severity_id"
-    t.string   "observation_type",                null: false
+    t.string   "observation_type",                   null: false
     t.integer  "user_id"
     t.datetime "publication_date"
     t.integer  "country_id"
     t.integer  "observer_id"
     t.integer  "operator_id"
     t.integer  "government_id"
-    t.boolean  "active",           default: true
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "pv"
+    t.boolean  "active",              default: true
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["annex_governance_id"], name: "index_observations_on_annex_governance_id", using: :btree
+    t.index ["annex_operator_id"], name: "index_observations_on_annex_operator_id", using: :btree
     t.index ["country_id"], name: "index_observations_on_country_id", using: :btree
     t.index ["government_id"], name: "index_observations_on_government_id", using: :btree
     t.index ["observer_id"], name: "index_observations_on_observer_id", using: :btree
@@ -222,6 +229,7 @@ ActiveRecord::Schema.define(version: 20170220124946) do
     t.integer  "user_id"
     t.string   "operator_type"
     t.integer  "country_id"
+    t.string   "concession"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["country_id"], name: "index_operators_on_country_id", using: :btree

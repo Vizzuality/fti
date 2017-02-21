@@ -3,14 +3,15 @@
 #
 # Table name: laws
 #
-#  id         :integer          not null, primary key
-#  country_id :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :integer          not null, primary key
+#  country_id    :integer
+#  vpa_indicator :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 
 class Law < ApplicationRecord
-  translates :legal_reference, :legal_penalty, :vpa_indicator
+  translates :legal_reference, :legal_penalty
 
   belongs_to :country, inverse_of: :laws
 
