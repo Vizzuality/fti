@@ -8,7 +8,7 @@ class CreateAnnexGovernances < ActiveRecord::Migration[5.0]
     reversible do |dir|
       dir.up do
         AnnexGovernance.create_translation_table!({
-          governance_pilar: :string,
+          government_entity: :string,
           governance_problem: :text,
           details: :text
         })

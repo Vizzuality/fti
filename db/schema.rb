@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170220124946) do
     t.string   "locale",              null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.string   "governance_pilar"
+    t.string   "government_entity"
     t.text     "governance_problem"
     t.text     "details"
     t.index ["annex_governance_id"], name: "index_annex_governance_translations_on_annex_governance_id", using: :btree
@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 20170220124946) do
     t.datetime "updated_at",        null: false
     t.text     "details"
     t.string   "evidence"
-    t.text     "operator_opinion"
+    t.text     "concern_opinion"
     t.string   "litigation_status"
     t.index ["locale"], name: "index_observation_translations_on_locale", using: :btree
     t.index ["observation_id"], name: "index_observation_translations_on_observation_id", using: :btree

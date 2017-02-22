@@ -21,7 +21,7 @@
 #
 
 class Observation < ApplicationRecord
-  translates :details, :evidence, :operator_opinion, :litigation_status
+  translates :details, :evidence, :concern_opinion, :litigation_status
 
   belongs_to :country,    inverse_of: :observations
   belongs_to :observer,   inverse_of: :observations, optional: true

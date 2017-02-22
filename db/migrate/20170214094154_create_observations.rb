@@ -25,7 +25,7 @@ class CreateObservations < ActiveRecord::Migration[5.0]
         Observation.create_translation_table!({
           details: :text,
           evidence: :string,
-          operator_opinion: :text,
+          concern_opinion: :text,
           litigation_status: :string
         })
       end
