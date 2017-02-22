@@ -9,7 +9,7 @@
 #
 
 class AnnexGovernance < ApplicationRecord
-  translates :government_entity, :governance_problem, :details
+  translates :governance_pillar, :governance_problem, :details
 
   has_many :severities,   as: :severable
   has_many :categorings,  as: :categorizable
@@ -17,24 +17,24 @@ class AnnexGovernance < ApplicationRecord
   has_many :comments,     as: :commentable
   has_many :observations, inverse_of: :annex_governance
 
-  validates :government_entity, presence: true
+  validates :governance_pillar, presence: true
 
   accepts_nested_attributes_for :severities,  allow_destroy: true
   accepts_nested_attributes_for :categorings, allow_destroy: true
 
-  scope :by_government_entity_asc, -> {
+  scope :by_governance_problem_asc, -> {
     includes(:translations).with_translations(I18n.available_locales)
-                           .order('annex_governance_translations.government_entity ASC')
+                           .order('annex_governance_translations.governance_problem ASC')
   }
 
   class << self
     def fetch_all(options)
-      annex_governances = by_government_entity_asc
+      annex_governances = by_governance_problem_asc
       annex_governances
     end
 
-    def government_entity_select
-      by_government_entity_asc.map { |gp| [gp.government_entity, gp.id] }
+    def governance_problem_select
+      by_governance_problem_asc.map { |gp| [gp.governance_problem, gp.id] }
     end
   end
 

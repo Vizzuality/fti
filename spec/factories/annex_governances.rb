@@ -9,8 +9,8 @@
 
 FactoryGirl.define do
   factory :annex_governance do
-    government_entity   'Annex governance pilar'
-    governance_problem 'Governence problem'
+    governance_pillar  'Annex governance pillar'
+    governance_problem 'Annex governance problem'
     details            'Lorem ipsum..'
   end
 end

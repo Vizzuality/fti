@@ -144,7 +144,7 @@ namespace :import_annex_governance_csv do
         data_row = row.to_h
 
         data_ag = {}
-        data_ag[:government_entity]  = data_row['government_entity']
+        data_ag[:governance_pillar]  = data_row['governance_pillar']
         data_ag[:governance_problem] = data_row['governance_problem']
 
         @ag = AnnexGovernance.find_or_create_by!(data_ag)
@@ -212,7 +212,7 @@ namespace :import_operator_observations_csv do
 
         severity_id = @ao.severities.where(level: data_row['severities']).first.id
 
-        @oo.update!(annex_operator_id: @ao.id, severity_id: severity_id, documents_attributes: [{name: data_row['document_name']}])
+        @oo.update!(annex_operator_id: @ao.id, severity_id: severity_id, documents_attributes: [{name: data_row['document_name'], document_type: 'Report'}])
       end
     end
     puts 'Operator observations loaded'
@@ -229,7 +229,7 @@ namespace :import_governance_observations_csv do
         data_row = row.to_h
 
         country_names = data_row['countries'].split(',') if data_row['countries'].present?
-        country_ids   = Country.where(name: country_names).pluck(:id).first
+        country_id    = Country.where(name: country_names).pluck(:id).first
 
         monitor_name = data_row['monitor_name']
         monitor_id   = Observer.where(name: monitor_name).pluck(:id).first if monitor_name.present?
@@ -240,23 +240,27 @@ namespace :import_governance_observations_csv do
         species_name = data_row['species_name']
         species_id   = Species.where(name: species_name, common_name: data_row['species_common_name']).first_or_create.id if species_name.present?
 
+        government_entity = data_row['government_entity']
+        government_id     = Government.where(government_entity: government_entity, country_id: country_id).first_or_create.id if government_entity.present?
+
         data_go = {}
         data_go[:observation_type]  = 'AnnexGovernance'
         data_go[:publication_date]  = data_row['publication_date']
-        data_go[:country_id]        = country_ids
+        data_go[:country_id]        = country_id
         data_go[:details]           = data_row['description']
         data_go[:evidence]          = data_row['evidence']
         data_go[:concern_opinion]   = data_row['concern_opinion']
-        data_go[:observer_id]       = monitor_id  if monitor_id.present?
-        data_go[:operator_id]       = operator_id if operator_id.present?
+        data_go[:observer_id]       = monitor_id    if monitor_id.present?
+        data_go[:operator_id]       = operator_id   if operator_id.present?
+        data_go[:government_id]     = government_id if government_id.present?
 
         @go = Observation.find_or_create_by!(data_go)
 
         data_ag = {}
-        data_ag[:government_entity]  = data_row['government_entity']
+        data_ag[:governance_pillar]  = data_row['governance_pillar']
         data_ag[:governance_problem] = data_row['governance_problem']
 
-        if @ag = AnnexGovernance.find_by(government_entity: data_row['government_entity'])
+        if @ag = AnnexGovernance.find_by(governance_pillar: data_row['governance_pillar'])
           @ag
         else
           @ag = AnnexGovernance.create!(data_ag)
@@ -269,7 +273,7 @@ namespace :import_governance_observations_csv do
 
         severity_id = @ag.severities.where(level: data_row['severities']).first.id
 
-        @go.update!(annex_governance_id: @ag.id, severity_id: severity_id, species_ids: [species_id], documents_attributes: [{name: data_row['document_name']}])
+        @go.update!(annex_governance_id: @ag.id, severity_id: severity_id, species_ids: [species_id], documents_attributes: [{name: data_row['document_name'], document_type: 'Report'}])
       end
     end
     puts 'Governance observations loaded'

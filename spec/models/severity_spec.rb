@@ -30,7 +30,7 @@ RSpec.describe Severity, type: :model do
   end
 
   it 'Access severable information' do
-    expect(@severity.severable.government_entity).to eq('Annex governance pilar')
+    expect(@severity.severable.governance_pillar).to eq('Annex governance pillar')
     expect(@annex.severities.size).to               eq(2)
   end
 

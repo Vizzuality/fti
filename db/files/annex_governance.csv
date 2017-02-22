@@ -1,4 +1,4 @@
-government_entity;governance_problem;governance_problem_fr;severity_3;severity_2;severity_1;Severity_0
+governance_pillar;governance_problem;governance_problem_fr;severity_3;severity_2;severity_1;Severity_0
 Law enforcement;Corruption leads to illegal activity/poor enforcement;Corruption conduit à une activité illégale / mauvaise application de la loi;"- La société contourne la loi et / ou gagne un avantage commercialen raison de liens politiques
 - Le gouvernement prend l'action illégale pour aider l'entreprise
 - Une preuve solide de corruption liée à une mauvaise application de la loi permettant des infractions sévères (niveau 3)
@@ -29,16 +29,16 @@ Policy framework;Policy gaps;Lacunes dans les politiques clés pour la gestion d
 Planning and decision making;Lack of interagency cooperation ;Manque de coopération interinstitutions ;"- Manque de coopération provoque des problèmes systémiques de gouvernance et d'application de la loi
 - Plusiers obstacles délibérés à empêcher l'observateur mandaté d'accéder aux documents ou à une zone
 - Préjudice physique ou incarcération injustifiée d'observateurs indépendants";"- Manque de coopération provoque des problèmes périodiques de gouvernance et d'application de la loi
-- Un obstacle délibérés à empêcher l'observateur mandaté d'accéder aux documents ou à une zone";"- Le manque de coopération masque l'efficacité de l'application de la loi et / ou de la gouvernance 
+- Un obstacle délibérés à empêcher l'observateur mandaté d'accéder aux documents ou à une zone";"- Le manque de coopération masque l'efficacité de l'application de la loi et / ou de la gouvernance
 - Missions conjointes annulées par les autorités ou pas entièrement exécuté comme prévu";
 Planning and decision making;Lack of transparency on use of forestry revenues, including taxes and fines;Manque de transparence sur l'utilisation des taxes, transactions et d'autres recettes forestières;Absence de budget sur la répartition de fonds forestiers disponible au public;Budget sur la répartition de fonds forestiers incomplet disponible au public;Budget sur la répartition de fonds forestiers disponible au public avec des retards;
 Law enforcement;Poor control;Mauvais contrôle/suivi;"- Aucune mission de contrôle prévue par la loi effectuée (au moins un trimestre)
 - Absence de contrôle efficace aux plusieurs postes de contrôle
-- Absence de suivi (permis spéciaux, production, niveau de réalisation des obligations conventionnelles et exécution de plans d'aménagements) 
+- Absence de suivi (permis spéciaux, production, niveau de réalisation des obligations conventionnelles et exécution de plans d'aménagements)
 - Contrôle partiel ou < 50% de l'échantillon réglementaire (inventaire)
 ";"- 1-50% missions de contrôle requises par la lois effectuées
 - Absence de contrôle a une poste de contrôle
-- Absence de planification de missions 
+- Absence de planification de missions
 - Absence d'une standardisation du contrôle
 - Suivi partiel permis spéciaux (entre 50%-25%)
 - Suivi partiel/incorrect production (écart 2 000-10 000 m3)
@@ -46,7 +46,7 @@ Law enforcement;Poor control;Mauvais contrôle/suivi;"- Aucune mission de contr�
 - Suivi partiel permis spéciaux (entre moins de 25%)
 - Suivi partiel/incorrect production (moins de 2 000 m3)
 - Suivi partiel sur le niveau de réalisation des obligations conventionnelles et exécution de plans d'aménagements (moins de la majorité des obligations)
-- Mauvaise planification de missions 
+- Mauvaise planification de missions
 - Contrôle partiel ou de 50-90% de l'échantillon réglementaire (inventaire)
 ";
 Law enforcement;Poor reporting of enforcement;Mauvais rapportage de l'application de la loi;Absence totale de rapports importants ;"- Mauvaise qualité de plusiers rapports
@@ -57,13 +57,13 @@ Law enforcement;Poor tax and fine collection;Mauvaise recouvrement des taxes/tra
 - Perte entre 99 000-10 000 euros
 - Calculs erronés systémique des impôts dus
 - Transmission irrégulière > 10 000 euros";"- Entre 76-99%  recouvrés/au moins un trimestre par Départment/Province
-- Non-respect des procédures de collecte (e.g. paiement en espèce) 
-- Perte moins de 10 000 euros 
+- Non-respect des procédures de collecte (e.g. paiement en espèce)
+- Perte moins de 10 000 euros
 - Calculs erronés des impôts dus (aucune preuve d'être systémique)
 - Transmission irrégulière < 10 000 euros";
 Law enforcement;Poor distribution of law enforcement means;Mauvaise répartition des moyens d'application de la loi;"- Entre 0-6 agents/300 000 ha (moins de 1 agent/50 000 ha)
 - Des postes de contrôle importants abandonnés régulièrement
-- Absence de 4x4 ou moto tout terrain fonctionnels 
+- Absence de 4x4 ou moto tout terrain fonctionnels
 - < 25% fonds prévus reçus par l'unité d'exécution sous-nationale dans des délais raisonnables
 - Les agents forestiers manquent de l'équipement nécessaire dans la majorité des postes de terrain";"- Entre 7-15 agents/300.000 ha (1 agent/42 000 ha - 20 000 ha)
 - Mauvaise localisation ou pas assez des brigades
@@ -81,7 +81,7 @@ Planning and decision making;Non respect of procedures authorising harvesting of
 - Autorisations de coupe (industriel) illégales
 - Volume de bois accordé est supérieur à son volume maximum annuel prévu dans la convention (plus de 1000 m3)
 - Autorisations à la compagnie qui n'a pas été pénalisé pour les infractions sévères
-- Trop d'autorisations accordées 
+- Trop d'autorisations accordées
 - Validation d'un plan d'aménagement malgré: présence < 50% des membres du comité de validation; plan incomplet / très mauvaise qualité; un ans ou plus après le délai ";"- < 50% de procédures respectées (hormis les procédures essentielles pour assurer un processus compétitif et transparent)
 - Dossier manquant plusiers elements
 - Mauvais type d'autorisation
@@ -106,5 +106,5 @@ Planning and decision making;Non respect of procedures granting access to forest
 - Au moins 1 procédure importante permettant un processus compétitif et transparent non respectée
 - Attribution d'agrément malgré manque de quelques critères
 - Attribution de la concession forestière malgré 21-50% critères ou non respect des procédures importantes permettant un processus juste ";"- > 50% de procédures respectées hormi procédures essentielles pour assurer un processus compétitif et transparent (appel d'offres concession)
-- Irrégularités mineures du processus d'agrément 
+- Irrégularités mineures du processus d'agrément
 - Attribution de la concession forestière: non respect de certaines procédures considérées modérément importantes, mais non essentielles pour garantir une procédure légale et juste";

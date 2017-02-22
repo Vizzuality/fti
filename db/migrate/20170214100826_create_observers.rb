@@ -4,7 +4,6 @@ class CreateObservers < ActiveRecord::Migration[5.0]
     create_table :observers do |t|
       t.string  :observer_type, null: false
       t.integer :country_id,    index: true
-      t.integer :user_id
 
       t.timestamps
     end

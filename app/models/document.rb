@@ -5,6 +5,7 @@
 #
 #  id               :integer          not null, primary key
 #  name             :string
+#  document_type    :string
 #  attachment       :string
 #  attacheable_id   :integer
 #  attacheable_type :string
@@ -18,6 +19,22 @@ class Document < ApplicationRecord
   belongs_to :attacheable, polymorphic: true
 
   after_destroy :remove_attachment_id_directory
+
+  validates :document_type, presence: true, inclusion: { in: %w(Report Doumentation),
+                                                         message: "%{value} is not a valid document type" }
+
+  scope :by_report,        -> { where(document_type: 'Report') }
+  scope :by_documentation, -> { where(document_type: 'Doumentation')   }
+
+  class << self
+    def types
+      %w(Report Doumentation)
+    end
+
+    def types_select
+      types.map { |t| [I18n.t("document_types.#{t.constantize}", default: t.constantize), t.camelize] }
+    end
+  end
 
   def remove_attachment_id_directory
     FileUtils.rm_rf(File.join('public', 'uploads', 'document', 'attachment', self.id.to_s)) if self.attachment

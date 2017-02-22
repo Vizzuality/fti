@@ -45,6 +45,11 @@ class User < ApplicationRecord
   has_many :observations, inverse_of: :user
   has_many :comments,     inverse_of: :user
 
+  has_many :user_observers
+  has_many :user_operators
+  has_many :observers, through: :user_observers
+  has_many :operators, through: :user_operators
+
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :name,     presence: true
   validate  :validate_username

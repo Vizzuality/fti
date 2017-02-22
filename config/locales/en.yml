@@ -285,3 +285,9 @@ en:
     : "Governance illegality"
     ? "AnnexOperator"
     : "Illegality"
+
+  document_types:
+    ? "Report"
+    : "Report"
+    ? "Doumentation"
+    : "Doumentation"

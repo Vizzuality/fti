@@ -15,7 +15,7 @@
             - observation.documents.each do |document|
               = link_to document.name, document.attachment_url
           span.data.-primary
-            = observation.illegality
+            = "#{observation.translated_type} - #{observation.title}"
           span.data
             = "#{t('shared.created')}: #{observation.created_at.to_formatted_s(:create_update_date).to_s} / "
           span.data

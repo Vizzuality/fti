@@ -2,7 +2,6 @@
 class CreateOperators < ActiveRecord::Migration[5.0]
   def change
     create_table :operators do |t|
-      t.integer :user_id
       t.string  :operator_type
       t.integer :country_id,    index: true
       t.string  :concession

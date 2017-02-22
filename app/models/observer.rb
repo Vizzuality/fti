@@ -6,7 +6,6 @@
 #  id            :integer          not null, primary key
 #  observer_type :string           not null
 #  country_id    :integer
-#  user_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
@@ -17,6 +16,8 @@ class Observer < ApplicationRecord
   belongs_to :country, inverse_of: :observers, optional: true
 
   has_many :observations, inverse_of: :observer
+  has_many :user_observers
+  has_many :users, through: :user_observers
 
   validates :name, presence: true
   validates :observer_type, presence: true, inclusion: { in: %w(Mandated SemiMandated External Government),

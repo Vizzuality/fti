@@ -10,8 +10,7 @@
 
 FactoryGirl.define do
   factory :government do
-    name              'A Government'
-    government_entity 'Lorem ipsum..'
+    government_entity 'A Government'
     details           'Indicator one'
 
     after(:create) do |government|

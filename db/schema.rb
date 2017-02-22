@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220124946) do
+ActiveRecord::Schema.define(version: 20170222150049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170220124946) do
     t.string   "locale",              null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.string   "government_entity"
+    t.string   "governance_pillar"
     t.text     "governance_problem"
     t.text     "details"
     t.index ["annex_governance_id"], name: "index_annex_governance_translations_on_annex_governance_id", using: :btree
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20170220124946) do
 
   create_table "documents", force: :cascade do |t|
     t.string   "name"
+    t.string   "document_type"
     t.string   "attachment"
     t.integer  "attacheable_id"
     t.string   "attacheable_type"
@@ -124,7 +125,6 @@ ActiveRecord::Schema.define(version: 20170220124946) do
     t.string   "locale",            null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.string   "name"
     t.string   "government_entity"
     t.text     "details"
     t.index ["government_id"], name: "index_government_translations_on_government_id", using: :btree
@@ -208,7 +208,6 @@ ActiveRecord::Schema.define(version: 20170220124946) do
   create_table "observers", force: :cascade do |t|
     t.string   "observer_type", null: false
     t.integer  "country_id"
-    t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["country_id"], name: "index_observers_on_country_id", using: :btree
@@ -226,7 +225,6 @@ ActiveRecord::Schema.define(version: 20170220124946) do
   end
 
   create_table "operators", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "operator_type"
     t.integer  "country_id"
     t.string   "concession"
@@ -305,6 +303,24 @@ ActiveRecord::Schema.define(version: 20170220124946) do
     t.string   "common_name"
     t.index ["locale"], name: "index_species_translations_on_locale", using: :btree
     t.index ["species_id"], name: "index_species_translations_on_species_id", using: :btree
+  end
+
+  create_table "user_observers", force: :cascade do |t|
+    t.integer  "observer_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["observer_id"], name: "index_user_observers_on_observer_id", using: :btree
+    t.index ["user_id"], name: "index_user_observers_on_user_id", using: :btree
+  end
+
+  create_table "user_operators", force: :cascade do |t|
+    t.integer  "operator_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["operator_id"], name: "index_user_operators_on_operator_id", using: :btree
+    t.index ["user_id"], name: "index_user_operators_on_user_id", using: :btree
   end
 
   create_table "user_permissions", force: :cascade do |t|

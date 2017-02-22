@@ -3,7 +3,6 @@
 # Table name: operators
 #
 #  id            :integer          not null, primary key
-#  user_id       :integer
 #  operator_type :string
 #  country_id    :integer
 #  concession    :string

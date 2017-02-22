@@ -86,12 +86,20 @@ class Observation < ApplicationRecord
     severity.try(:severable).try(:illegality)
   end
 
+  def title
+    severity.try(:severable).try(:illegality) || severity.try(:severable).try(:governance_pillar)
+  end
+
   def law
     severity.try(:severable).try(:law)
   end
 
   def user_name
     self.try(:user).try(:name)
+  end
+
+  def translated_type
+    I18n.t("observation_types.#{observation_type.constantize}")
   end
 
   def cache_key

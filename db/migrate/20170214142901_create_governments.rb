@@ -12,7 +12,6 @@ class CreateGovernments < ActiveRecord::Migration[5.0]
     reversible do |dir|
       dir.up do
         Government.create_translation_table!({
-          name: :string,
           government_entity: :string,
           details: :text
         })

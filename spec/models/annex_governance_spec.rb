@@ -12,31 +12,31 @@ require 'rails_helper'
 RSpec.describe AnnexGovernance, type: :model do
   context 'Annex governance' do
     before :each do
-      FactoryGirl.create(:annex_governance, government_entity: 'Z Annex governance pilar')
+      FactoryGirl.create(:annex_governance, governance_problem: 'Z Annex governance problem')
       @annex = create(:annex_governance)
     end
 
     it 'Count on annex' do
-      expect(AnnexGovernance.count).to                      eq(2)
-      expect(AnnexGovernance.all.first.government_entity).to eq('Z Annex governance pilar')
+      expect(AnnexGovernance.count).to                       eq(2)
+      expect(AnnexGovernance.all.first.governance_problem).to eq('Z Annex governance problem')
     end
 
-    it 'Order by government_entity asc' do
-      expect(AnnexGovernance.by_government_entity_asc.first.government_entity).to eq('Annex governance pilar')
+    it 'Order by governance_problem asc' do
+      expect(AnnexGovernance.by_governance_problem_asc.first.governance_problem).to eq('Annex governance problem')
     end
 
     it 'Fallbacks for empty translations on annex' do
       I18n.locale = :fr
-      expect(@annex.government_entity).to eq('Annex governance pilar')
+      expect(@annex.governance_problem).to eq('Annex governance problem')
       I18n.locale = :en
     end
 
     it 'Translate annex to fr' do
-      @annex.update(government_entity: 'Annex governance pilar FR', locale: :fr)
+      @annex.update(governance_problem: 'Annex governance problem FR', locale: :fr)
       I18n.locale = :fr
-      expect(@annex.government_entity).to eq('Annex governance pilar FR')
+      expect(@annex.governance_problem).to eq('Annex governance problem FR')
       I18n.locale = :en
-      expect(@annex.government_entity).to eq('Annex governance pilar')
+      expect(@annex.governance_problem).to eq('Annex governance problem')
     end
   end
 end
