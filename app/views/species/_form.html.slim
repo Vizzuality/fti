@@ -49,6 +49,9 @@
           = form.input :iucn_status, label: false, disabled: common_form?
       .row
         .column.medium-4
-          = form.label :countries, label: 'IUCN status', class: 'right inline', disabled: common_form?
+          = form.label :country_ids, label: 'Countries', class: 'right inline', disabled: common_form?
         .column.medium-8
-          = form.input :country_ids, collection: Country.country_select, as: :select, include_blank: 'Please select Your country', label: false, input_html: { multiple: true }, disabled: common_form?
+          = form.input :country_ids, collection: Country.country_select,
+            as: :select, label: false,
+            input_html: { class: 'js-mselect', multiple: true },
+            disabled: common_form?

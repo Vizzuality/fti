@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.datepicker
+//= require chosen-jquery
 //= require foundation
 //= require cocoon
 //= require turbolinks
@@ -22,8 +23,20 @@ var showDatepicker = function() {
   $('.js-datepicker').datepicker();
 };
 
+var showMultiselect = function() {
+  var multiselects = $('.js-mselect');
+
+  for(var i = 0; i < multiselects.length; i++) {
+    multiselects[i].classList.add('chosen');
+    multiselects[i].classList.add('chosen-select');
+  }
+
+  multiselects.chosen();
+};
+
 function onReady() {
   showDatepicker();
+  showMultiselect();
 }
 
 document.addEventListener('DOMContentLoaded', onReady);
