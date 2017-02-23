@@ -1,7 +1,7 @@
 Feature: Countries
 In order to manage countries
 As a adminuser
-I want to manage a categories
+I want to manage a country
 
   Scenario: User can not view countries page and country page without login
     Given country

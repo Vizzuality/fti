@@ -3,16 +3,24 @@ nav
     - if user_signed_in?
       li
         = link_to t('navbar.home'), dashboard_url, class: "#{'is-active' if menu_highlight?(:home)}"
-    - if current_user && current_user.admin?
-      - if can?(:manage, User)
-        li
-          = link_to t('navbar.users'), users_url, class: "#{'is-active' if menu_highlight?(:users)}"
-      - if can?(:manage, Country)
-        li
-          = link_to t('navbar.countries'), countries_url, class: "#{'is-active' if menu_highlight?(:countries)}"
+    - if user_signed_in?
       - if can?(:manage, Observation)
         li
           = link_to t('navbar.observations'), observations_url, class: "#{'is-active' if menu_highlight?(:observations)}"
+      - if current_user.admin?
+        li.dropdown-anchor
+          = link_to t('navbar.administration'), '#', class: "#{'is-active' if menu_highlight?(:admin)}"
+          ul class='dropdown-list'
+            li.arrowhelper
+            - if can?(:manage, User)
+              li
+                = link_to t('navbar.users'), users_url, class: "#{'is-active' if menu_highlight?(:users)}"
+            - if can?(:manage, Species)
+              li
+                = link_to t('navbar.species'), species_index_url, class: "#{'is-active' if menu_highlight?(:species)}"
+            - if can?(:manage, Country)
+              li
+                = link_to t('navbar.countries'), countries_url, class: "#{'is-active' if menu_highlight?(:countries)}"
 
     - if user_signed_in?
       li.dropdown-anchor

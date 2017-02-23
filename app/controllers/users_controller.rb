@@ -65,6 +65,6 @@ class UsersController < ApplicationController
     end
 
     def menu_highlight
-      @menu_highlighted = :users
+      @menu_highlighted = :admin
     end
 end

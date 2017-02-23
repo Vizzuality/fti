@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       end
 
       resources :countries
+      resources :species
       resources :observations, except: [:new, :create, :validate_observation]
 
       resource :observations, path: 'observations/new', except: [:index, :show, :edit, :update, :destroy, :new] do

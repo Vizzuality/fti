@@ -33,6 +33,14 @@ module NavigationHelpers
       edit_country_path(Country.find_by(name: $1), locale: I18n.locale)
     when /the new country page/
       new_country_path(locale: I18n.locale)
+    when /the species page/
+      species_index_path(locale: I18n.locale)
+    when /the species page for "(.*)"$/
+      species_path(Species.find_by(name: $1), locale: I18n.locale)
+    when /the edit species page for "(.*)"$/
+      edit_species_path(Species.find_by(name: $1), locale: I18n.locale)
+    when /the new species page/
+      new_species_path(locale: I18n.locale)
     else
       begin
         page_name =~ /the (.*) page/

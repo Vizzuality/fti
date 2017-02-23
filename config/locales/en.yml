@@ -266,6 +266,8 @@ en:
     admin: 'Administration'
     countries: 'Countries'
     observations: 'Observations'
+    species: 'Species'
+    administration: 'Admin'
 
   users:
     user: 'User'
@@ -283,6 +285,9 @@ en:
     types: 'Observation type'
     info: 'Details'
     attachments: 'Documentation'
+
+  species:
+    species: 'Species'
 
   # Page specific entries
   observation_types:

@@ -1,0 +1,54 @@
+.row
+  .column.medium-8.medium-offset-1
+    = form.error_notification
+    .form-inputs
+      .row
+        .column.medium-4
+          = form.label :name, label: "Name", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :name, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :common_name, label: "Common name", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :common_name, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :scientific_name, label: "Scientific name", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :scientific_name, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :species_class, label: "Species class", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :species_class, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :sub_species, class: 'Subspecies', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :sub_species, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :species_family, class: 'Family', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :species_family, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :species_kingdom, label: 'Kingdom', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :species_kingdom, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :cites_status, label: 'CITES status', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :cites_status, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :iucn_status, label: 'IUCN status', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :iucn_status, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :countries, label: 'IUCN status', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :country_ids, collection: Country.country_select, as: :select, include_blank: 'Please select Your country', label: false, input_html: { multiple: true }, disabled: common_form?

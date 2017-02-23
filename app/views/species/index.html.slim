@@ -1,0 +1,36 @@
+.section-container#species
+  .section.title-section
+    div
+      h2.title
+        = t('species.species')
+
+  .section.table-container
+    - @species.each do |species|
+      .table-row
+        .data-primary
+          span.data.-primary
+            = "#{species.name} (#{species.common_name})"
+          span.data
+            = "#{t('shared.created')}: #{species.created_at.to_formatted_s(:create_update_date).to_s} / "
+          span.data
+            = "#{t('shared.updated')}: #{species.updated_at.to_formatted_s(:short).to_s} / "
+
+        .data-secondary
+          span.data._hidden
+          span.data._hidden
+          - if can?(:edit, species)
+            span.data.-linkdata
+              = link_to edit_species_path(species) do
+                = image_tag "edit.svg", class: 'icon'
+                span
+                  = t('shared.edit')
+          - if can?(:destroy, species)
+            span.data.-linkdata
+              = link_to species_path(species), data: { confirm: t('shared.confirm_message') }, method: :delete do
+                = image_tag 'delete.svg', class: 'icon'
+                span
+                  = t('shared.delete')
+  .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = link_to t('shared.create'), new_species_url, class: "button -large -type-e"
