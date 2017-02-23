@@ -66,7 +66,7 @@ class Observation < ApplicationRecord
     end
 
     def types
-      %w(AnnexGovernance AnnexOperator)
+      %w(AnnexGovernance AnnexOperator).freeze
     end
 
     def translated_types

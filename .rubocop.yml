@@ -814,8 +814,8 @@ Lint/EnsureReturn:
   Enabled: false
 
 # The use of eval represents a serious security risk.
-Lint/Eval:
-  Enabled: false
+Security/Eval:
+  Enabled: true
 
 # Catches floating-point literals too large or small for Ruby to represent.
 Lint/FloatOutOfRange:

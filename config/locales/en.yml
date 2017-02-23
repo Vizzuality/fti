@@ -250,6 +250,8 @@ en:
     no_entries: 'No entries'
     select_file: 'Select file'
     title: 'Title'
+    continue: 'Continue'
+    finish: 'Finish'
 
   navbar:
     dashboard: 'Dashboard'
@@ -278,6 +280,9 @@ en:
 
   observations:
     observations: 'Observations'
+    types: 'Observation type'
+    info: 'Details'
+    attachments: 'Documentation'
 
   # Page specific entries
   observation_types:

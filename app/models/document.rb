@@ -28,7 +28,7 @@ class Document < ApplicationRecord
 
   class << self
     def types
-      %w(Report Doumentation)
+      %w(Report Doumentation).freeze
     end
 
     def types_select

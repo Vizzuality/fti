@@ -12,7 +12,7 @@
 #
 
 class UserPermission < ApplicationRecord
-  enum user_role: { user: 0, operator: 1, ngo: 2, admin: 3 }
+  enum user_role: { user: 0, operator: 1, ngo: 2, admin: 3 }.freeze
 
   belongs_to :user
 
