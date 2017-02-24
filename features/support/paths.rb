@@ -41,6 +41,14 @@ module NavigationHelpers
       edit_species_path(Species.find_by(name: $1), locale: I18n.locale)
     when /the new species page/
       new_species_path(locale: I18n.locale)
+    when /the operators page/
+      operators_path(locale: I18n.locale)
+    when /the operator page for "(.*)"$/
+      operator_path(Operator.find_by(name: $1), locale: I18n.locale)
+    when /the edit operator page for "(.*)"$/
+      edit_operator_path(Operator.find_by(name: $1), locale: I18n.locale)
+    when /the new operator page/
+      new_operator_path(locale: I18n.locale)
     else
       begin
         page_name =~ /the (.*) page/

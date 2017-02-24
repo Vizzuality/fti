@@ -267,6 +267,7 @@ fr:
     observations: 'Observations'
     species: 'Species'
     administration: 'Admin'
+    operators: 'Operators'
 
   users:
     user: 'User'
@@ -287,6 +288,9 @@ fr:
 
   species:
     species: 'Species'
+
+  operators:
+    operators: 'Operators'
 
   # Page specific entries
   observation_types:

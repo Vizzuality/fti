@@ -58,7 +58,8 @@ class User < ApplicationRecord
                                  exclusion: { in: %w(admin superuser about root fti faq conntact user operator ngo) },
                                  multiline: true
 
-  scope :recent, -> { order('updated_at DESC') }
+  scope :recent,          -> { order('updated_at DESC')    }
+  scope :by_username_asc, -> { order('users.username ASC') }
 
   class << self
     def find_first_by_auth_conditions(warden_conditions)
@@ -72,6 +73,10 @@ class User < ApplicationRecord
           where(username: conditions[:username]).first
         end
       end
+    end
+
+    def user_select
+      by_username_asc.map { |c| [c.username, c.id] }
     end
   end
 

@@ -32,8 +32,8 @@ FactoryGirl.define do
 
       observation.update(severity: FactoryGirl.create(:severity, severable: annex),
                          user: FactoryGirl.create(:admin),
-                         observer: FactoryGirl.create(:observer),
-                         operator: FactoryGirl.create(:operator),
+                         observer: FactoryGirl.create(:observer, name: "Observer #{Faker::Lorem.sentence}"),
+                         operator: FactoryGirl.create(:operator, name: "Operator #{Faker::Lorem.sentence}"),
                          species: [FactoryGirl.create(:species)])
     end
   end
@@ -50,9 +50,9 @@ FactoryGirl.define do
 
       observation.update(severity: FactoryGirl.create(:severity, severable: annex),
                          user: FactoryGirl.create(:admin),
-                         observer: FactoryGirl.create(:observer),
+                         observer: FactoryGirl.create(:observer, name: "Observer #{Faker::Lorem.sentence}"),
                          government: FactoryGirl.create(:government),
-                         species: [FactoryGirl.create(:species)])
+                         species: [FactoryGirl.create(:species, name: "Species #{Faker::Lorem.sentence}")])
     end
   end
 end

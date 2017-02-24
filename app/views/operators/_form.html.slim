@@ -1,0 +1,37 @@
+.row
+  .column.medium-8.medium-offset-1
+    = form.error_notification
+    .form-inputs
+      .row
+        .column.medium-4
+          = form.label :name, label: "Name", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :name, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :operator_type, label: "Region name", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :operator_type, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :country_id, label: 'Country', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :country_id, collection: Country.country_select, as: :select, include_blank: 'Please select country', input_html: { class: 'js-mselect' }, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :concession, class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :concession, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :details, label: 'Country centroid', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.text_field :details, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :user_ids, label: 'Users', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :user_ids, collection: User.user_select,
+            as: :select, label: false,
+            input_html: { class: 'js-mselect', multiple: true },
+            disabled: common_form?

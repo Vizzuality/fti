@@ -1,0 +1,36 @@
+.section-container#operators
+  .section.title-section
+    div
+      h2.title
+        = t('operators.operators')
+
+  .section.table-container
+    - @operators.each do |operator|
+      .table-row
+        .data-primary
+          span.data.-primary
+            = operator.name
+          span.data
+            = "#{t('shared.created')}: #{operator.created_at.to_formatted_s(:create_update_date).to_s} / "
+          span.data
+            = "#{t('shared.updated')}: #{operator.updated_at.to_formatted_s(:short).to_s} / "
+
+        .data-secondary
+          span.data._hidden
+          span.data._hidden
+          - if can?(:edit, operator)
+            span.data.-linkdata
+              = link_to edit_operator_path(operator) do
+                = image_tag "edit.svg", class: 'icon'
+                span
+                  = t('shared.edit')
+          - if can?(:destroy, operator)
+            span.data.-linkdata
+              = link_to operator_path(operator), data: { confirm: t('shared.confirm_message') }, method: :delete do
+                = image_tag 'delete.svg', class: 'icon'
+                span
+                  = t('shared.delete')
+  .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = link_to t('shared.create'), new_operator_url, class: "button -large -type-e"

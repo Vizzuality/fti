@@ -21,6 +21,9 @@ nav
             - if can?(:manage, Country)
               li
                 = link_to t('navbar.countries'), countries_url, class: "#{'is-active' if menu_highlight?(:countries)}"
+            - if can?(:manage, Operator)
+              li
+                = link_to t('navbar.operators'), operators_url, class: "#{'is-active' if menu_highlight?(:operators)}"
 
     - if user_signed_in?
       li.dropdown-anchor
