@@ -14,7 +14,7 @@ require 'rails_helper'
 RSpec.describe Observer, type: :model do
   before :each do
     FactoryGirl.create(:observer, name: 'Z Observer')
-    @observer = create(:observer)
+    @monitor = create(:observer)
   end
 
   it 'Count on observer' do
@@ -28,29 +28,29 @@ RSpec.describe Observer, type: :model do
 
   it 'Fallbacks for empty translations on observer' do
     I18n.locale = :fr
-    expect(@observer.name).to eq('Observer')
+    expect(@monitor.name).to eq('Observer')
     I18n.locale = :en
   end
 
   it 'Translate observer to fr' do
-    @observer.update(name: 'Observer FR', locale: :fr)
+    @monitor.update(name: 'Observer FR', locale: :fr)
     I18n.locale = :fr
-    expect(@observer.name).to eq('Observer FR')
+    expect(@monitor.name).to eq('Observer FR')
     I18n.locale = :en
-    expect(@observer.name).to eq('Observer')
+    expect(@monitor.name).to eq('Observer')
   end
 
   it 'Name and observer_type validation' do
-    @observer = Observer.new(name: '', observer_type: '')
+    @monitor = Observer.new(name: '', observer_type: '')
 
-    @observer.valid?
-    expect { @observer.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Name can't be blank, Observer type can't be blank, Observer type  is not a valid observer type")
+    @monitor.valid?
+    expect { @monitor.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Name can't be blank, Observer type can't be blank, Observer type  is not a valid observer type")
   end
 
   it 'Observer_type validation' do
-    @observer = Observer.new(name: 'Observer new', observer_type: 'Not in types')
+    @monitor = Observer.new(name: 'Observer new', observer_type: 'Not in types')
 
-    @observer.valid?
-    expect { @observer.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Observer type Not in types is not a valid observer type")
+    @monitor.valid?
+    expect { @monitor.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Observer type Not in types is not a valid observer type")
   end
 end

@@ -6,7 +6,7 @@ class ObserversController < ApplicationController
   before_action :set_observer, except: [:index, :new, :create]
 
   def index
-    @observers = Observer.by_name_asc
+    @monitors = Observer.by_name_asc
   end
 
   def show; end
@@ -14,27 +14,28 @@ class ObserversController < ApplicationController
   def edit; end
 
   def new
-    @observer = Observer.new
+    @monitor = Observer.new
   end
 
   def update
-    if @observer.update(observer_params)
+    if @monitor.update(observer_params)
       redirect_to monitors_url, notice: 'Monitor succesfully updated.'
     else
-      render :edit, notice: @observer.errors.full_messages
+      render :edit, notice: @monitor.errors.full_messages
     end
   end
 
   def create
-    if @observer.save(observer_params)
+    @monitor = Observer.new(observer_params)
+    if @monitor.save
       redirect_to monitors_url, notice: 'Monitor succesfully updated.'
     else
-      render :new, notice: @observer.errors.full_messages
+      render :new, notice: @monitor.errors.full_messages
     end
   end
 
   def destroy
-    if @observer.destroy
+    if @monitor.destroy
       redirect_to monitors_url, notice: 'Monitor succesfully deleted.'
     else
       redirect_to monitors_url, notice: "There was an error and monitor can't be deleted."
@@ -44,11 +45,11 @@ class ObserversController < ApplicationController
   private
 
     def set_observer
-      @observer = Observer.find(params[:id])
+      @monitor = Observer.find(params[:id])
     end
 
     def observer_params
-      params.require(:observer).permit(:name, :organization, :observer_type, :country_id)
+      params.require(:observer).permit(:name, :organization, :observer_type, :country_id, user_ids: [])
     end
 
     def menu_highlight

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ObserversController, type: :controller do
   before :each do
-    @observer = create(:observer)
+    @monitor = create(:observer)
   end
 
   let!(:adminuser) do
@@ -44,13 +44,13 @@ RSpec.describe ObserversController, type: :controller do
     end
 
     it 'GET edit returns http success' do
-      get :edit, params: { id: @observer.id }
+      get :edit, params: { id: @monitor.id }
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
 
     it 'update observer' do
-      put :update, params: { id: @observer.id, observer: attri }
+      put :update, params: { id: @monitor.id, observer: attri }
       expect(response).to           be_redirect
       expect(response).to           have_http_status(302)
       expect(Observer.last.name).to eq('New observer')
@@ -70,7 +70,7 @@ RSpec.describe ObserversController, type: :controller do
     render_views
 
     it 'User should not be able to update observer without name' do
-      put :update, params: { id: @observer.id, observer: attri_fail }
+      put :update, params: { id: @monitor.id, observer: attri_fail }
       expect(response.body).to match('<small class="error">can&#39;t be blank</small>')
     end
   end
