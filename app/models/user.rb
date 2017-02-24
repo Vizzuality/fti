@@ -42,6 +42,14 @@ class User < ApplicationRecord
 
   belongs_to :country, inverse_of: :users, optional: true
 
+  has_many :observations, inverse_of: :user
+  has_many :comments,     inverse_of: :user
+
+  has_many :user_observers
+  has_many :user_operators
+  has_many :observers, through: :user_observers
+  has_many :operators, through: :user_operators
+
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :name,     presence: true
   validate  :validate_username
@@ -50,7 +58,8 @@ class User < ApplicationRecord
                                  exclusion: { in: %w(admin superuser about root fti faq conntact user operator ngo) },
                                  multiline: true
 
-  scope :recent, -> { order('updated_at DESC') }
+  scope :recent,          -> { order('updated_at DESC')    }
+  scope :by_username_asc, -> { order('users.username ASC') }
 
   class << self
     def find_first_by_auth_conditions(warden_conditions)
@@ -64,6 +73,10 @@ class User < ApplicationRecord
           where(username: conditions[:username]).first
         end
       end
+    end
+
+    def user_select
+      by_username_asc.map { |c| [c.username, c.id] }
     end
   end
 

@@ -1,0 +1,28 @@
+ol.breadcrumb
+  li
+    = link_to t('observations.types'), types_observations_url
+  li
+    = link_to t('observations.info'), info_observations_url
+  li.active
+    = t('observations.attachments')
+
+.form-actions
+  .row
+    .column.medium-8.medium-offset-1
+      .row
+        .column.medium-8.medium-offset-4
+          h2.form-title
+            | New Observation
+
+  = simple_form_for @wizard_observation, as: :observation, url: validate_observation_observations_url do |f|
+    .row
+      .column.medium-8.medium-offset-1
+        = f.error_notification
+        = hidden_field_tag :current_step, 'attachments'
+        .form-inputs
+          / =# render 'new_observation_attachments', form: f
+
+    .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = f.button :submit, t('shared.finish'), class: '-primary'

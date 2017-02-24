@@ -1,0 +1,37 @@
+ol.breadcrumb
+  li.active
+    = t('observations.types')
+  li
+    = t('observations.info')
+  li
+    = t('observations.attachments')
+
+.form-actions
+  .row
+    .column.medium-8.medium-offset-1
+      .row
+        .column.medium-8.medium-offset-4
+          h2.form-title
+            | New Observation
+
+  = simple_form_for @wizard_observation, as: :observation, url: validate_observation_observations_url do |f|
+    .row
+      .column.medium-8.medium-offset-1
+        = f.error_notification
+        = hidden_field_tag :current_step, 'types'
+        .form-inputs
+          .row
+            .column.medium-4
+              = f.label :observation_type, label: 'Type', class: 'right inline'
+            .column.medium-8
+              = f.input :observation_type, as: :select, collection: Observation.translated_types, include_blank: 'Please select the type of the illegality' , label: false
+          .row
+            .column.medium-4
+              = f.label :country_id, label: 'Country', class: 'right inline'
+            .column.medium-8
+              = f.input :country_id, collection: Country.country_select, as: :select, include_blank: 'Please select Your country', label: false
+
+    .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = f.button :submit, t('shared.continue'), class: '-primary'

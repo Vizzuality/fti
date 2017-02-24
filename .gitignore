@@ -32,7 +32,6 @@ spec/.DS_Store
 
 # Ignore environment variables
 /.env
-/.env.*
 /test.env
 /dev.env
 

@@ -16,7 +16,7 @@ case "$1" in
 
         export SECRET_KEY_BASE=$(rake secret)
 
-        exec rspec
+        bundle exec rake
         ;;
     *)
         exec "$@"

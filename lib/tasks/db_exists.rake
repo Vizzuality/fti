@@ -6,8 +6,10 @@ namespace :db do
     rescue
       Rake::Task['db:create'].invoke
       Rake::Task['db:migrate'].invoke
+      Rake::Task['db:seed'].invoke unless Rails.env.test?
     else
       Rake::Task['db:migrate'].invoke
+      Rake::Task['db:seed'].invoke unless Rails.env.test?
     end
 
     log_directory_name = 'log'

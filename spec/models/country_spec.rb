@@ -14,7 +14,7 @@
 require 'rails_helper'
 
 RSpec.describe Country, type: :model do
-    context 'For user relations' do
+  context 'For user relations' do
     before :each do
       @country = create(:country)
       @user    = create(:user, country: @country)
@@ -23,11 +23,11 @@ RSpec.describe Country, type: :model do
     it 'Count on country' do
       expect(User.count).to          eq(1)
       expect(@country.users.size).to eq(1)
-      expect(@user.country.name).to  eq('Australia')
+      expect(@user.country.name).to  match('Country')
     end
 
     it 'Fallbacks for empty translations on country' do
-      expect(@user.country.name).to eq('Australia')
+      expect(@user.country.name).to match('Country')
     end
 
     it 'Translate country to fr' do
@@ -35,7 +35,7 @@ RSpec.describe Country, type: :model do
       I18n.locale = :fr
       expect(@user.country.name).to eq('Australia FR')
       I18n.locale = :en
-      expect(@user.country.name).to eq('Australia')
+      expect(@user.country.name).to match('Country')
     end
   end
 end

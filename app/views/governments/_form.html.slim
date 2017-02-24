@@ -1,0 +1,19 @@
+.row
+  .column.medium-8.medium-offset-1
+    = form.error_notification
+    .form-inputs
+      .row
+        .column.medium-4
+          = form.label :government_entity, label: "Government entity", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :government_entity, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :country_id, label: 'Country', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :country_id, collection: Country.country_select, as: :select, include_blank: 'Please select country', input_html: { class: 'js-mselect' }, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :details, label: 'Details', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.text_field :details, label: false, disabled: common_form?

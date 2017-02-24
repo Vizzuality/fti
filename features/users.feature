@@ -68,4 +68,4 @@ I want to edit, view, activate, deactivate and change user permissions
     When I select "operator" from "user_permission_user_role"
     And I press "Update"
     Then I should be on the user page for "pepe@exaple.com"
-    Then I should have one operator
+    Then I should have one operator for user

@@ -248,6 +248,10 @@ en:
     operator: 'Operator'
     add_other_domain: 'Add a new domain'
     no_entries: 'No entries'
+    select_file: 'Select file'
+    title: 'Title'
+    continue: 'Continue'
+    finish: 'Finish'
 
   navbar:
     dashboard: 'Dashboard'
@@ -261,6 +265,16 @@ en:
     settings: 'Settings'
     admin: 'Administration'
     countries: 'Countries'
+    observations: 'Observations'
+    species: 'Species'
+    administration: 'Admin'
+    operators: 'Operators'
+    observers: 'Monitors'
+    categories: 'Categories'
+    laws: 'Laws'
+    governments: 'Governments'
+    annex_operators: 'Annex (operators)'
+    annex_governances: 'Annex (governance)'
 
   users:
     user: 'User'
@@ -269,3 +283,75 @@ en:
     forgot_pw: 'Forgot your Password?'
     send_instructions: 'Send me reset password instructions'
     login_action: 'login'
+
+  countries:
+    countries: 'Countries'
+
+  observations:
+    observations: 'Observations'
+    types: 'Observation type'
+    info: 'Details'
+    attachments: 'Documentation'
+
+  species:
+    species: 'Species'
+
+  operators:
+    operators: 'Operators'
+
+  observers:
+    observers: 'Monitors'
+
+  categories:
+    categories: 'Categories'
+
+  laws:
+    laws: 'Laws'
+
+  governments:
+    governments: 'Governments'
+
+  annex_operators:
+    annex_operators: 'Annex (operators)'
+
+  annex_governances:
+    annex_governances: 'Annex (governance)'
+
+  # Page specific entries
+  observation_types:
+    ? "AnnexGovernance"
+    : "Governance illegality"
+    ? "AnnexOperator"
+    : "Illegality"
+
+  document_types:
+    ? "Report"
+    : "Report"
+    ? "Doumentation"
+    : "Doumentation"
+
+  observer_types:
+    ? "Mandated"
+    : "Mandated"
+    ? "SemiMandated"
+    : "SemiMandated"
+    ? "External"
+    : "External"
+    ? "Government"
+    : "Government"
+
+  operator_types:
+    ? "Company"
+    : "Company"
+    ? "Artisanal"
+    : "Artisanal"
+    ? "Sawmill"
+    : "Sawmill"
+    ? "CommunityForest"
+    : "CommunityForest"
+    ? "ARB1327"
+    : "ARB1327"
+    ? "PalmOil"
+    : "PalmOil"
+    ? "Trader"
+    : "Trader"

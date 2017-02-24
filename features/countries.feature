@@ -1,7 +1,7 @@
 Feature: Countries
 In order to manage countries
 As a adminuser
-I want to manage a categories
+I want to manage a country
 
   Scenario: User can not view countries page and country page without login
     Given country
@@ -37,7 +37,7 @@ I want to manage a categories
     And I fill in "country_name" with "Country new name"
     And I fill in "country_iso" with "CNN"
     And I press "Create"
-    Then I should have one country
+    Then I should have country for "Country new name"
 
   Scenario: Adminuser can not edit country without name
     Given I am authenticated adminuser
@@ -54,7 +54,7 @@ I want to manage a categories
     And I fill in "country_name" with "Country new EN"
     And I fill in "country_iso" with "CNN"
     And I press "Create"
-    Then I should have one country
+    Then I should have country for "Country new EN"
     When I go to the edit country page for "Country new EN"
     Then I should have locale "en"
     When I follow "Français"

@@ -1,0 +1,40 @@
+# frozen_string_literal: true
+# == Schema Information
+#
+# Table name: governments
+#
+#  id         :integer          not null, primary key
+#  country_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+class Government < ApplicationRecord
+  translates :government_entity, :details
+
+  belongs_to :country, inverse_of: :governments, optional: true
+
+  has_many :observations, inverse_of: :government
+
+  validates :government_entity, presence: true
+
+  scope :by_entity_asc, -> {
+    includes(:translations).with_translations(I18n.available_locales)
+                           .order('government_translations.government_entity ASC')
+  }
+
+  class << self
+    def fetch_all(options)
+      governments = by_entity_asc
+      governments
+    end
+
+    def entity_select
+      by_entity_asc.map { |c| [c.government_entity, c.id] }
+    end
+  end
+
+  def cache_key
+    super + '-' + Globalize.locale.to_s
+  end
+end

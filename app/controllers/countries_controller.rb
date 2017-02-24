@@ -52,6 +52,6 @@ class CountriesController < ApplicationController
     end
 
     def menu_highlight
-      @menu_highlighted = :countries
+      @menu_highlighted = :admin
     end
 end

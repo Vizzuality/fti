@@ -19,7 +19,7 @@ Then /^I should have one ngo$/ do
   User.filter_ngos.size.should == 1
 end
 
-Then /^I should have one operator$/ do
+Then /^I should have one operator for user$/ do
   User.filter_operators.size.should == 1
 end
 

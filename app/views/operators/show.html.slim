@@ -1,0 +1,15 @@
+.form-actions
+  .row
+    .column.medium-8.medium-offset-1
+      .row
+        .column.medium-8.medium-offset-4
+          h2.form-title
+            = @operator.name
+
+  = simple_form_for @operator do |f|
+    = render partial: f
+
+    .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = link_to t('shared.edit'), edit_operator_url(@operator), class: "button -large -type-e"

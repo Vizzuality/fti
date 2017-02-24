@@ -28,6 +28,22 @@ Rails.application.routes.draw do
       end
 
       resources :countries
+      resources :categories
+      resources :species
+      resources :operators
+      resources :laws
+      resources :governments
+      resources :annex_operators
+      resources :annex_governances
+      resources :observers, path: 'monitors', as: :monitors
+      resources :observations, except: [:new, :create, :validate_observation]
+
+      resource :observations, path: 'observations/new', except: [:index, :show, :edit, :update, :destroy, :new] do
+        get  :types
+        get  :info
+        get  :attachments
+        post :validate_observation
+      end
     end
 
     get 'dashboard', to: 'users#dashboard', as: :dashboard

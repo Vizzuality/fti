@@ -15,7 +15,16 @@
 class Country < ApplicationRecord
   translates :name, :region_name
 
-  has_many :users, inverse_of: :country
+  has_many :users,           inverse_of: :country
+  has_many :observations,    inverse_of: :country
+  has_many :observers,       inverse_of: :country
+  has_many :annex_operators, inverse_of: :country
+  has_many :laws,            inverse_of: :country
+  has_many :governments,     inverse_of: :country
+  has_many :operators,       inverse_of: :country
+
+  has_many :species_countries
+  has_many :species, through: :species_countries
 
   validates :name, :iso, presence: true, uniqueness: { case_sensitive: false }
 
@@ -25,7 +34,12 @@ class Country < ApplicationRecord
   }
 
   class << self
-    def country_select(current_locale)
+    def fetch_all(options)
+      countries = by_name_asc
+      countries
+    end
+
+    def country_select
       by_name_asc.map { |c| [c.name, c.id] }
     end
   end
