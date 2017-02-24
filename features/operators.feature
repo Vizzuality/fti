@@ -37,6 +37,7 @@ I want to manage a operator
     When I go to the new operator page
     And I fill in "operator_name" with "Operator new name"
     And I select "Australia" from "operator_country_id"
+    And I select "Company" from "operator_operator_type"
     And I press "Create"
     Then I should have operator for "Operator new name"
 

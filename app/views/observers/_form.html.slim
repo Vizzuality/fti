@@ -9,9 +9,9 @@
           = form.input :name, label: false, disabled: common_form?
       .row
         .column.medium-4
-          = form.label :operator_type, label: 'Operator type', class: 'right inline', disabled: common_form?
+          = form.label :observer_type, label: 'Observer type', class: 'right inline', disabled: common_form?
         .column.medium-8
-          = form.input :operator_type, collection: Operator.translated_types, as: :select, include_blank: 'Please select operator type', input_html: { class: 'js-mselect' }, label: false, disabled: common_form?
+          = form.input :observer_type, collection: Observer.translated_types, as: :select, include_blank: 'Please select observer type', input_html: { class: 'js-mselect' }, label: false, disabled: common_form?
       .row
         .column.medium-4
           = form.label :country_id, label: 'Country', class: 'right inline', disabled: common_form?
@@ -19,14 +19,9 @@
           = form.input :country_id, collection: Country.country_select, as: :select, include_blank: 'Please select country', input_html: { class: 'js-mselect' }, label: false, disabled: common_form?
       .row
         .column.medium-4
-          = form.label :concession, class: 'right inline', disabled: common_form?
+          = form.label :organization, class: 'right inline', disabled: common_form?
         .column.medium-8
-          = form.input :concession, label: false, disabled: common_form?
-      .row
-        .column.medium-4
-          = form.label :details, label: 'Country centroid', class: 'right inline', disabled: common_form?
-        .column.medium-8
-          = form.text_field :details, label: false, disabled: common_form?
+          = form.input :organization, label: false, disabled: common_form?
       .row
         .column.medium-4
           = form.label :user_ids, label: 'Users', class: 'right inline', disabled: common_form?

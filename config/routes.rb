@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       resources :countries
       resources :species
       resources :operators
+      resources :observers, path: 'monitors', as: :monitors
       resources :observations, except: [:new, :create, :validate_observation]
 
       resource :observations, path: 'observations/new', except: [:index, :show, :edit, :update, :destroy, :new] do

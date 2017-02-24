@@ -49,6 +49,14 @@ module NavigationHelpers
       edit_operator_path(Operator.find_by(name: $1), locale: I18n.locale)
     when /the new operator page/
       new_operator_path(locale: I18n.locale)
+    when /the monitors page/
+      monitors_path(locale: I18n.locale)
+    when /the monitor page for "(.*)"$/
+      monitor_path(Observer.find_by(name: $1), locale: I18n.locale)
+    when /the edit monitor page for "(.*)"$/
+      edit_monitor_path(Observer.find_by(name: $1), locale: I18n.locale)
+    when /the new monitor page/
+      new_monitor_path(locale: I18n.locale)
     else
       begin
         page_name =~ /the (.*) page/

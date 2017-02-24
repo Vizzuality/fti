@@ -269,6 +269,7 @@ en:
     species: 'Species'
     administration: 'Admin'
     operators: 'Operators'
+    observers: 'Monitors'
 
   users:
     user: 'User'
@@ -293,6 +294,9 @@ en:
   operators:
     operators: 'Operators'
 
+  observers:
+    observers: 'Monitors'
+
   # Page specific entries
   observation_types:
     ? "AnnexGovernance"
@@ -305,3 +309,29 @@ en:
     : "Report"
     ? "Doumentation"
     : "Doumentation"
+
+  observer_types:
+    ? "Mandated"
+    : "Mandated"
+    ? "SemiMandated"
+    : "SemiMandated"
+    ? "External"
+    : "External"
+    ? "Government"
+    : "Government"
+
+  operator_types:
+    ? "Company"
+    : "Company"
+    ? "Artisanal"
+    : "Artisanal"
+    ? "Sawmill"
+    : "Sawmill"
+    ? "CommunityForest"
+    : "CommunityForest"
+    ? "ARB1327"
+    : "ARB1327"
+    ? "PalmOil"
+    : "PalmOil"
+    ? "Trader"
+    : "Trader"

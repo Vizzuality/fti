@@ -70,7 +70,7 @@ class Observation < ApplicationRecord
     end
 
     def translated_types
-      types.map { |t| [I18n.t("observation_types.#{t.constantize}", default: t.constantize), t.camelize] }
+      types.map { |t| [I18n.t("observation_types.#{t}", default: t), t.camelize] }
     end
   end
 

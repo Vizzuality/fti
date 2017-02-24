@@ -24,6 +24,9 @@ nav
             - if can?(:manage, Operator)
               li
                 = link_to t('navbar.operators'), operators_url, class: "#{'is-active' if menu_highlight?(:operators)}"
+            - if can?(:manage, Observer)
+              li
+                = link_to t('navbar.observers'), monitors_url, class: "#{'is-active' if menu_highlight?(:observers)}"
 
     - if user_signed_in?
       li.dropdown-anchor
