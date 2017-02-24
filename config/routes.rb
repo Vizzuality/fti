@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       end
 
       resources :countries
+      resources :categories
       resources :species
       resources :operators
       resources :observers, path: 'monitors', as: :monitors

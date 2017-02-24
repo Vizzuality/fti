@@ -57,6 +57,14 @@ module NavigationHelpers
       edit_monitor_path(Observer.find_by(name: $1), locale: I18n.locale)
     when /the new monitor page/
       new_monitor_path(locale: I18n.locale)
+    when /the categories page/
+      categories_path(locale: I18n.locale)
+    when /the category page for "(.*)"$/
+      category_path(Category.find_by(name: $1), locale: I18n.locale)
+    when /the edit category page for "(.*)"$/
+      edit_category_path(Category.find_by(name: $1), locale: I18n.locale)
+    when /the new category page/
+      new_category_path(locale: I18n.locale)
     else
       begin
         page_name =~ /the (.*) page/

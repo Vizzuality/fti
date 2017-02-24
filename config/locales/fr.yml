@@ -269,6 +269,7 @@ fr:
     administration: 'Admin'
     operators: 'Operators'
     observers: 'Monitors'
+    categories: 'Categories'
 
   users:
     user: 'User'
@@ -295,6 +296,9 @@ fr:
 
   observers:
     observers: 'Monitors'
+
+  categories:
+    categories: 'Categories'
 
   # Page specific entries
   observation_types:
