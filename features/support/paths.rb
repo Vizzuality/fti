@@ -65,6 +65,14 @@ module NavigationHelpers
       edit_category_path(Category.find_by(name: $1), locale: I18n.locale)
     when /the new category page/
       new_category_path(locale: I18n.locale)
+    when /the laws page/
+      laws_path(locale: I18n.locale)
+    when /the law page for "(.*)"$/
+      law_path(Law.find_by(legal_reference: $1), locale: I18n.locale)
+    when /the edit law page for "(.*)"$/
+      edit_law_path(Law.find_by(legal_reference: $1), locale: I18n.locale)
+    when /the new law page/
+      new_law_path(locale: I18n.locale)
     else
       begin
         page_name =~ /the (.*) page/

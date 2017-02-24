@@ -30,6 +30,9 @@ nav
             - if can?(:manage, Observer)
               li
                 = link_to t('navbar.observers'), monitors_url, class: "#{'is-active' if menu_highlight?(:observers)}"
+            - if can?(:manage, Law)
+              li
+                = link_to t('navbar.laws'), laws_url, class: "#{'is-active' if menu_highlight?(:laws)}"
 
     - if user_signed_in?
       li.dropdown-anchor

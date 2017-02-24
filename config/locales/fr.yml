@@ -270,6 +270,7 @@ fr:
     operators: 'Operators'
     observers: 'Monitors'
     categories: 'Categories'
+    laws: 'Laws'
 
   users:
     user: 'User'
@@ -299,6 +300,9 @@ fr:
 
   categories:
     categories: 'Categories'
+
+  laws:
+    laws: 'Laws'
 
   # Page specific entries
   observation_types:
