@@ -144,8 +144,8 @@ namespace :import_annex_governance_csv do
         data_row = row.to_h
 
         data_ag = {}
-        data_ag[:governance_pillar]  = data_row['governance_pillar']
-        data_ag[:governance_problem] = data_row['governance_problem']
+        data_ag[:governance_pillar]  = data_row['governance_pillar']  || 'Not specified'
+        data_ag[:governance_problem] = data_row['governance_problem'] || 'Not specified'
 
         @ag = AnnexGovernance.find_or_create_by!(data_ag)
         @ag.update!(governance_problem: data_row['governance_problem_fr'],
@@ -257,8 +257,8 @@ namespace :import_governance_observations_csv do
         @go = Observation.find_or_create_by!(data_go)
 
         data_ag = {}
-        data_ag[:governance_pillar]  = data_row['governance_pillar']
-        data_ag[:governance_problem] = data_row['governance_problem']
+        data_ag[:governance_pillar]  = data_row['governance_pillar']  || 'Not specified'
+        data_ag[:governance_problem] = data_row['governance_problem'] || 'Not specified'
 
         if @ag = AnnexGovernance.find_by(governance_pillar: data_row['governance_pillar'])
           @ag
