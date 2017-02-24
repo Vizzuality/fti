@@ -73,6 +73,14 @@ module NavigationHelpers
       edit_law_path(Law.find_by(legal_reference: $1), locale: I18n.locale)
     when /the new law page/
       new_law_path(locale: I18n.locale)
+    when /the governments page/
+      governments_path(locale: I18n.locale)
+    when /the government page for "(.*)"$/
+      government_path(Government.find_by(government_entity: $1), locale: I18n.locale)
+    when /the edit government page for "(.*)"$/
+      edit_government_path(Government.find_by(government_entity: $1), locale: I18n.locale)
+    when /the new government page/
+      new_government_path(locale: I18n.locale)
     else
       begin
         page_name =~ /the (.*) page/

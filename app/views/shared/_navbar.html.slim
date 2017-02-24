@@ -24,6 +24,9 @@ nav
             - if can?(:manage, Category)
               li
                 = link_to t('navbar.categories'), categories_url, class: "#{'is-active' if menu_highlight?(:categories)}"
+            - if can?(:manage, Government)
+              li
+                = link_to t('navbar.governments'), governments_url, class: "#{'is-active' if menu_highlight?(:governments)}"
             - if can?(:manage, Operator)
               li
                 = link_to t('navbar.operators'), operators_url, class: "#{'is-active' if menu_highlight?(:operators)}"

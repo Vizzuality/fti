@@ -272,6 +272,7 @@ en:
     observers: 'Monitors'
     categories: 'Categories'
     laws: 'Laws'
+    governments: 'Governments'
 
   users:
     user: 'User'
@@ -304,6 +305,9 @@ en:
 
   laws:
     laws: 'Laws'
+
+  governments:
+    governments: 'Governments'
 
   # Page specific entries
   observation_types:
