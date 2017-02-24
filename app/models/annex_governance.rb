@@ -17,7 +17,8 @@ class AnnexGovernance < ApplicationRecord
   has_many :comments,     as: :commentable
   has_many :observations, inverse_of: :annex_governance
 
-  validates :governance_pillar, presence: true
+  validates :governance_pillar,  presence: true
+  validates :governance_problem, presence: true
 
   accepts_nested_attributes_for :severities,  allow_destroy: true
   accepts_nested_attributes_for :categorings, allow_destroy: true

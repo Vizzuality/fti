@@ -274,7 +274,7 @@ en:
     laws: 'Laws'
     governments: 'Governments'
     annex_operators: 'Annex (operators)'
-    annex_governance: 'Annex (governance)'
+    annex_governances: 'Annex (governance)'
 
   users:
     user: 'User'
@@ -314,8 +314,8 @@ en:
   annex_operators:
     annex_operators: 'Annex (operators)'
 
-  annex_governance:
-    annex_governance: 'Annex (governance)'
+  annex_governances:
+    annex_governances: 'Annex (governance)'
 
   # Page specific entries
   observation_types:

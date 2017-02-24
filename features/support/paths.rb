@@ -89,6 +89,14 @@ module NavigationHelpers
       edit_annex_operator_path(AnnexOperator.find_by(illegality: $1), locale: I18n.locale)
     when /the new annex_operator page/
       new_annex_operator_path(locale: I18n.locale)
+    when /the annex_governances page/
+      annex_governances_path(locale: I18n.locale)
+    when /the annex_governance page for "(.*)"$/
+      annex_governance_path(AnnexGovernance.find_by(governance_problem: $1), locale: I18n.locale)
+    when /the edit annex_governance page for "(.*)"$/
+      edit_annex_governance_path(AnnexGovernance.find_by(governance_problem: $1), locale: I18n.locale)
+    when /the new annex_governance page/
+      new_annex_governance_path(locale: I18n.locale)
     else
       begin
         page_name =~ /the (.*) page/

@@ -12,9 +12,12 @@ nav
           = link_to t('navbar.administration'), '#', class: "#{'is-active' if menu_highlight?(:admin)}"
           ul class='dropdown-list'
             li.arrowhelper
-             - if can?(:manage, AnnexOperator)
+            - if can?(:manage, AnnexOperator)
               li
                 = link_to t('navbar.annex_operators'), annex_operators_url, class: "#{'is-active' if menu_highlight?(:annex_operators)}"
+            - if can?(:manage, AnnexGovernance)
+              li
+                = link_to t('navbar.annex_governances'), annex_governances_url, class: "#{'is-active' if menu_highlight?(:annex_governances)}"
             - if can?(:manage, User)
               li
                 = link_to t('navbar.users'), users_url, class: "#{'is-active' if menu_highlight?(:users)}"
