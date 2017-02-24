@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resources :operators
       resources :laws
       resources :governments
+      resources :annex_operators
       resources :observers, path: 'monitors', as: :monitors
       resources :observations, except: [:new, :create, :validate_observation]
 

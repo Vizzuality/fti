@@ -34,6 +34,11 @@ class Country < ApplicationRecord
   }
 
   class << self
+    def fetch_all(options)
+      countries = by_name_asc
+      countries
+    end
+
     def country_select
       by_name_asc.map { |c| [c.name, c.id] }
     end

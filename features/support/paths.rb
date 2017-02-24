@@ -81,6 +81,14 @@ module NavigationHelpers
       edit_government_path(Government.find_by(government_entity: $1), locale: I18n.locale)
     when /the new government page/
       new_government_path(locale: I18n.locale)
+    when /the annex_operators page/
+      annex_operators_path(locale: I18n.locale)
+    when /the annex_operator page for "(.*)"$/
+      annex_operator_path(AnnexOperator.find_by(illegality: $1), locale: I18n.locale)
+    when /the edit annex_operator page for "(.*)"$/
+      edit_annex_operator_path(AnnexOperator.find_by(illegality: $1), locale: I18n.locale)
+    when /the new annex_operator page/
+      new_annex_operator_path(locale: I18n.locale)
     else
       begin
         page_name =~ /the (.*) page/

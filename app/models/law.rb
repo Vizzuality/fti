@@ -29,6 +29,10 @@ class Law < ApplicationRecord
       laws = by_legal_reference_asc
       laws
     end
+
+    def law_select
+      by_legal_reference_asc.map { |c| [c.legal_reference, c.id] }
+    end
   end
 
   def cache_key

@@ -273,6 +273,8 @@ en:
     categories: 'Categories'
     laws: 'Laws'
     governments: 'Governments'
+    annex_operators: 'Annex (operators)'
+    annex_governance: 'Annex (governance)'
 
   users:
     user: 'User'
@@ -308,6 +310,12 @@ en:
 
   governments:
     governments: 'Governments'
+
+  annex_operators:
+    annex_operators: 'Annex (operators)'
+
+  annex_governance:
+    annex_governance: 'Annex (governance)'
 
   # Page specific entries
   observation_types:
