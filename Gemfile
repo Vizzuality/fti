@@ -38,6 +38,7 @@ gem 'mini_magick'
 gem 'rails-i18n'
 gem 'seed-fu'
 gem 'simple_form'
+gem 'wicked'
 
 group :development, :test do
   gem 'byebug',                    platform: :mri

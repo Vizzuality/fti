@@ -32,12 +32,7 @@ Rails.application.routes.draw do
       resources :operators
       resources :observations, except: [:new, :create, :validate_observation]
 
-      resource :observations, path: 'observations/new', except: [:index, :show, :edit, :update, :destroy, :new] do
-        get  :types
-        get  :info
-        get  :attachments
-        post :validate_observation
-      end
+      resources :observations_steps, only: [:new, :show, :update]
     end
 
     get 'dashboard', to: 'users#dashboard', as: :dashboard
