@@ -52,6 +52,7 @@ group :development do
   gem 'brakeman',                  require: false
   gem 'capistrano',                '~> 3.6'
   gem 'capistrano-rails',          '~> 1.2'
+  gem 'capistrano-rvm'
   gem 'listen',                    '~> 3.0.5'
   gem 'pry-rails'
   gem 'spring'
