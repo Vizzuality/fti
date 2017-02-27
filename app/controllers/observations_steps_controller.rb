@@ -30,8 +30,14 @@ class ObservationsStepsController < ApplicationController
 
   def move_forward(next_step_name = next_step)
     if @observation.valid?
-      save_observation
-      redirect_to wizard_path(next_step_name)
+      if next_step_name == Wicked::LAST_STEP
+        @observation.save
+        redirect_to observations_path, notice: 'Observation created successfully'
+      else
+        save_observation
+        redirect_to wizard_path(next_step_name)
+      end
+
     else
       render_wizard
     end
