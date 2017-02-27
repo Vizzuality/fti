@@ -11,6 +11,8 @@
 class AnnexGovernance < ApplicationRecord
   translates :governance_pillar, :governance_problem, :details
 
+  before_create :check_validations
+
   has_many :severities,   as: :severable
   has_many :categorings,  as: :categorizable
   has_many :categories,   through: :categorings
@@ -42,4 +44,11 @@ class AnnexGovernance < ApplicationRecord
   def cache_key
     super + '-' + Globalize.locale.to_s
   end
+
+  private
+
+    def check_validations
+      self.governance_pillar  = 'Not specified' unless self.governance_pillar.present?
+      self.governance_problem = 'Not specified' unless self.governance_problem.present?
+    end
 end

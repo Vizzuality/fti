@@ -53,6 +53,6 @@ RSpec.describe Severity, type: :model do
     @severity = Severity.new(level: '', details: '')
 
     @severity.valid?
-    expect { @severity.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Details can't be blank, Level can't be blank")
+    expect { @severity.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Level can't be blank")
   end
 end
