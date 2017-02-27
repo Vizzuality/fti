@@ -26,10 +26,6 @@ default: &default
 
 development:
   <<: *default
-  database: rw_dataset_new_development
-
-development:
-  <<: *default
   database: fti_development
 
   # The specified database role being used to connect to postgres.
