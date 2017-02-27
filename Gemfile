@@ -56,6 +56,7 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-rails',          '~> 1.2'
   gem 'capistrano-rvm'
+  gem 'capistrano-secrets-yml'
   gem 'listen',                    '~> 3.0.5'
   gem 'pry-rails'
   gem 'spring'
