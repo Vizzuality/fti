@@ -14,7 +14,7 @@ ol.breadcrumb
           h2.form-title
             | New Observation
 
-  = simple_form_for @wizard_observation, as: :observation, url: validate_observation_observations_url do |f|
+  = simple_form_for @observation, as: :observation, url: wizard_path, method: :put do |f|
     .row
       .column.medium-8.medium-offset-1
         = f.error_notification
