@@ -1,0 +1,15 @@
+.form-actions
+  .row
+    .column.medium-8.medium-offset-1
+      .row
+        .column.medium-8.medium-offset-4
+          h2.form-title
+            | New Monitor
+
+  = simple_form_for @monitor, url: monitors_url do |f|
+    = render partial: f
+
+    .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = f.button :submit, t('shared.create'), class: '-primary'

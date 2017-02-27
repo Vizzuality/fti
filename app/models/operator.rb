@@ -36,6 +36,14 @@ class Operator < ApplicationRecord
     def operator_select
       by_name_asc.map { |c| [c.name, c.id] }
     end
+
+    def types
+      %w(Company Artisanal Sawmill CommunityForest ARB1327 PalmOil Trader).freeze
+    end
+
+    def translated_types
+      types.map { |t| [I18n.t("operator_types.#{t}", default: t), t.camelize] }
+    end
   end
 
   def cache_key

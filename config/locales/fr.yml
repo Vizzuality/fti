@@ -268,6 +268,12 @@ fr:
     species: 'Species'
     administration: 'Admin'
     operators: 'Operators'
+    observers: 'Monitors'
+    categories: 'Categories'
+    laws: 'Laws'
+    governments: 'Governments'
+    annex_operators: 'Annex (operators)'
+    annex_governance: 'Annex (governance)'
 
   users:
     user: 'User'
@@ -292,6 +298,24 @@ fr:
   operators:
     operators: 'Operators'
 
+  observers:
+    observers: 'Monitors'
+
+  categories:
+    categories: 'Categories'
+
+  laws:
+    laws: 'Laws'
+
+  governments:
+    governments: 'Governments'
+
+  annex_operators:
+    annex_operators: 'Annex (operators)'
+
+  annex_governance:
+    annex_governance: 'Annex (governance)'
+
   # Page specific entries
   observation_types:
     ? "AnnexGovernance"
@@ -304,3 +328,29 @@ fr:
     : "Report"
     ? "Doumentation"
     : "Doumentation"
+
+  observer_types:
+    ? "Mandated"
+    : "Mandated"
+    ? "SemiMandated"
+    : "SemiMandated"
+    ? "External"
+    : "External"
+    ? "Government"
+    : "Government"
+
+  operator_types:
+    ? "Company"
+    : "Company"
+    ? "Artisanal"
+    : "Artisanal"
+    ? "Sawmill"
+    : "Sawmill"
+    ? "CommunityForest"
+    : "CommunityForest"
+    ? "ARB1327"
+    : "ARB1327"
+    ? "PalmOil"
+    : "PalmOil"
+    ? "Trader"
+    : "Trader"

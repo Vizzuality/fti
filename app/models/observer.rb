@@ -37,6 +37,14 @@ class Observer < ApplicationRecord
     def observer_select
       by_name_asc.map { |c| [c.name, c.id] }
     end
+
+    def types
+      %w(Mandated SemiMandated External Government).freeze
+    end
+
+    def translated_types
+      types.map { |t| [I18n.t("observer_types.#{t}", default: t), t.camelize] }
+    end
   end
 
   def cache_key

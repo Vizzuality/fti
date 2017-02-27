@@ -1,0 +1,36 @@
+.section-container#laws
+  .section.title-section
+    div
+      h2.title
+        = t('laws.laws')
+
+  .section.table-container
+    - @laws.each do |law|
+      .table-row
+        .data-primary
+          span.data.-primary
+            = law.legal_reference
+          span.data
+            = "#{t('shared.created')}: #{law.created_at.to_formatted_s(:create_update_date).to_s} / "
+          span.data
+            = "#{t('shared.updated')}: #{law.updated_at.to_formatted_s(:short).to_s} / "
+
+        .data-secondary
+          span.data._hidden
+          span.data._hidden
+          - if can?(:edit, law)
+            span.data.-linkdata
+              = link_to edit_law_path(law) do
+                = image_tag "edit.svg", class: 'icon'
+                span
+                  = t('shared.edit')
+          - if can?(:destroy, law)
+            span.data.-linkdata
+              = link_to law_path(law), data: { confirm: t('shared.confirm_message') }, method: :delete do
+                = image_tag 'delete.svg', class: 'icon'
+                span
+                  = t('shared.delete')
+  .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = link_to t('shared.create'), new_law_url, class: "button -large -type-e"

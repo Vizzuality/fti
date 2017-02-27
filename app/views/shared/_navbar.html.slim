@@ -12,6 +12,12 @@ nav
           = link_to t('navbar.administration'), '#', class: "#{'is-active' if menu_highlight?(:admin)}"
           ul class='dropdown-list'
             li.arrowhelper
+            - if can?(:manage, AnnexOperator)
+              li
+                = link_to t('navbar.annex_operators'), annex_operators_url, class: "#{'is-active' if menu_highlight?(:annex_operators)}"
+            - if can?(:manage, AnnexGovernance)
+              li
+                = link_to t('navbar.annex_governances'), annex_governances_url, class: "#{'is-active' if menu_highlight?(:annex_governances)}"
             - if can?(:manage, User)
               li
                 = link_to t('navbar.users'), users_url, class: "#{'is-active' if menu_highlight?(:users)}"
@@ -21,9 +27,21 @@ nav
             - if can?(:manage, Country)
               li
                 = link_to t('navbar.countries'), countries_url, class: "#{'is-active' if menu_highlight?(:countries)}"
+            - if can?(:manage, Category)
+              li
+                = link_to t('navbar.categories'), categories_url, class: "#{'is-active' if menu_highlight?(:categories)}"
+            - if can?(:manage, Government)
+              li
+                = link_to t('navbar.governments'), governments_url, class: "#{'is-active' if menu_highlight?(:governments)}"
             - if can?(:manage, Operator)
               li
                 = link_to t('navbar.operators'), operators_url, class: "#{'is-active' if menu_highlight?(:operators)}"
+            - if can?(:manage, Observer)
+              li
+                = link_to t('navbar.observers'), monitors_url, class: "#{'is-active' if menu_highlight?(:observers)}"
+            - if can?(:manage, Law)
+              li
+                = link_to t('navbar.laws'), laws_url, class: "#{'is-active' if menu_highlight?(:laws)}"
 
     - if user_signed_in?
       li.dropdown-anchor

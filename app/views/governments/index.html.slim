@@ -1,0 +1,36 @@
+.section-container#governments
+  .section.title-section
+    div
+      h2.title
+        = t('governments.governments')
+
+  .section.table-container
+    - @governments.each do |government|
+      .table-row
+        .data-primary
+          span.data.-primary
+            = government.government_entity
+          span.data
+            = "#{t('shared.created')}: #{government.created_at.to_formatted_s(:create_update_date).to_s} / "
+          span.data
+            = "#{t('shared.updated')}: #{government.updated_at.to_formatted_s(:short).to_s} / "
+
+        .data-secondary
+          span.data._hidden
+          span.data._hidden
+          - if can?(:edit, government)
+            span.data.-linkdata
+              = link_to edit_government_path(government) do
+                = image_tag "edit.svg", class: 'icon'
+                span
+                  = t('shared.edit')
+          - if can?(:destroy, government)
+            span.data.-linkdata
+              = link_to government_path(government), data: { confirm: t('shared.confirm_message') }, method: :delete do
+                = image_tag 'delete.svg', class: 'icon'
+                span
+                  = t('shared.delete')
+  .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = link_to t('shared.create'), new_government_url, class: "button -large -type-e"

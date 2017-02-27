@@ -1,0 +1,15 @@
+.form-actions
+  .row
+    .column.medium-8.medium-offset-1
+      .row
+        .column.medium-8.medium-offset-4
+          h2.form-title
+            = @annex_operator.illegality
+
+  = simple_form_for @annex_operator do |f|
+    = render partial: f
+
+    .row.footer-helper
+    .row.fixed-row
+      .button-collection.-formcollection
+        = link_to t('shared.edit'), edit_annex_operator_url(@annex_operator), class: "button -large -type-e"

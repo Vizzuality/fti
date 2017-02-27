@@ -14,10 +14,10 @@ require 'rails_helper'
 RSpec.describe UserObserver, type: :model do
   before :each do
     @user     = create(:user)
-    @observer = create(:observer, users: [@user])
+    @monitor = create(:observer, users: [@user])
   end
 
   it 'Count on observer user' do
-    expect(@observer.users.count).to eq(1)
+    expect(@monitor.users.count).to eq(1)
   end
 end
