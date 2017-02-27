@@ -2,6 +2,7 @@ class ObservationsStepsController < ApplicationController
   include Wicked::Wizard
 
   before_action :build_observation, except: :new
+  before_action :set_step, only: [:show, :update]
 
   steps *Observation.form_steps.map {|x| x[:page]}
 
@@ -24,13 +25,17 @@ class ObservationsStepsController < ApplicationController
     params.require(:observation).permit(step_params[:params])
   end
 
+  def set_step
+    @observation.form_step = step
+  end
+
   def reset_session
     session[:observation] = {}
   end
 
   def move_forward(next_step_name = next_step)
     if @observation.valid?
-      if next_step_name == Wicked::LAST_STEP
+      if next_step_name == Wicked::FINISH_STEP
         @observation.save
         redirect_to observations_path, notice: 'Observation created successfully'
       else
