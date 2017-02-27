@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ObservationsStepsController < ApplicationController
   include Wicked::Wizard
 

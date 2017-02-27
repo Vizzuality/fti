@@ -46,18 +46,19 @@ class Observation < ApplicationRecord
   accepts_nested_attributes_for :annex_governance, allow_destroy: true
 
   validates :country_id,       presence: true, if: 'form_step.blank?'
-  validates :observation_type, presence: true, inclusion: { in: %w(AnnexGovernance AnnexOperator),
-                                                            message: "%{value} is not a valid observation type" },
-            if: 'form_step.blank?'
+  validates :observation_type,
+            presence: true, inclusion: { in: %w(AnnexGovernance AnnexOperator),
+                                         message: "%{value} is not a valid observation type" }, if: 'form_step.blank?'
   validate :step_validation, unless: 'form_step.blank?'
 
   attr_accessor :form_step
   cattr_accessor :form_steps do
-    [{page: 'types', name: 'Types', params: %w[observation_type country_id]},
-     {page: 'info', name: 'Info', params: %w[annex_governance_id government_id annex_operator_id pv
-        concern_opinion litigation_status observer_id operator_id observation_type publication_date country_id
-        active details evidence severity_id]},
-     {page: 'attachments', name: 'Attachments', params: []}]
+    [{ page: 'types', name: 'Types', params: %w[observation_type country_id] },
+     { page: 'info', name: 'Info',
+       params: %w[annex_governance_id government_id annex_operator_id pv concern_opinion litigation_status
+                  observer_id operator_id observation_type publication_date country_id
+                  active details evidence severity_id] },
+     { page: 'attachments', name: 'Attachments', params: [] }]
   end
 
   scope :by_date_desc, -> {
@@ -122,7 +123,7 @@ class Observation < ApplicationRecord
     step_order = form_steps.map{|x| x[:page]}
     step_index = step_order.index(form_step)
 
-    if step_index == nil
+    if step_index.nil?
       self.errors['form_step'] << 'Step not defined'
       return
     end
