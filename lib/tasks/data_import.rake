@@ -263,6 +263,9 @@ namespace :import_governance_observations_csv do
         if @ag = AnnexGovernance.find_by(governance_pillar: data_row['governance_pillar'])
           @ag
         else
+          if data_ag['governance_pillar'].blank?
+            data_ag['governance_pillar'] = 'Not specified'
+          end
           @ag = AnnexGovernance.create!(data_ag)
           @ag.update!(governance_problem: data_row['governance_problem_fr'],
                       severities_attributes: [{ level: 3, details: 'Not specified' },
