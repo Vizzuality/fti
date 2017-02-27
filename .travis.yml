@@ -22,6 +22,7 @@ before_script:
   - sudo /etc/init.d/postgresql start 9.5
   - psql --version
   - cp config/database.yml.travis config/database.yml
+  - cp config/secrets.yml.sample config/secrets.yml
 
 script:
   - RAILS_ENV=test bundle exec rake db:create
