@@ -41,7 +41,6 @@ gem 'simple_form'
 
 group :development, :test do
   gem 'byebug',                    platform: :mri
-  gem 'dotenv-rails'
   gem 'faker'
   gem 'rubocop',                   require: false
   gem 'webmock'
@@ -80,6 +79,7 @@ group :test do
 end
 
 # Server
+gem 'dotenv-rails'
 gem 'puma'
 gem 'rails_12factor',              group: :production
 gem 'tzinfo-data'
