@@ -85,6 +85,12 @@ test: &test
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  database: fti_staging
+  username: <%= ENV['FTI_DATABASE_USER'] %>
+  password: <%= ENV['FTI_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
   database: fti_production
