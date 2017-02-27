@@ -85,6 +85,8 @@ GEM
     capistrano-harrow (0.5.3)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
+    capistrano-postgresql (4.2.1)
+      capistrano (>= 3.0)
     capistrano-rails (1.2.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -411,6 +413,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-env-config
   capistrano-passenger
+  capistrano-postgresql
   capistrano-rails (~> 1.2)
   capistrano-rvm
   capistrano-secrets-yml
