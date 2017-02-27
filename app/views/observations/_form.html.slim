@@ -8,7 +8,6 @@
     - if @observation.is_operator?
       = form.input :annex_operator_id, collection: AnnexOperator.illegality_select, as: :select, include_blank: 'Please select the illegality', label: false, disabled: common_form?
     - else
-      = form.input :annex_governance_id, collection: AnnexGovernance.governance_problem_select, as: :select, include_blank: 'Please select the governance pilar', label: false, disabled: common_form?
 .row
   .column.medium-4
     = form.label :severity_id, label: 'Severity', class: 'right inline', disabled: common_form?
