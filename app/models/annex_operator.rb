@@ -33,14 +33,17 @@ class AnnexOperator < ApplicationRecord
                            .order('annex_operator_translations.illegality ASC')
   }
 
+  scope :by_country, -> country_id { where('annex_operators.country_id = ?', country_id) }
+
   class << self
     def fetch_all(options)
       annex_operators = by_illegality_asc
       annex_operators
     end
 
-    def illegality_select
-      by_illegality_asc.map { |il| [il.illegality, il.id] }
+    def illegality_select(options)
+      country_id = options[:country_id]
+      by_country(country_id).by_illegality_asc.map { |il| [il.illegality, il.id] }
     end
   end
 

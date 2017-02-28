@@ -7,4 +7,4 @@
   .column.medium-4
     = form.label :government_id, label: 'Government entity', class: 'right inline'
   .column.medium-8
-    = form.input :government_id, collection: Government.entity_select, as: :select, include_blank: 'Please select the government entity', label: false, input_html: { class: 'js-mselect' }
+    = form.input :government_id, collection: Government.entity_select(country_id: @observation.country_id), as: :select, include_blank: 'Please select the government entity', label: false, input_html: { class: 'js-mselect' }
