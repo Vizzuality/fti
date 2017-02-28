@@ -128,33 +128,23 @@ class Observation < ApplicationRecord
 
       if step_index >= step_order.index('types')
         self.errors['country_id'] << 'You must select a country' if self.country_id.blank?
-
-        if self.observation_type.blank? || %w(AnnexGovernance AnnexOperator).exclude?(self.observation_type)
-          self.errors['observation_type'] << 'You must select a valid observation type'
-        end
+        self.errors['observation_type'] << 'You must select a valid observation type' if
+            self.observation_type.blank? || %w(AnnexGovernance AnnexOperator).exclude?(self.observation_type)
       end
-
       if step_index >= step_order.index('info')
+
         if observation_type == 'AnnexGovernance'
           self.errors['annex_governance_id'] << 'You must select a governance' if self.annex_governance_id.blank?
-          self.errors['government_id']       << 'You must select a government' if self.government_id.blank?
         else
-          self.errors['annex_operator_id'] << 'You must select an operator'         if self.annex_operator_id.blank?
-          self.errors['pv']                << 'You must select a pv'                if self.pv.blank?
-          self.errors['concern_opinion']   << 'You must select a concern opinion'   if self.concern_opinion.blank?
-          self.errors['litigation_status'] << 'You must select a litigation status' if self.litigation_status.blank?
+          self.errors['annex_operator_id'] << 'You must select an operator' if self.annex_operator_id.blank?
+          self.errors['operator_id'] << 'You must select an operator' if self.operator_id.blank?
         end
 
-        self.errors['observer_id']      << 'You must select an observer'        if self.observer_id.blank?
-        self.errors['operator_id']      << 'You must select an operator'        if self.operator_id.blank?
+        self.errors['observer_id'] << 'You must select an observer' if self.observer_id.blank?
         self.errors['publication_date'] << 'You must select a publication date' if self.publication_date.blank?
-        self.errors['active']           << 'You must select if it\'s active'    if self.active.blank?
-        self.errors['details']          << 'You must select a details'          if self.details.blank?
-        self.errors['evidence']         << 'You must select an evidence'        if self.evidence.blank?
-        self.errors['active']           << 'You must select an active'          if self.active.blank?
-        self.errors['severity_id']      << 'You must select a severity'         if self.severity_id.blank?
-      end
+        #self.errors['severity_id'] << 'You must select a severity' if self.severity_id.blank?
 
+      end
       if step_index >= step_order.index('attachments')
 
       end
