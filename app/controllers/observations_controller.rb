@@ -45,7 +45,7 @@ class ObservationsController < ApplicationController
                                           :user_id, :publication_date, :country_id, :annex_operator_id, :annex_governance_id,
                                           :observer_id, :operator_id, :government_id, :severity_id, :active, :locale,
                                           :details, :evidence, { photos_attributes: [:id, :name, :attachment, :_destroy] },
-                                          { documents_attributes: [:id, :name, :attachment, :_destroy] }, :species_ids)
+                                          { documents_attributes: [:id, :name, :attachment, :document_type, :_destroy] }, :species_ids)
     end
 
     def menu_highlight
