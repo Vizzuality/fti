@@ -6,7 +6,7 @@
       = form.label :annex_governance_id, label: 'Illegality', input_html: { class: 'js-mselect' }, class: 'right inline', disabled: common_form?
   .column.medium-8
     - if @observation.is_operator?
-      = form.input :annex_operator_id, collection: AnnexOperator.illegality_select, as: :select, input_html: { class: 'js-mselect' }, include_blank: 'Please select the illegality', label: false, disabled: common_form?
+      = form.input :annex_operator_id, collection: AnnexOperator.illegality_select(country_id: @observation.country_id), as: :select, input_html: { class: 'js-mselect' }, include_blank: 'Please select the illegality', label: false, disabled: common_form?
     - else
       = form.input :annex_operator_id, collection: AnnexGovernance.governance_problem_select, as: :select, input_html: { class: 'js-mselect' }, include_blank: 'Please select the governance problem', label: false, disabled: common_form?
 .row
@@ -46,7 +46,7 @@
     .column.medium-4
       = form.label :government_id, label: 'Government entity', class: 'right inline', disabled: common_form?
     .column.medium-8
-      = form.input :government_id, collection: Government.entity_select, as: :select, input_html: { class: 'js-mselect' }, include_blank: 'Please select the government entity', label: false, disabled: common_form?
+      = form.input :government_id, collection: Government.entity_select(country_id: @observation.country_id), as: :select, input_html: { class: 'js-mselect' }, include_blank: 'Please select the government entity', label: false, disabled: common_form?
 .row
   .column.medium-4
     = form.label :publication_date, class: 'right inline', disabled: common_form?
