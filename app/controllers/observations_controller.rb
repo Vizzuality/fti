@@ -7,7 +7,7 @@ class ObservationsController < ApplicationController
   before_action :set_user,        except: [:index, :show]
 
   def index
-    @observations = Observation.by_date_desc.page params[:page]
+    @observations = Observation.fetch_all(filter_options).page params[:page]
   end
 
   def show; end
@@ -31,6 +31,10 @@ class ObservationsController < ApplicationController
   end
 
   private
+
+    def filter_options
+      params.permit()
+    end
 
     def set_observation
       @observation = Observation.find(params[:id])

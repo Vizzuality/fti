@@ -38,9 +38,9 @@ RSpec.describe SpeciesController, type: :controller do
 
     it 'GET create returns http success' do
       post :create, params: { species: attri }
-      expect(response).to          be_redirect
-      expect(response).to          have_http_status(302)
-      expect(Species.last.name).to eq('New species')
+      expect(response).to be_redirect
+      expect(response).to have_http_status(302)
+      expect(Species.last.common_name).to eq('NCA')
     end
 
     it 'GET edit returns http success' do
@@ -51,8 +51,8 @@ RSpec.describe SpeciesController, type: :controller do
 
     it 'update species' do
       put :update, params: { id: @species.id, species: attri }
-      expect(response).to          be_redirect
-      expect(response).to          have_http_status(302)
+      expect(response).to be_redirect
+      expect(response).to have_http_status(302)
       expect(Species.last.name).to eq('New species')
     end
 
@@ -60,9 +60,9 @@ RSpec.describe SpeciesController, type: :controller do
       let!(:species) { create(:species, name: 'Aspecies', common_name: 'ACC') }
       it 'delete species' do
         delete :destroy, params: { id: species.id }
-        expect(response).to         be_redirect
-        expect(response).to         have_http_status(302)
-        expect(response).to         redirect_to(species_index_path)
+        expect(response).to be_redirect
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to(species_index_path)
         expect(Species.where(name: 'Aspecies')).to eq([])
       end
     end

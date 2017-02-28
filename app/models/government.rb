@@ -23,6 +23,8 @@ class Government < ApplicationRecord
                            .order('government_translations.government_entity ASC')
   }
 
+  default_scope { includes(:translations) }
+
   class << self
     def fetch_all(options)
       governments = by_entity_asc
