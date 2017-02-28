@@ -2,7 +2,7 @@
 # config valid only for current version of Capistrano
 lock '3.7.2'
 
-set :application, 'FTI'
+set :application, 'OTP'
 set :repo_url, 'git@github.com:Vizzuality/fti.git'
 
 set :passenger_restart_with_touch, true

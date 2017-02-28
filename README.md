@@ -1,4 +1,4 @@
-# FTI #
+# OPEN TIMBER PORTAL #
 
 [![Build Status](https://travis-ci.org/Vizzuality/fti.svg?branch=develop)](https://travis-ci.org/Vizzuality/fti) [![Code Climate](https://codeclimate.com/github/Vizzuality/fti/badges/gpa.svg)](https://codeclimate.com/github/Vizzuality/fti)
 
@@ -22,7 +22,7 @@ cd fti
 
 **Just execute the script file in `bin/setup`**
 
-  Depends on FTI [repository](https://github.com/Vizzuality/fti)
+  Depends on OPEN TIMBER PORTAL [repository](https://github.com/Vizzuality/fti)
 
 **or install the dependencies manually:**
 
