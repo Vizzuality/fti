@@ -38,10 +38,10 @@ gem 'mini_magick'
 gem 'rails-i18n'
 gem 'seed-fu'
 gem 'simple_form'
+gem 'wicked'
 
 group :development, :test do
   gem 'byebug',                    platform: :mri
-  gem 'dotenv-rails'
   gem 'faker'
   gem 'rubocop',                   require: false
   gem 'webmock'
@@ -54,8 +54,10 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-env-config'
   gem 'capistrano-passenger'
+  gem 'capistrano-postgresql'
   gem 'capistrano-rails',          '~> 1.2'
   gem 'capistrano-rvm'
+  gem 'capistrano-secrets-yml'
   gem 'listen',                    '~> 3.0.5'
   gem 'pry-rails'
   gem 'spring'
@@ -78,6 +80,7 @@ group :test do
 end
 
 # Server
+gem 'dotenv-rails'
 gem 'puma'
 gem 'rails_12factor',              group: :production
 gem 'tzinfo-data'

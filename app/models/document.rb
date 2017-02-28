@@ -32,7 +32,7 @@ class Document < ApplicationRecord
     end
 
     def types_select
-      types.map { |t| [I18n.t("document_types.#{t.constantize}", default: t.constantize), t.camelize] }
+      types.map { |t| [I18n.t("document_types.#{t}", default: t), t.camelize] }
     end
   end
 

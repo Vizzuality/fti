@@ -1,8 +1,8 @@
 ol.breadcrumb
   li
-    = link_to t('observations.types'), types_observations_url
+    = link_to t('observations.types'), wizard_path(Wicked::FIRST_STEP)
   li
-    = link_to t('observations.info'), info_observations_url
+    = link_to t('observations.info'), previous_wizard_path
   li.active
     = t('observations.attachments')
 
@@ -14,13 +14,13 @@ ol.breadcrumb
           h2.form-title
             | New Observation
 
-  = simple_form_for @wizard_observation, as: :observation, url: validate_observation_observations_url do |f|
+  = simple_form_for @observation, as: :observation, url: wizard_path, method: :put do |f|
     .row
       .column.medium-8.medium-offset-1
         = f.error_notification
         = hidden_field_tag :current_step, 'attachments'
         .form-inputs
-          / =# render 'new_observation_attachments', form: f
+           = render 'new_observation_attachments', form: f
 
     .row.footer-helper
     .row.fixed-row

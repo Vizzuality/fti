@@ -55,7 +55,7 @@ class User < ApplicationRecord
   validate  :validate_username
 
   validates_format_of :username, with: /\A[a-z0-9_\.][-a-z0-9]{1,19}\Z/i,
-                                 exclusion: { in: %w(admin superuser about root fti faq conntact user operator ngo) },
+                                 exclusion: { in: %w(admin superuser about root fti otp faq conntact user operator ngo) },
                                  multiline: true
 
   scope :recent,          -> { order('updated_at DESC')    }

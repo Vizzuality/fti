@@ -26,11 +26,8 @@ default: &default
 
 development:
   <<: *default
-  database: rw_dataset_new_development
-
-development:
-  <<: *default
   database: fti_development
+  password: <%= ENV.fetch('POSTGRES_PASSWORD') { } %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -88,14 +85,14 @@ test: &test
 staging:
   <<: *default
   database: fti_staging
-  username: <%= ENV['FTI_DATABASE_USER'] %>
-  password: <%= ENV['FTI_DATABASE_PASSWORD'] %>
+  username: <%= ENV['OTP_DATABASE_USER'] %>
+  password: <%= ENV['OTP_DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
   database: fti_production
-  username: <%= ENV['FTI_DATABASE_USER'] %>
-  password: <%= ENV['FTI_DATABASE_PASSWORD'] %>
+  username: <%= ENV['OTP_DATABASE_USER'] %>
+  password: <%= ENV['OTP_DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test
