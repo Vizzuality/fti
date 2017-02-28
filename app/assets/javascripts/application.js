@@ -20,7 +20,7 @@
 //= require_tree .
 
 var showDatepicker = function() {
-  $('.js-datepicker').datepicker();
+  $('.js-datepicker').datepicker({ dateFormat: 'dd-mm-yy' });
 };
 
 var showMultiselect = function() {
