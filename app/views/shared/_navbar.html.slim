@@ -4,9 +4,8 @@ nav
       li
         = link_to t('navbar.home'), dashboard_url, class: "#{'is-active' if menu_highlight?(:home)}"
     - if user_signed_in?
-      - if can?(:manage, Observation)
-        li
-          = link_to t('navbar.observations'), observations_url, class: "#{'is-active' if menu_highlight?(:observations)}"
+      li
+        = link_to t('navbar.observations'), observations_url, class: "#{'is-active' if menu_highlight?(:observations)}"
       - if current_user.admin?
         li.dropdown-anchor
           = link_to t('navbar.administration'), '#', class: "#{'is-active' if menu_highlight?(:admin)}"

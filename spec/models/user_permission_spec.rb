@@ -19,15 +19,15 @@ RSpec.describe UserPermission, type: :model do
   end
 
   let!(:user_permissions) {
-    {"user"=>{"id"=>["manage"]}}
+    {"user"=>{"id"=>["manage"]}, "observation"=>{"all"=>["read"]}}
   }
 
   let!(:ngo_permissions) {
-    {"user"=>{"id"=>["manage"]}}
+    {"user"=>{"id"=>["manage"]}, "observation"=>{"user_id"=>["manage"]}}
   }
 
   let!(:operator_permissions) {
-    {"user"=>{"id"=>["manage"]}}
+    {"user"=>{"id"=>["manage"]}, "observation"=>{"all"=>["read"]}}
   }
 
   let!(:admin_permissions) {
@@ -69,10 +69,10 @@ RSpec.describe UserPermission, type: :model do
   end
 
   it 'Accept user role request' do
-    @user_ngo.user_permission.update(user_role: 'ngo', permissions: user_permissions)
+    @user_ngo.user_permission.update(user_role: 'ngo')
 
     expect(@user_ngo.user_permission.user_role).to   eq('ngo')
-    expect(@user_ngo.user_permission.permissions).to eq(user_permissions)
+    expect(@user_ngo.user_permission.permissions).to eq(ngo_permissions)
   end
 
   it 'Is a user an user? Show the role name' do

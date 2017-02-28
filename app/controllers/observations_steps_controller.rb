@@ -68,4 +68,8 @@ class ObservationsStepsController < ApplicationController
     def save_observation
       session[:observation] = @observation.attributes
     end
+
+    def menu_highlight
+      @menu_highlighted = :observations
+    end
 end
