@@ -59,7 +59,10 @@ class Observation < ApplicationRecord
        params: %w[annex_governance_id government_id annex_operator_id pv concern_opinion litigation_status
                   observer_id operator_id observation_type publication_date country_id
                   active details evidence severity_id] },
-     { page: 'attachments', name: 'Attachments', params: %w[documents_attributes photos_attributes] }]
+     { page: 'attachments',
+       name: 'Attachments',
+       params: [{ 'photos_attributes': %w[id name attachment _destroy] },
+                { 'documents_attributes': %w[id name attachment document_type _destroy] }] }]
   end
 
   scope :by_date_desc,  -> { includes(:translations).order('observations.publication_date DESC') }
