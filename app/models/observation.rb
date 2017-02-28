@@ -46,10 +46,10 @@ class Observation < ApplicationRecord
   accepts_nested_attributes_for :annex_governance, allow_destroy: true
 
   validates :country_id,       presence: true, if: 'form_step.blank?'
-  validates :observation_type,
-            presence: true, inclusion: { in: %w(AnnexGovernance AnnexOperator),
-                                         message: "%{value} is not a valid observation type" }, if: 'form_step.blank?'
-  validate :step_validation, unless: 'form_step.blank?'
+  validates :publication_date, presence: true, if: 'form_step.blank?'
+  validates :observation_type, presence: true, inclusion: { in: %w(AnnexGovernance AnnexOperator),
+                                                            message: "%{value} is not a valid observation type" }, if: 'form_step.blank?'
+  validate :step_validation, if: 'form_step.present?'
 
   attr_accessor :form_step
 
@@ -143,7 +143,7 @@ class Observation < ApplicationRecord
 
         self.errors['observer_id'] << 'You must select an observer' if self.observer_id.blank?
         self.errors['publication_date'] << 'You must select a publication date' if self.publication_date.blank?
-        #self.errors['severity_id'] << 'You must select a severity' if self.severity_id.blank?
+        self.errors['severity_id'] << 'You must select a severity' if self.severity_id.blank?
 
       end
       if step_index >= step_order.index('attachments')
