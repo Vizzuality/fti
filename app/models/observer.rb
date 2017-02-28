@@ -35,7 +35,7 @@ class Observer < ApplicationRecord
     end
 
     def observer_select
-      by_name_asc.map { |c| [c.name, c.id] }
+      by_name_asc.map { |c| ["#{c.name} (#{c.observer_type})", c.id] }
     end
 
     def types
