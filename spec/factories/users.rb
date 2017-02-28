@@ -36,13 +36,13 @@ FactoryGirl.define do
     name 'Test user'
   end
 
-  factory :ngo do
+  factory :ngo, class: User do
     sequence(:email)    { |n| "ngo#{n}@vizzuality.com" }
     sequence(:username) { |n| "ngo#{n}"                }
 
     password 'password'
     password_confirmation { |u| u.password }
-    name 'Test operator'
+    name 'Test ngo'
 
     after(:create) do |random_ngo|
       random_ngo.user_permission.update(user_role: 'ngo')
