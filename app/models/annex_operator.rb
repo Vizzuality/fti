@@ -33,6 +33,9 @@ class AnnexOperator < ApplicationRecord
                            .order('annex_operator_translations.illegality ASC')
   }
 
+  default_scope { includes(:translations) }
+
+
   class << self
     def fetch_all(options)
       annex_operators = by_illegality_asc

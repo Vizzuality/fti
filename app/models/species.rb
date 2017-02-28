@@ -27,10 +27,9 @@ class Species < ApplicationRecord
 
   validates :name, presence: true
 
-  scope :by_name_asc, -> {
-    includes(:translations).with_translations(I18n.available_locales)
-                           .order('species.name ASC')
-  }
+  scope :by_name_asc, -> { order('species.name ASC') }
+
+  default_scope { includes(:translations) }
 
   class << self
     def fetch_all(options)

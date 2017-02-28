@@ -24,6 +24,8 @@ class Law < ApplicationRecord
                            .order('law_translations.legal_reference ASC')
   }
 
+  default_scope { includes(:translations) }
+
   class << self
     def fetch_all(options)
       laws = by_legal_reference_asc

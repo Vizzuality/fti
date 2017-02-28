@@ -27,6 +27,8 @@ class Operator < ApplicationRecord
                            .order('operator_translations.name ASC')
   }
 
+  default_scope { includes(:translations) }
+
   class << self
     def fetch_all(options)
       operators = by_name_asc

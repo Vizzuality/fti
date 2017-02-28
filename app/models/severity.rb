@@ -28,6 +28,8 @@ class Severity < ApplicationRecord
     includes(:translations).order('severities.level ASC')
   }
 
+  default_scope { includes(:translations) }
+
   class << self
     def fetch_all(options)
       severities = by_level_asc

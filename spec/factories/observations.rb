@@ -31,6 +31,7 @@ FactoryGirl.define do
       annex = FactoryGirl.create(:annex_operator)
 
       observation.update(severity: FactoryGirl.create(:severity, severable: annex),
+                         annex_operator: annex,
                          user: FactoryGirl.create(:admin),
                          observer: FactoryGirl.create(:observer, name: "Observer #{Faker::Lorem.sentence}"),
                          operator: FactoryGirl.create(:operator, name: "Operator #{Faker::Lorem.sentence}"),

@@ -66,12 +66,15 @@ class Observation < ApplicationRecord
   scope :by_governance, -> { where(observation_type: 'AnnexGovernance')                          }
   scope :by_operator,   -> { where(observation_type: 'AnnexOperator')                            }
 
+  default_scope { includes(:translations) }
+
   class << self
     def fetch_all(options)
-      observations = by_date_asc.includes(:severity, :documents, :photos,
-                                          { severity: :translations }, :annex_operator,
-                                          { annex_operator: :translations }, :annex_governance,
-                                          { annex_governance: :translations })
+      observations = by_date_desc.includes([:translations, :documents, :photos,
+                                            :severity, :annex_operator, :annex_governance,
+                                            { severity: :translations },
+                                            { annex_operator: :translations },
+                                            { annex_governance: :translations }])
       observations
     end
 
@@ -93,15 +96,15 @@ class Observation < ApplicationRecord
   end
 
   def illegality
-    severity.try(:severable).try(:illegality)
+    try(:annex_operator).try(:illegality)
   end
 
   def title
-    severity.try(:severable).try(:illegality) || severity.try(:severable).try(:governance_pillar)
+    try(:annex_operator).try(:illegality) || try(:annex_governance).try(:governance_pillar)
   end
 
   def law
-    severity.try(:severable).try(:law)
+    try(:annex_operator).try(:law)
   end
 
   def user_name

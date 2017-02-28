@@ -33,6 +33,8 @@ class Country < ApplicationRecord
                            .order('country_translations.name ASC')
   }
 
+  default_scope { includes(:translations) }
+
   class << self
     def fetch_all(options)
       countries = by_name_asc
