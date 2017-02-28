@@ -15,9 +15,9 @@
     = form.input :operator_id, collection: Operator.operator_select, as: :select, include_blank: 'Please select the company/operator', label: false, input_html: { class: 'js-mselect' }
 .row
   .column.medium-4
-    = form.label :publication_date, class: 'right inline'
+    = form.label :publication_date, label: '* Publication date', class: 'right inline'
   .column.medium-8
-    = form.text_field :publication_date, class: 'js-datepicker'
+    = form.text_field :publication_date, class: 'js-datepicker', label: false
 .row
   .column.medium-4
     = form.label :active, label: 'Active', class: 'right inline'

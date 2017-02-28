@@ -104,6 +104,7 @@ namespace :import_annex_operators_csv do
   desc 'Loads annex operators data from a csv file'
   task create_annex_operators: :environment do
     filename = File.expand_path(File.join(Rails.root, 'db', 'files', 'annex_operators.csv'))
+    puts '* Annex operators... *'
     AnnexOperator.transaction do
       CSV.foreach(filename, col_sep: ';', row_sep: :auto, headers: true, encoding: 'UTF-8') do |row|
         data_row = row.to_h
@@ -139,6 +140,7 @@ namespace :import_annex_governance_csv do
   desc 'Loads annex governance data from a csv file'
   task create_annex_governance: :environment do
     filename = File.expand_path(File.join(Rails.root, 'db', 'files', 'annex_governance.csv'))
+    puts '* Annex governance... *'
     AnnexGovernance.transaction do
       CSV.foreach(filename, col_sep: ';', row_sep: :auto, headers: true, encoding: 'UTF-8') do |row|
         data_row = row.to_h
@@ -164,6 +166,7 @@ namespace :import_operator_observations_csv do
   desc 'Loads operator observations data from a csv file'
   task create_operator_observation: :environment do
     filename = File.expand_path(File.join(Rails.root, 'db', 'files', 'operator_observations.csv'))
+    puts '* Operators observations... *'
     Observation.transaction do
       CSV.foreach(filename, col_sep: ';', row_sep: :auto, headers: true, encoding: 'UTF-8') do |row|
         data_row = row.to_h
@@ -224,6 +227,7 @@ namespace :import_governance_observations_csv do
   desc 'Loads governance observations data from a csv file'
   task create_governance_observation: :environment do
     filename = File.expand_path(File.join(Rails.root, 'db', 'files', 'governance_observations.csv'))
+    puts '* Governance observations... *'
     Observation.transaction do
       CSV.foreach(filename, col_sep: ';', row_sep: :auto, headers: true, encoding: 'UTF-8') do |row|
         data_row = row.to_h
