@@ -6,7 +6,7 @@ class SpeciesController < ApplicationController
   before_action :set_species, except: [:index, :new, :create]
 
   def index
-    @species = Species.by_name_asc
+    @species = Species.by_name_asc.page params[:page]
   end
 
   def show; end

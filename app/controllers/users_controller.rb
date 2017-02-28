@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:index, :dashboard]
 
   def index
-    @users = User.includes(:user_permission)
+    @users = User.includes(:user_permission).page params[:page]
   end
 
   def show; end

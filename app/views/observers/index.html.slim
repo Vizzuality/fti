@@ -30,6 +30,9 @@
                 = image_tag 'delete.svg', class: 'icon'
                 span
                   = t('shared.delete')
+
+    = paginate @monitors
+
   .row.footer-helper
     .row.fixed-row
       .button-collection.-formcollection
