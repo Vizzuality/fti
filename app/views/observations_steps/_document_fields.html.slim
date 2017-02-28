@@ -1,0 +1,9 @@
+.nested-fields
+  = f.input :name, label: false, placeholder: "#{t('shared.title')}"
+  = f.input :document_type, collection: Document.types_select, \
+                            as: :select, include_blank: 'Please select the document type', label: false
+  button.file-upload.button.-primary
+    = t('shared.select_file')
+    = f.file_field :attachment
+  .remove-link.text-right
+    = link_to_remove_association 'Remove document', f
