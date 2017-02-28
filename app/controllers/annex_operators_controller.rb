@@ -6,7 +6,7 @@ class AnnexOperatorsController < ApplicationController
   before_action :set_annex_operator, except: [:index, :new, :create]
 
   def index
-    @annex_operators = AnnexOperator.by_illegality_asc
+    @annex_operators = AnnexOperator.by_illegality_asc.page params[:page]
   end
 
   def show; end

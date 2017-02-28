@@ -6,7 +6,7 @@ class LawsController < ApplicationController
   before_action :set_law, except: [:index, :new, :create]
 
   def index
-    @laws = Law.by_legal_reference_asc
+    @laws = Law.by_legal_reference_asc.page params[:page]
   end
 
   def show; end

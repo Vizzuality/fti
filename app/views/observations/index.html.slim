@@ -13,9 +13,9 @@
               = image_tag(photo.attachment_url(:thumbnail))
           p
             - observation.documents.each do |document|
-              = link_to document.name, document.attachment_url
+              = document.name
           span.data.-primary
-            = "#{observation.translated_type} - #{observation.title}"
+            = link_to "#{observation.translated_type} - #{observation.title}", observation_path(observation)
           span.data
             = "#{t('shared.created')}: #{observation.created_at.to_formatted_s(:create_update_date).to_s} / "
           span.data

@@ -6,7 +6,7 @@ class CountriesController < ApplicationController
   before_action :set_country, except: [:index, :new, :create]
 
   def index
-    @countries = Country.by_name_asc
+    @countries = Country.by_name_asc.page params[:page]
   end
 
   def show; end
