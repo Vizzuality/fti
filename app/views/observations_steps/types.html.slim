@@ -1,10 +1,8 @@
-ol.breadcrumb
-  li.active
-    = t('observations.types')
-  li
-    = t('observations.info')
-  li
-    = t('observations.attachments')
+.section-container
+  .section.links-section
+    = link_to t('observations.types'), '#', class: "button -large -type-d", disabled: true
+    = link_to t('observations.info'), '#', class: "button -large -type-e", disabled: true
+    = link_to t('observations.attachments'), '#', class: "button -large -type-e", disabled: true
 
 .form-actions
   .row
