@@ -59,7 +59,10 @@ class Observation < ApplicationRecord
        params: %w[annex_governance_id government_id annex_operator_id pv concern_opinion litigation_status
                   observer_id operator_id observation_type publication_date country_id
                   active details evidence severity_id] },
-     { page: 'attachments', name: 'Attachments', params: %w[documents_attributes photos_attributes] }]
+     { page: 'attachments',
+       name: 'Attachments',
+       params: [{ 'photos_attributes': %w[id name attachment _destroy] },
+                { 'documents_attributes': %w[id name attachment document_type _destroy] }] }]
   end
 
   scope :by_date_desc,  -> { includes(:translations).order('observations.publication_date DESC') }
@@ -127,27 +130,27 @@ class Observation < ApplicationRecord
         return
       end
 
-      if step_index >= step_order.index('types')
-        self.errors['country_id'] << 'You must select a country' if self.country_id.blank?
-        self.errors['observation_type'] << 'You must select a valid observation type' if
-            self.observation_type.blank? || %w(AnnexGovernance AnnexOperator).exclude?(self.observation_type)
-      end
-      if step_index >= step_order.index('info')
-
-        if observation_type == 'AnnexGovernance'
-          self.errors['annex_governance_id'] << 'You must select a governance' if self.annex_governance_id.blank?
-        else
-          self.errors['annex_operator_id'] << 'You must select an operator' if self.annex_operator_id.blank?
-          self.errors['operator_id'] << 'You must select an operator' if self.operator_id.blank?
-        end
-
-        self.errors['observer_id'] << 'You must select an observer' if self.observer_id.blank?
-        self.errors['publication_date'] << 'You must select a publication date' if self.publication_date.blank?
-        #self.errors['severity_id'] << 'You must select a severity' if self.severity_id.blank?
-
-      end
-      if step_index >= step_order.index('attachments')
-
-      end
+    if step_index >= step_order.index('types')
+      self.errors['country_id'] << 'You must select a country' if self.country_id.blank?
+      self.errors['observation_type'] << 'You must select a valid observation type' if
+          self.observation_type.blank? || %w(AnnexGovernance AnnexOperator).exclude?(self.observation_type)
     end
+    if step_index >= step_order.index('info')
+
+      if observation_type == 'AnnexGovernance'
+        self.errors['annex_governance_id'] << 'You must select a governance' if self.annex_governance_id.blank?
+      else
+        self.errors['annex_operator_id'] << 'You must select an operator' if self.annex_operator_id.blank?
+        self.errors['operator_id'] << 'You must select an operator' if self.operator_id.blank?
+      end
+
+      self.errors['observer_id'] << 'You must select an observer' if self.observer_id.blank?
+      self.errors['publication_date'] << 'You must select a publication date' if self.publication_date.blank?
+      self.errors['severity_id'] << 'You must select a severity' if self.severity_id.blank?
+
+    end
+    if step_index >= step_order.index('attachments')
+
+    end
+  end
 end
