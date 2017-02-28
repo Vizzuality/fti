@@ -1,0 +1,23 @@
+.row
+  .column.medium-4
+    = form.label :annex_operator_id, label: 'Illegality', class: 'right inline'
+  .column.medium-8
+    = form.input :annex_operator_id, collection: AnnexOperator.illegality_select, as: :select, include_blank: 'Please select the illegality', label: false, input_html: { class: 'js-mselect' }
+
+.row
+  .column.medium-4
+    = form.label :pv, label: 'PV', class: 'right inline'
+  .column.medium-8
+    = form.input :pv, label: false
+
+.row
+  .column.medium-4
+    = form.label :concern_opinion, label: 'Opinion of operator', class: 'right inline'
+  .column.medium-8
+    = form.input :concern_opinion, label: false
+
+.row
+  .column.medium-4
+    = form.label :litigation_status, label: 'Litigation status', class: 'right inline'
+  .column.medium-8
+    = form.input :litigation_status, label: false
