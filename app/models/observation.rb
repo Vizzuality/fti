@@ -46,27 +46,24 @@ class Observation < ApplicationRecord
   accepts_nested_attributes_for :annex_governance, allow_destroy: true
 
   validates :country_id,       presence: true, if: 'form_step.blank?'
-  validates :observation_type,
-            presence: true, inclusion: { in: %w(AnnexGovernance AnnexOperator),
-                                         message: "%{value} is not a valid observation type" }, if: 'form_step.blank?'
-  validate :step_validation, unless: 'form_step.blank?'
+  validates :observation_type, presence: true, inclusion: { in: %w(AnnexGovernance AnnexOperator),
+                                                            message: "%{value} is not a valid observation type" }, if: 'form_step.blank?'
+  validate :step_validation,   unless: 'form_step.blank?'
 
   attr_accessor :form_step
+
   cattr_accessor :form_steps do
     [{ page: 'types', name: 'Types', params: %w[observation_type country_id] },
      { page: 'info', name: 'Info',
        params: %w[annex_governance_id government_id annex_operator_id pv concern_opinion litigation_status
                   observer_id operator_id observation_type publication_date country_id
                   active details evidence severity_id] },
-     { page: 'attachments', name: 'Attachments', params: [] }]
+     { page: 'attachments', name: 'Attachments', params: %w[documents_attributes photos_attributes] }]
   end
 
-  scope :by_date_desc, -> {
-    includes(:translations).order('observations.publication_date DESC')
-  }
-
-  scope :by_governance, -> { where(observation_type: 'AnnexGovernance') }
-  scope :by_operator,   -> { where(observation_type: 'AnnexOperator')   }
+  scope :by_date_desc,  -> { includes(:translations).order('observations.publication_date DESC') }
+  scope :by_governance, -> { where(observation_type: 'AnnexGovernance')                          }
+  scope :by_operator,   -> { where(observation_type: 'AnnexOperator')                            }
 
   class << self
     def fetch_all(options)
@@ -119,44 +116,47 @@ class Observation < ApplicationRecord
   end
 
   private
-  def step_validation
-    step_order = form_steps.map{|x| x[:page]}
-    step_index = step_order.index(form_step)
 
-    if step_index.nil?
-      self.errors['form_step'] << 'Step not defined'
-      return
-    end
+    def step_validation
+      step_order = form_steps.map{|x| x[:page]}
+      step_index = step_order.index(form_step)
 
-    if step_index >= step_order.index('types')
-      self.errors['country_id'] << 'You must select a country' if self.country_id.blank?
-      self.errors['observation_type'] << 'You must select a valid observation type' if
-          self.observation_type.blank? || %w(AnnexGovernance AnnexOperator).exclude?(self.observation_type)
-    end
-    if step_index >= step_order.index('info')
-
-      if observation_type == 'AnnexGovernance'
-        self.errors['annex_governance_id'] << 'You must select a governance' if self.annex_governance_id.blank?
-        self.errors['government_id'] << 'You must select a government' if self.government_id.blank?
-      else
-        self.errors['annex_operator_id'] << 'You must select an operator' if self.annex_operator_id.blank?
-        self.errors['pv'] << 'You must select a pv' if self.pv.blank?
-        self.errors['concern_opinion'] << 'You must select a concern opinion' if self.concern_opinion.blank?
-        self.errors['litigation_status'] << 'You must select a litigation status' if self.litigation_status.blank?
+      if step_index.nil?
+        self.errors['form_step'] << 'Step not defined'
+        return
       end
 
-      self.errors['observer_id'] << 'You must select an observer' if self.observer_id.blank?
-      self.errors['operator_id'] << 'You must select an operator' if self.operator_id.blank?
-      self.errors['publication_date'] << 'You must select a publication date' if self.publication_date.blank?
-      self.errors['active'] << 'You must select if it\'s active' if self.active.blank?
-      self.errors['details'] << 'You must select a details' if self.details.blank?
-      self.errors['evidence'] << 'You must select an evidence' if self.evidence.blank?
-      self.errors['active'] << 'You must select an active' if self.active.blank?
-      #self.errors['severity_id'] << 'You must select a severity' if self.severity_id.blank?
+      if step_index >= step_order.index('types')
+        self.errors['country_id'] << 'You must select a country' if self.country_id.blank?
 
-    end
-    if step_index >= step_order.index('attachments')
+        if self.observation_type.blank? || %w(AnnexGovernance AnnexOperator).exclude?(self.observation_type)
+          self.errors['observation_type'] << 'You must select a valid observation type'
+        end
+      end
 
+      if step_index >= step_order.index('info')
+        if observation_type == 'AnnexGovernance'
+          self.errors['annex_governance_id'] << 'You must select a governance' if self.annex_governance_id.blank?
+          self.errors['government_id']       << 'You must select a government' if self.government_id.blank?
+        else
+          self.errors['annex_operator_id'] << 'You must select an operator'         if self.annex_operator_id.blank?
+          self.errors['pv']                << 'You must select a pv'                if self.pv.blank?
+          self.errors['concern_opinion']   << 'You must select a concern opinion'   if self.concern_opinion.blank?
+          self.errors['litigation_status'] << 'You must select a litigation status' if self.litigation_status.blank?
+        end
+
+        self.errors['observer_id']      << 'You must select an observer'        if self.observer_id.blank?
+        self.errors['operator_id']      << 'You must select an operator'        if self.operator_id.blank?
+        self.errors['publication_date'] << 'You must select a publication date' if self.publication_date.blank?
+        self.errors['active']           << 'You must select if it\'s active'    if self.active.blank?
+        self.errors['details']          << 'You must select a details'          if self.details.blank?
+        self.errors['evidence']         << 'You must select an evidence'        if self.evidence.blank?
+        self.errors['active']           << 'You must select an active'          if self.active.blank?
+        self.errors['severity_id']      << 'You must select a severity'         if self.severity_id.blank?
+      end
+
+      if step_index >= step_order.index('attachments')
+
+      end
     end
-  end
 end
