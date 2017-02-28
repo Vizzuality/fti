@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       resources :annex_operators
       resources :annex_governances
       resources :observers, path: 'monitors', as: :monitors
-      resources :observations, except: [:new, :create, :validate_observation]
+      resources :observations, except: [:new, :create]
 
       resources :observations_steps, only: [:new, :show, :update]
     end
