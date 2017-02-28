@@ -4,7 +4,7 @@ html lang='en'
     meta charset='utf-8'
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     title
-      = content_for?(:title) ? yield(:title) : 'FTI'
+      = content_for?(:title) ? yield(:title) : 'OPEN TIMBER PORTAL'
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -12,8 +12,8 @@ html lang='en'
     .l-page
       .l-header
         .row: .small-12.medium-12.large-12.columns#header
-          #undp-logo
-            = link_to 'FTI', root_url
+          #otp-logo
+            = link_to (image_tag 'otp_logo.png'), root_url
           = render 'shared/navbar'
 
       - if notice || alert
