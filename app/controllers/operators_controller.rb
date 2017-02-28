@@ -6,7 +6,7 @@ class OperatorsController < ApplicationController
   before_action :set_operator, except: [:index, :new, :create]
 
   def index
-    @operators = Operator.by_name_asc
+    @operators = Operator.by_name_asc.page params[:page]
   end
 
   def show; end

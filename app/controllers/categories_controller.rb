@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, except: [:index, :new, :create]
 
   def index
-    @categories = Category.by_name_asc
+    @categories = Category.by_name_asc.page params[:page]
   end
 
   def show; end

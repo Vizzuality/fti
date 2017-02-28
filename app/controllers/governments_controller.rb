@@ -6,7 +6,7 @@ class GovernmentsController < ApplicationController
   before_action :set_government, except: [:index, :new, :create]
 
   def index
-    @governments = Government.by_entity_asc
+    @governments = Government.by_entity_asc.page params[:page]
   end
 
   def show; end

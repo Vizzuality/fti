@@ -6,7 +6,7 @@ class AnnexGovernancesController < ApplicationController
   before_action :set_annex_governance, except: [:index, :new, :create]
 
   def index
-    @annex_governances = AnnexGovernance.by_governance_problem_asc
+    @annex_governances = AnnexGovernance.by_governance_problem_asc.page params[:page]
   end
 
   def show; end

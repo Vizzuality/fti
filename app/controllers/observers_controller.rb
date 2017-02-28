@@ -6,7 +6,7 @@ class ObserversController < ApplicationController
   before_action :set_observer, except: [:index, :new, :create]
 
   def index
-    @monitors = Observer.by_name_asc
+    @monitors = Observer.by_name_asc.page params[:page]
   end
 
   def show; end
