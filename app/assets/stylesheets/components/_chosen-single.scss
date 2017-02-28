@@ -6,7 +6,6 @@
     background-color: $color-7 !important;
 
     input[type="text"] {
-      background-position-x: 439px !important;
       padding-right: 50px !important;
     }
   }
@@ -73,15 +72,13 @@
   }
 
   div b {
-    background: none !important;
+    display: none !important;
   }
 
   .search-choice-close {
     display: none !important;
   }
 }
-
-
 
 .chosen-disabled {
 

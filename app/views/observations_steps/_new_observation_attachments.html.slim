@@ -2,16 +2,16 @@
   .column.medium-4
     = form.label :photos, label: 'Photos', class: 'right inline'
   .column.medium-8
-    = form.fields_for :photos do |photo|
-      = render 'observations/photo_fields', f: photo
-      .links.text-right
-        = link_to_add_association 'Add photo', form, :photos, class: 'button -primary'
+    = form.simple_fields_for :photos do |photo|
+      = render 'photo_fields', f: photo
+    .links.text-right
+      = link_to_add_association 'Add photo', form, :photos, class: 'button -primary'
 
 #documents.row
   .column.medium-4
     = form.label :documents, label: 'Documents', class: 'right inline'
   .column.medium-8
-    = form.fields_for :documents do |document|
-      = render 'observations/document_fields', f: document
-      .links.text-right
-        = link_to_add_association 'Add document', form, :documents, class: 'button -primary'
+    = form.simple_fields_for :documents do |document|
+      = render 'document_fields', f: document
+    .links.text-right
+      = link_to_add_association 'Add document', form, :documents, class: 'button -primary'

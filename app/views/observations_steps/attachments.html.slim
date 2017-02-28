@@ -1,10 +1,8 @@
-ol.breadcrumb
-  li
-    = link_to t('observations.types'), wizard_path(Wicked::FIRST_STEP)
-  li
-    = link_to t('observations.info'), previous_wizard_path
-  li.active
-    = t('observations.attachments')
+.section-container
+  .section.links-section
+    = link_to t('observations.types'), wizard_path(Wicked::FIRST_STEP), class: "button -large -type-e", data: { turbolinks: 'false' }
+    = link_to t('observations.info'), previous_wizard_path, class: "button -large -type-e", data: { turbolinks: 'false' }
+    = link_to t('observations.attachments'), '#', class: "button -large -type-d", disabled: true, data: { turbolinks: 'false' }, remote: true
 
 .form-actions
   .row

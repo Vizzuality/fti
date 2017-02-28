@@ -22,6 +22,8 @@ class Category < ApplicationRecord
                            .order('category_translations.name ASC')
   }
 
+  default_scope { includes(:translations) }
+
   class << self
     def fetch_all(options)
       categories = by_name_asc

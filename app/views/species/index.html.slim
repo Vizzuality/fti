@@ -9,11 +9,12 @@
       .table-row
         .data-primary
           span.data.-primary
-            = "#{species.name} (#{species.common_name})"
+            = species.name
+            = " (#{species.common_name})" if species.common_name.present?
           span.data
             = "#{t('shared.created')}: #{species.created_at.to_formatted_s(:create_update_date).to_s} / "
           span.data
-            = "#{t('shared.updated')}: #{species.updated_at.to_formatted_s(:short).to_s} / "
+            = "#{t('shared.updated')}: #{species.updated_at.to_formatted_s(:short).to_s}"
 
         .data-secondary
           span.data._hidden
