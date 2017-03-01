@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class ObservationsStepsController < ApplicationController
   before_action :authenticate_user!
-  # load_and_authorize_resource
+  load_and_authorize_resource 'Observation'
 
   include Wicked::Wizard
 
