@@ -32,7 +32,7 @@
           span.data
              = user.status
           span.data.-linkdata
-            = link_to edit_user_path(user) do
+            = link_to edit_user_path(user), data: { turbolinks: 'false' } do
               = image_tag "edit.svg", class: 'icon'
               span
                 = t('shared.edit')

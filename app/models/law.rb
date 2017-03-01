@@ -15,7 +15,8 @@ class Law < ApplicationRecord
 
   belongs_to :country, inverse_of: :laws
 
-  has_many :annex_operators, inverse_of: :law
+  has_many :annex_operator_laws
+  has_many :annex_operators, through: :annex_operator_laws
 
   validates :legal_reference, presence: true
 

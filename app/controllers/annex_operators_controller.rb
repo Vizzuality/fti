@@ -48,7 +48,7 @@ class AnnexOperatorsController < ApplicationController
     end
 
     def annex_operator_params
-      params.require(:annex_operator).permit(:country_id, :law_id, :illegality, :details)
+      params.require(:annex_operator).permit(:country_id, :law_ids, :illegality, :details)
     end
 
     def menu_highlight

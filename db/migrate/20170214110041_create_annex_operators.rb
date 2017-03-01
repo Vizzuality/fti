@@ -3,7 +3,6 @@ class CreateAnnexOperators < ActiveRecord::Migration[5.0]
   def change
     create_table :annex_operators do |t|
       t.integer :country_id, index: true
-      t.integer :law_id,     index: true
 
       t.timestamps
     end

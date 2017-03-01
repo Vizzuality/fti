@@ -14,9 +14,9 @@
           = form.input :country_id, collection: Country.country_select, as: :select, include_blank: 'Please select country', input_html: { class: 'js-mselect' }, label: false, disabled: common_form?
       .row
         .column.medium-4
-          = form.label :law_id, label: 'Law reference', class: 'right inline', disabled: common_form?
+          = form.label :law_ids, label: 'Law references', class: 'right inline', disabled: common_form?
         .column.medium-8
-          = form.input :law_id, collection: Law.law_select, as: :select, include_blank: 'Please select legal reference', input_html: { class: 'js-mselect' }, label: false, disabled: common_form?
+          = form.input :law_ids, collection: Law.law_select, as: :select, include_blank: 'Please select legal reference', input_html: { class: 'js-mselect', multiple: true }, label: false, disabled: common_form?
       .row
         .column.medium-4
           = form.label :details, label: 'Details', class: 'right inline', disabled: common_form?
