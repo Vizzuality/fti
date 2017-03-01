@@ -1,35 +1,36 @@
-.section-container
-  .section.links-section
-    = link_to t('observations.types'), '#', class: "button -large -type-d", disabled: true, data: { turbolinks: 'false' }, remote: true
-    = link_to t('observations.info'), '#', class: "button -large -type-e", disabled: true, data: { turbolinks: 'false' }, remote: true
-    = link_to t('observations.attachments'), '#', class: "button -large -type-e", disabled: true, data: { turbolinks: 'false' }, remote: true
+#observations_steps
+  .section-container
+    .section.links-section
+      = link_to t('observations.types'), '#', class: "button -large -type-d", disabled: true, data: { turbolinks: 'false' }, remote: true
+      = link_to t('observations.info'), '#', class: "button -large -type-e", disabled: true, data: { turbolinks: 'false' }, remote: true
+      = link_to t('observations.attachments'), '#', class: "button -large -type-e", disabled: true, data: { turbolinks: 'false' }, remote: true
 
-.form-actions
-  .row
-    .column.medium-8.medium-offset-1
-      .row
-        .column.medium-8.medium-offset-4
-          h2.form-title
-            | New Observation
-
-  = simple_form_for @observation, as: :observation, url: wizard_path, method: :put do |f|
+  .form-actions
     .row
       .column.medium-8.medium-offset-1
-        = f.error_notification
-        = hidden_field_tag :current_step, 'types'
-        .form-inputs
-          .row
-            .column.medium-4
-              = f.label :observation_type, label: 'Type', class: 'right inline'
-            .column.medium-8
-              = f.input :observation_type, as: :select, collection: Observation.translated_types, include_blank: 'Please select the type of the illegality', label: false, input_html: { class: 'js-mselect' }
-          .row
-            .column.medium-4
-              = f.label :country_id, label: 'Country', class: 'right inline'
-            .column.medium-8
-              = f.input :country_id, collection: Country.active_country_select, as: :select, include_blank: 'Please select Your country', label: false, input_html: { class: 'js-mselect' }
+        .row
+          .column.medium-8.medium-offset-4
+            h2.form-title
+              | New Observation
 
-    .row.footer-helper
-    .row.fixed-row
-      .button-collection.-formcollection
-        = f.button :submit, t('shared.continue'), class: '-primary'
+    = simple_form_for @observation, as: :observation, url: wizard_path, method: :put do |f|
+      .row
+        .column.medium-8.medium-offset-1
+          = f.error_notification
+          = hidden_field_tag :current_step, 'types'
+          .form-inputs
+            .row
+              .column.medium-4
+                = f.label :observation_type, label: 'Type', class: 'right inline'
+              .column.medium-8
+                = f.input :observation_type, as: :select, collection: Observation.translated_types, include_blank: 'Please select the type of the illegality', label: false, input_html: { class: 'js-mselect' }
+            .row
+              .column.medium-4
+                = f.label :country_id, label: 'Country', class: 'right inline'
+              .column.medium-8
+                = f.input :country_id, collection: Country.active_country_select, as: :select, include_blank: 'Please select Your country', label: false, input_html: { class: 'js-mselect' }
+
+      .row.footer-helper
+      .row.fixed-row
+        .button-collection.-formcollection
+          = f.button :submit, t('shared.continue'), class: '-primary'

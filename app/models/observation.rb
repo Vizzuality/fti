@@ -125,7 +125,7 @@ class Observation < ApplicationRecord
   private
 
     def step_validation
-      step_order = form_steps.map{|x| x[:page]}
+      step_order = form_steps.map{ |x| x[:page] }
       step_index = step_order.index(form_step)
 
       if step_index.nil?
@@ -136,7 +136,7 @@ class Observation < ApplicationRecord
       if step_index >= step_order.index('types')
         self.errors['country_id']       << 'You must select a country' if self.country_id.blank?
         self.errors['observation_type'] << 'You must select a valid observation type' if
-            self.observation_type.blank? || %w(AnnexGovernance AnnexOperator).exclude?(self.observation_type)
+          self.observation_type.blank? || %w(AnnexGovernance AnnexOperator).exclude?(self.observation_type)
       end
 
       if step_index >= step_order.index('info')

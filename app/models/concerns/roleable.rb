@@ -30,7 +30,9 @@ module Roleable
 
     def role_name
       case user_permission.user_role
-      when 'admin' then 'Admin'
+      when 'admin'    then 'Admin'
+      when 'ngo'      then 'NGO'
+      when 'operator' then 'Operator'
       else
         'User'
       end
