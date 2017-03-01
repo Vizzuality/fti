@@ -1,26 +1,27 @@
-.section-container
-  .section.links-section
-    = link_to t('observations.types'), previous_wizard_path, class: "button -large -type-e", data: { turbolinks: 'false' }
-    = link_to t('observations.info'), '#', class: "button -large -type-d", disabled: true, data: { turbolinks: 'false' }, remote: true
-    = link_to t('observations.attachments'), '#', class: "button -large -type-e", disabled: true, data: { turbolinks: 'false' }, remote: true
+#observations_steps
+  .section-container
+    .section.links-section
+      = link_to t('observations.types'), previous_wizard_path, class: "button -large -type-e", data: { turbolinks: 'false' }
+      = link_to t('observations.info'), '#', class: "button -large -type-d", disabled: true, data: { turbolinks: 'false' }, remote: true
+      = link_to t('observations.attachments'), '#', class: "button -large -type-e", disabled: true, data: { turbolinks: 'false' }, remote: true
 
-.form-actions
-  .row
-    .column.medium-8.medium-offset-1
-      .row
-        .column.medium-8.medium-offset-4
-          h2.form-title
-            | New Observation
-
-  = simple_form_for @observation, as: :observation, url: wizard_path, method: :put do |f|
+  .form-actions
     .row
       .column.medium-8.medium-offset-1
-        = f.error_notification
-        = hidden_field_tag :current_step, 'info'
-        .form-inputs
-          = render 'new_observation_info', form: f
+        .row
+          .column.medium-8.medium-offset-4
+            h2.form-title
+              | New Observation
 
-    .row.footer-helper
-    .row.fixed-row
-      .button-collection.-formcollection
-        = f.button :submit, t('shared.continue'), class: '-primary'
+    = simple_form_for @observation, as: :observation, url: wizard_path, method: :put do |f|
+      .row
+        .column.medium-8.medium-offset-1
+          = f.error_notification
+          = hidden_field_tag :current_step, 'info'
+          .form-inputs
+            = render 'new_observation_info', form: f
+
+      .row.footer-helper
+      .row.fixed-row
+        .button-collection.-formcollection
+          = f.button :submit, t('shared.continue'), class: '-primary'

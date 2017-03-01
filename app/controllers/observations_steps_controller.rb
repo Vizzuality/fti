@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class ObservationsStepsController < ApplicationController
   before_action :authenticate_user!
-  # load_and_authorize_resource
+  load_and_authorize_resource 'Observation'
 
   include Wicked::Wizard
 
@@ -21,12 +21,6 @@ class ObservationsStepsController < ApplicationController
 
   def update
     move_forward
-  end
-
-  def obtain_severity
-    respond_to do |format|
-      format.json { render json: Severity.where(severable_id: params[:annex_operator_id], severable_type: params[:severable_type]), status: 200 }
-    end
   end
 
   private
@@ -67,5 +61,9 @@ class ObservationsStepsController < ApplicationController
 
     def save_observation
       session[:observation] = @observation.attributes
+    end
+
+    def menu_highlight
+      @menu_highlighted = :observations
     end
 end

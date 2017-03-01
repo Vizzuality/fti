@@ -38,7 +38,7 @@ I want to manage a annex_operator
     When I go to the new annex_operator page
     And I fill in "annex_operator_illegality" with "Illegality new name"
     And I select "Australia" from "annex_operator_country_id"
-    And I select "Law" from "annex_operator_law_id"
+    And I select "Law" from "annex_operator_law_ids"
     And I press "Create"
     Then I should have annex_operator for "Illegality new name"
 

@@ -29,12 +29,12 @@ RSpec.describe Observation, type: :model do
     end
 
     it 'Count on observation' do
-      expect(Observation.count).to                    eq(2)
+      expect(Observation.count).to eq(2)
       expect(Observation.all.first
-                        .publication_date.to_date).to eq((DateTime.now - 1.days).to_date)
-      expect(@observation.country.name).to            match('Country')
-      expect(@observation.illegality).to              eq('Illegality one')
-      expect(@observation.law.legal_reference).to     eq('Lorem')
+                        .publication_date.to_date).to    eq((DateTime.now - 1.days).to_date)
+      expect(@observation.country.name).to               match('Country')
+      expect(@observation.illegality).to                 eq('Illegality one')
+      expect(@observation.laws.first.legal_reference).to eq('Lorem')
     end
 
     it 'Order by illegality desc' do

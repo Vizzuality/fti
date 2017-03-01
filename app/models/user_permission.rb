@@ -28,10 +28,10 @@ class UserPermission < ApplicationRecord
     def role_permissions
       case self.user_role
       when 'admin'    then { admin: { all: [:read] }, all: { all: [:manage] } }
-      when 'operator' then { user: { id: [:manage] } }
-      when 'ngo'      then { user: { id: [:manage] } }
+      when 'operator' then { user: { id: [:manage] }, observation: { all: [:read] }  }
+      when 'ngo'      then { user: { id: [:manage] }, observation: { user_id: [:manage] } }
       else
-        { user: { id: [:manage] } }
+        { user: { id: [:manage] }, observation: { all: [:read] }  }
       end
     end
 

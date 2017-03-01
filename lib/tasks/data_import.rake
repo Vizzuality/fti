@@ -171,6 +171,9 @@ namespace :import_operator_observations_csv do
       CSV.foreach(filename, col_sep: ';', row_sep: :auto, headers: true, encoding: 'UTF-8') do |row|
         data_row = row.to_h
 
+        country_names = data_row['countries'].split(',') if data_row['countries'].present?
+        country_id    = Country.where(name: country_names).pluck(:id).first
+
         category_names = data_row['category_name'].split(',') if data_row['category_name'].present?
         category_ids   = Category.where(name: category_names).pluck(:id)
 
@@ -181,12 +184,17 @@ namespace :import_operator_observations_csv do
         operator_id   = Operator.where(name: operator_name).pluck(:id) if operator_name.present?
 
         law_names = data_row['legal_reference'].split(',') if data_row['legal_reference'].present?
-        law_id    = Law.where(legal_reference: law_names).pluck(:id)
+        law_ids = []
+        if law_names.present?
+          law_names.each do |law_name|
+            law_ids << Law.where(legal_reference: law_name).first_or_create.id
+          end
+        end
 
         data_oo = {}
         data_oo[:observation_type]  = 'AnnexOperator'
         data_oo[:publication_date]  = data_row['publication_date']
-        data_oo[:country_id]        = data_row['country_id']
+        data_oo[:country_id]        = country_id
         data_oo[:details]           = data_row['description']
         data_oo[:evidence]          = data_row['evidence']
         data_oo[:concern_opinion]   = data_row['concern_opinion']
@@ -199,13 +207,15 @@ namespace :import_operator_observations_csv do
 
         data_ao = {}
         data_ao[:illegality] = data_row['illegality']
-        data_ao[:law_id]     = law_id.first if law_id.present?
+        data_ao[:law_ids]    = law_ids    if law_ids.present?
+        data_ao[:country_id] = country_id if country_id.present?
 
         if @ao = AnnexOperator.find_by(illegality: data_row['illegality'])
+          @ao.update!(law_ids: law_ids, country_id: country_id)
           @ao
         else
           @ao = AnnexOperator.create!(data_ao)
-          @ao.update!(law_id: law_id,
+          @ao.update!(law_ids: law_ids,
                       categorings_attributes: [{ category_id: category_ids.first, categorizable: @ao }],
                       severities_attributes: [{ level: 3, details: 'Not specified' },
                                               { level: 2, details: 'Not specified' },
@@ -264,7 +274,7 @@ namespace :import_governance_observations_csv do
         data_ag[:governance_pillar]  = data_row['governance_pillar']  || 'Not specified'
         data_ag[:governance_problem] = data_row['governance_problem'] || 'Not specified'
 
-        if @ag = AnnexGovernance.find_by(governance_pillar: data_row['governance_pillar'])
+        if @ag = AnnexGovernance.find_by(governance_problem: data_row['governance_problem'])
           @ag
         else
           if data_ag['governance_pillar'].blank?

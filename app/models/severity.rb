@@ -21,6 +21,10 @@ class Severity < ApplicationRecord
   has_many :observations, inverse_of: :severity
   has_many :comments,     as: :commentable
 
+  def level_details
+    "#{self.level} - #{self.details}"
+  end
+
   validates_presence_of   :level
   validates_uniqueness_of :level, scope: [:severable_type, :severable_id]
 

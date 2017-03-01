@@ -39,7 +39,8 @@
 
     = paginate @observations
 
-  .row.footer-helper
-    .row.fixed-row
-      .button-collection.-formcollection
-        = link_to t('shared.create'), new_observations_step_path, class: "button -large -type-e", data: { turbolinks: 'false' }
+  - if can?(:create, Observation)
+    .row.footer-helper
+      .row.fixed-row
+        .button-collection.-formcollection
+          = link_to t('shared.create'), new_observations_step_path, class: "button -large -type-e", data: { turbolinks: 'false' }

@@ -1,8 +1,10 @@
 .row
   .column.medium-4
-    = form.label :annex_operator_id, label: 'Illegality', class: 'right inline'
+    = form.label :annex_operator_id, label: '* Illegality', class: 'right inline'
   .column.medium-8
-    = form.input :annex_operator_id, collection: AnnexOperator.illegality_select(contry_id: @observation.country_id), as: :select, include_blank: 'Please select the illegality', label: false, input_html: { class: 'js-mselect' }
+    = form.input :annex_operator_id, collection: AnnexOperator.illegality_select(country_id: @observation.country_id), as: :select, include_blank: 'Please select the illegality', label: false, input_html: { class: 'js-mselect' }
+
+== yield
 
 .row
   .column.medium-4

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222150049) do
+ActiveRecord::Schema.define(version: 20170301113324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20170222150049) do
   create_table "annex_governances", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "annex_operator_laws", force: :cascade do |t|
+    t.integer  "annex_operator_id"
+    t.integer  "law_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["annex_operator_id"], name: "index_annex_operator_laws_on_annex_operator_id", using: :btree
+    t.index ["law_id"], name: "index_annex_operator_laws_on_law_id", using: :btree
   end
 
   create_table "annex_operator_translations", force: :cascade do |t|
@@ -94,8 +103,9 @@ ActiveRecord::Schema.define(version: 20170222150049) do
     t.string   "region_iso"
     t.jsonb    "country_centroid"
     t.jsonb    "region_centroid"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "active",           default: false, null: false
   end
 
   create_table "country_translations", force: :cascade do |t|

@@ -1,7 +1,9 @@
 - if @observation.observation_type == 'AnnexOperator'
-  = render 'observations_steps/annex_operator', form: form
+  = render 'observations_steps/annex_operator', form: form do
+    = render 'observations_steps/severity_date', form: form
 - else
   = render 'observations_steps/annex_governance', form: form
+    = render 'observations_steps/severity_date', form: form
 
 .row
   .column.medium-4
@@ -13,11 +15,6 @@
     = form.label :operator_id, label: 'Operator/Company', class: 'right inline'
   .column.medium-8
     = form.input :operator_id, collection: Operator.operator_select, as: :select, include_blank: 'Please select the company/operator', label: false, input_html: { class: 'js-mselect' }
-.row
-  .column.medium-4
-    = form.label :publication_date, label: '* Publication date', class: 'right inline'
-  .column.medium-8
-    = form.text_field :publication_date, class: 'js-datepicker', label: false
 .row
   .column.medium-4
     = form.label :active, label: 'Active', class: 'right inline'
@@ -33,9 +30,3 @@
     = form.label :evidence, label: 'Evidence', class: 'right inline'
   .column.medium-8
     = form.input :evidence, label: false
-.row
-  .column.medium-4
-    = form.label :severity_id, label: 'Severity', class: 'right inline'
-  .column.medium-8
-    = form.input :severity_id, collection: Severity.severity_select(annex_operator_id: @observation.annex_operator_id, annex_governance_id: @observation.annex_governance_id), as: :select, include_blank: 'Please select the severity', label: false, input_html: { class: 'js-mselect' }
-/  TODO: Check this  = form.grouped_collection_select :severity_id, AnnexOperator.order(:country_id), :severities, :country_id, :id, :level, include_blank: 'Please select the severity'
