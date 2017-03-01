@@ -274,7 +274,7 @@ namespace :import_governance_observations_csv do
         data_ag[:governance_pillar]  = data_row['governance_pillar']
         data_ag[:governance_problem] = data_row['governance_problem']
 
-        if @ag = AnnexGovernance.find_by(governance_pillar: data_row['governance_pillar'])
+        if @ag = AnnexGovernance.find_by(governance_problem: data_row['governance_problem'])
           @ag
         else
           if data_ag['governance_pillar'].blank?
