@@ -1,0 +1,13 @@
+.row
+  .column.medium-4
+    = form.label :severity_id, label: '* Severity', class: 'right inline'
+  .column.medium-8
+    = form.grouped_collection_select :severity_id,
+                                     @observation.observation_type == 'AnnexOperator' ? AnnexOperator.all : AnnexGovernance.all,
+                                     :severities, @observation.observation_type == 'AnnexOperator' ? :illegality : :governance_problem,
+                                     :id, :level_details, include_blank: 'Please select the severity'
+.row
+  .column.medium-4
+    = form.label :publication_date, label: '* Publication date', class: 'right inline'
+  .column.medium-8
+    = form.text_field :publication_date, class: 'js-datepicker', label: false
