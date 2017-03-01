@@ -27,7 +27,7 @@
             .column.medium-4
               = f.label :country_id, label: 'Country', class: 'right inline'
             .column.medium-8
-              = f.input :country_id, collection: Country.country_select, as: :select, include_blank: 'Please select Your country', label: false, input_html: { class: 'js-mselect' }
+              = f.input :country_id, collection: Country.active_country_select, as: :select, include_blank: 'Please select Your country', label: false, input_html: { class: 'js-mselect' }
 
     .row.footer-helper
     .row.fixed-row
