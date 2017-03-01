@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       resources :observers, path: 'monitors', as: :monitors
       resources :observations, except: [:new, :create]
 
-      resources :observations_steps, only: [:new, :show, :update, :obtain_severity]
+      resources :observations_steps, only: [:new, :show, :update]
     end
 
     get 'dashboard', to: 'users#dashboard', as: :dashboard
