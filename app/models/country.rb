@@ -10,6 +10,7 @@
 #  region_centroid  :jsonb
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  active           :boolean          default(FALSE), not null
 #
 
 class Country < ApplicationRecord

@@ -8,8 +8,7 @@ class CreateLaws < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_foreign_key :laws,            :countries
-    add_foreign_key :annex_operators, :laws
+    add_foreign_key :laws, :countries
 
     reversible do |dir|
       dir.up do

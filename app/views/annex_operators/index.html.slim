@@ -20,7 +20,7 @@
           span.data._hidden
           - if can?(:edit, annex_operator)
             span.data.-linkdata
-              = link_to edit_annex_operator_path(annex_operator) do
+              = link_to edit_annex_operator_path(annex_operator), data: { turbolinks: 'false' } do
                 = image_tag "edit.svg", class: 'icon'
                 span
                   = t('shared.edit')

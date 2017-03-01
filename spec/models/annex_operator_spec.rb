@@ -4,7 +4,6 @@
 #
 #  id         :integer          not null, primary key
 #  country_id :integer
-#  law_id     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -23,7 +22,7 @@ RSpec.describe AnnexOperator, type: :model do
       expect(AnnexOperator.all.first.illegality).to eq('Z Illegality')
       expect(@annex.country.name).to                match('Country')
       expect(@annex.illegality).to                  eq('Illegality one')
-      expect(@annex.law.legal_reference).to         eq('Lorem')
+      expect(@annex.laws.first.legal_reference).to  eq('Lorem')
     end
 
     it 'Order by illegality asc' do
