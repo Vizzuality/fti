@@ -33,7 +33,7 @@ class AnnexOperator < ApplicationRecord
                            .order('annex_operator_translations.illegality ASC')
   }
 
-  scope :by_country, -> country_id { where('annex_operators.country_id = ?', country_id) }
+  scope :by_country, ->country_id { where('annex_operators.country_id = ?', country_id) }
 
   class << self
     def fetch_all(options)

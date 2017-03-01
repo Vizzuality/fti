@@ -23,7 +23,7 @@ class Government < ApplicationRecord
                            .order('government_translations.government_entity ASC')
   }
 
-  scope :by_country, -> country_id { where('governments.country_id = ?', country_id) }
+  scope :by_country, ->country_id { where('governments.country_id = ?', country_id) }
 
 
   class << self
