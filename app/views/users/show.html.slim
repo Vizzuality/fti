@@ -1,7 +1,7 @@
 .section-container
   .section.links-section
     = link_to t('shared.view'), user_url(@user), class: "button -large -type-d"
-    = link_to t('shared.edit_info'), edit_user_url(@user), class: "button -large -type-e"
+    = link_to t('shared.edit_info'), edit_user_url(@user), data: { turbolinks: 'false' }, class: "button -large -type-e"
     - if can? :manage, UserPermission
       = link_to t('shared.permissions'), user_permission_url(@user, @user.user_permission), class: "button -large -type-e"
 .form-actions

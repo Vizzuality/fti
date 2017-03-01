@@ -50,7 +50,7 @@ nav
         ul class='dropdown-list'
           li.arrowhelper
           li
-            = link_to edit_user_registration_url, class: "#{'is-active' if menu_highlight?(:account)}" do
+            = link_to edit_user_registration_url, data: { turbolinks: 'false' }, class: "#{'is-active' if menu_highlight?(:account)}" do
               = t('navbar.edit_account')
               span.link-helper
           li
@@ -61,6 +61,6 @@ nav
       li
         = link_to t('navbar.login'), new_user_session_url, class: "#{'is-active' if menu_highlight?(:login)}"
       li
-        = link_to t('navbar.register'), new_user_registration_url, class: "#{'is-active' if menu_highlight?(:account)}"
+        = link_to t('navbar.register'), new_user_registration_url, data: { turbolinks: 'false' }, class: "#{'is-active' if menu_highlight?(:account)}"
 
     = render 'shared/locals'
