@@ -34,6 +34,8 @@ class Country < ApplicationRecord
                            .order('country_translations.name ASC')
   }
 
+  scope :by_activated, -> { where(active: true) }
+
   default_scope { includes(:translations) }
 
   class << self
@@ -44,6 +46,10 @@ class Country < ApplicationRecord
 
     def country_select
       by_name_asc.map { |c| [c.name, c.id] }
+    end
+
+    def active_country_select
+      by_activated.by_name_asc.map { |c| [c.name, c.id] }
     end
   end
 
