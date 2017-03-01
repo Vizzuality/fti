@@ -23,12 +23,6 @@ class ObservationsStepsController < ApplicationController
     move_forward
   end
 
-  def obtain_severity
-    respond_to do |format|
-      format.json { render json: Severity.where(severable_id: params[:annex_operator_id], severable_type: params[:severable_type]), status: 200 }
-    end
-  end
-
   private
 
     def observation_params
