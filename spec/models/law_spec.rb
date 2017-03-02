@@ -40,4 +40,8 @@ RSpec.describe Law, type: :model do
     I18n.locale = :en
     expect(@law.legal_reference).to eq('Lorem')
   end
+
+  it 'Fetch all laws' do
+    expect(Law.fetch_all(nil).count).to eq(2)
+  end
 end

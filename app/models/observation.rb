@@ -103,7 +103,11 @@ class Observation < ApplicationRecord
   end
 
   def title
-    try(:annex_operator).try(:illegality) || try(:annex_governance).try(:governance_pillar)
+    if observation_type.include?('AnnexOperator')
+      annex_operator.illegality
+    else
+      annex_governance.governance_problem
+    end
   end
 
   def laws

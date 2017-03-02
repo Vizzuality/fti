@@ -38,5 +38,13 @@ RSpec.describe Country, type: :model do
       I18n.locale = :en
       expect(@user.country.name).to match('Country')
     end
+
+    it 'Fetch all countries' do
+      expect(Country.fetch_all(nil).count).to eq(1)
+    end
+
+    it 'Select for active countries' do
+      expect(Country.active_country_select.count).to eq(1)
+    end
   end
 end
