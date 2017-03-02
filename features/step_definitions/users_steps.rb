@@ -1,30 +1,30 @@
 # frozen_string_literal: true
 Then /^I should have an user$/ do
-  User.filter_users.size.should >= 1
+  User.filter_users.count == 1
 end
 
 Then /^I should have an adminuser$/ do
-  User.filter_admins.size.should >= 1
+  User.filter_admins.count >= 1
 end
 
 Then /^I should have one adminuser$/ do
-  User.filter_admins.size.should == 1
+  User.filter_admins.count == 1
 end
 
 Then /^I should have two adminusers$/ do
-  User.filter_admins.size.should == 2
+  User.filter_admins.count == 2
 end
 
 Then /^I should have one ngo$/ do
-  User.filter_ngos.size.should == 1
+  User.filter_ngos.count == 1
 end
 
 Then /^I should have one operator for user$/ do
-  User.filter_operators.size.should == 1
+  User.filter_operators.count == 1
 end
 
 Then /^I should have zero operator$/ do
-  User.filter_operators.size.should.zero?
+  User.filter_operators.count.zero?
 end
 
 Given /^I am authenticated user$/ do
