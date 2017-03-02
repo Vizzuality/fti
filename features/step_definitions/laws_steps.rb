@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 Then /^I should have one law$/ do
-  Law.all.size.should == 1
+  Law.count == 1
 end
 
 Then /^I should have law for (.+)$/ do |law_name|
@@ -8,7 +8,7 @@ Then /^I should have law for (.+)$/ do |law_name|
 end
 
 Then /^I should have zero laws$/ do
-  Law.all.reload.size.should.zero?
+  Law.count.zero?
 end
 
 Given /^law$/ do

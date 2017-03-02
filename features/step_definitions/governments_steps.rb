@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 Then /^I should have one government$/ do
-  Government.all.size.should == 1
+  Government.count == 1
 end
 
 Then /^I should have government for (.+)$/ do |government_name|
@@ -8,7 +8,7 @@ Then /^I should have government for (.+)$/ do |government_name|
 end
 
 Then /^I should have zero governments$/ do
-  Government.all.reload.size.should.zero?
+  Government.count.zero?
 end
 
 Given /^government$/ do

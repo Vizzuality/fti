@@ -68,3 +68,10 @@ I want to manage a monitor
     When I follow "English"
     Then I should have locale "en"
     And I should see "Monitor new EN"
+
+  Scenario: Adminuser can delete monitor
+    Given I am authenticated adminuser
+    And monitor
+    When I go to the monitors page
+    And I follow "Delete"
+    Then I should have zero monitors

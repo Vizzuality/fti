@@ -67,3 +67,10 @@ I want to manage a species
     When I follow "English"
     Then I should have locale "en"
     And I should see "Species new EN"
+
+  Scenario: Adminuser can delete species
+    Given I am authenticated adminuser
+    And species
+    When I go to the species page
+    And I follow "Delete"
+    Then I should have zero species

@@ -66,3 +66,10 @@ I want to manage a government
     When I follow "English"
     Then I should have locale "en"
     And I should see "Government new EN"
+
+  Scenario: Adminuser can delete government
+    Given I am authenticated adminuser
+    And government
+    When I go to the governments page
+    And I follow "Delete"
+    Then I should have zero governments

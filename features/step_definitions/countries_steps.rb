@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 Then /^I should have one country$/ do
-  Country.all.size.should == 1
+  Country.count == 1
 end
 
 Then /^I should have country for (.+)$/ do |country_name|
@@ -8,7 +8,7 @@ Then /^I should have country for (.+)$/ do |country_name|
 end
 
 Then /^I should have zero countries$/ do
-  Country.all.reload.size.should.zero?
+  Country.count.zero?
 end
 
 Given /^country$/ do

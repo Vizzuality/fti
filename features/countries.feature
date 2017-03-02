@@ -66,3 +66,10 @@ I want to manage a country
     When I follow "English"
     Then I should have locale "en"
     And I should see "Country new EN"
+
+  Scenario: Adminuser can delete country
+    Given I am authenticated adminuser
+    And country
+    When I go to the countries page
+    And I follow "Delete"
+    Then I should have zero countries

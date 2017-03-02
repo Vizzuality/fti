@@ -68,3 +68,10 @@ I want to manage a annex_operator
     When I follow "English"
     Then I should have locale "en"
     And I should see "Illegality new EN"
+
+  Scenario: Adminuser can delete annex_governance
+    Given I am authenticated adminuser
+    And annex_governance
+    When I go to the annex_governances page
+    And I follow "Delete"
+    Then I should have zero annex_governances

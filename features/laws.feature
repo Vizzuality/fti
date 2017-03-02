@@ -66,3 +66,10 @@ I want to manage a law
     When I follow "English"
     Then I should have locale "en"
     And I should see "Law new EN"
+
+  Scenario: Adminuser can delete law
+    Given I am authenticated adminuser
+    And law
+    When I go to the laws page
+    And I follow "Delete"
+    Then I should have zero laws
