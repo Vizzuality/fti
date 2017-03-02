@@ -26,7 +26,7 @@ class ObservationsStepsController < ApplicationController
   private
 
     def observation_params
-      step_params = Observation.form_steps.select{|x| x[:page] == step}.first
+      step_params = Observation.form_steps.select{ |x| x[:page] == step }.first
       params.require(:observation).permit(step_params[:params])
     end
 

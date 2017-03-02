@@ -38,5 +38,13 @@ RSpec.describe AnnexGovernance, type: :model do
       I18n.locale = :en
       expect(@annex.governance_problem).to eq('Annex governance problem')
     end
+
+    it 'Fetch all annex governances' do
+      expect(AnnexGovernance.fetch_all(nil).count).to eq(2)
+    end
+
+    it 'Governance problem select' do
+      expect(AnnexGovernance.governance_problem_select.count).to eq(2)
+    end
   end
 end

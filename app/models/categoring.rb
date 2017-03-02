@@ -19,8 +19,7 @@ class Categoring < ApplicationRecord
 
   class << self
     def build(categorizable, category)
-      new categorizable: categorizable,
-          category_id:   category.id
+      new(categorizable: categorizable, category_id: category.id)
     end
   end
 end

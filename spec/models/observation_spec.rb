@@ -24,8 +24,8 @@ require 'rails_helper'
 RSpec.describe Observation, type: :model do
   context 'Observation count and filters' do
     before :each do
-      FactoryGirl.create(:observation_2, publication_date: (DateTime.now - 1.days))
-      @observation = create(:observation_1, publication_date: DateTime.now)
+      @observation_g = create(:observation_2, publication_date: (DateTime.now - 1.days))
+      @observation   = create(:observation_1, publication_date: DateTime.now)
     end
 
     it 'Count on observation' do
@@ -53,6 +53,17 @@ RSpec.describe Observation, type: :model do
       expect(@observation.evidence).to eq('Lorem ipsum.. FR')
       I18n.locale = :en
       expect(@observation.evidence).to eq('Lorem ipsum..')
+    end
+
+    it 'Check methods' do
+      expect(Observation.types).to             eq(['AnnexGovernance','AnnexOperator'])
+      expect(Observation.translated_types).to  eq([["Governance illegality", "AnnexGovernance"], ["Illegality", "AnnexOperator"]])
+      expect(@observation_g.is_governance?).to eq(true)
+      expect(@observation.is_operator?).to     eq(true)
+      expect(@observation.title).to            eq('Illegality one')
+      expect(@observation_g.title).to          eq('Annex governance problem')
+      expect(@observation.user_name).to        eq('Admin user')
+      expect(@observation.translated_type).to  eq('Illegality')
     end
   end
 end
