@@ -4,7 +4,7 @@ Then /^I should have one observation$/ do
 end
 
 Then /^I should have observation for (.+)$/ do |observation_name|
-  # return true if Observation.find_by()
+  return true if Observation.find_by(evidence: observation_name)
 end
 
 Then /^I should have zero observations$/ do
@@ -13,4 +13,8 @@ end
 
 Given /^observation$/ do
   FactoryGirl.create(:observation_1)
+end
+
+Given /^observation governance$/ do
+  FactoryGirl.create(:observation_2)
 end

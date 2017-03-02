@@ -33,7 +33,7 @@ class ObservationsController < ApplicationController
   private
 
     def filter_options
-      params.permit()
+      params.permit(nil)
     end
 
     def set_observation

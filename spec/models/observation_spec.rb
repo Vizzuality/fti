@@ -24,6 +24,7 @@ require 'rails_helper'
 RSpec.describe Observation, type: :model do
   context 'Observation count and filters' do
     before :each do
+      I18n.locale    = :en
       @observation_g = create(:observation_2, publication_date: (DateTime.now - 1.days))
       @observation   = create(:observation_1, publication_date: DateTime.now)
     end
@@ -43,7 +44,7 @@ RSpec.describe Observation, type: :model do
 
     it 'Fallbacks for empty translations on observation' do
       I18n.locale = :fr
-      expect(@observation.evidence).to eq('Lorem ipsum..')
+      expect(@observation.evidence).to eq('Operator observation')
       I18n.locale = :en
     end
 
@@ -52,7 +53,7 @@ RSpec.describe Observation, type: :model do
       I18n.locale = :fr
       expect(@observation.evidence).to eq('Lorem ipsum.. FR')
       I18n.locale = :en
-      expect(@observation.evidence).to eq('Lorem ipsum..')
+      expect(@observation.evidence).to eq('Operator observation')
     end
 
     it 'Check methods' do

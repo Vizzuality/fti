@@ -23,7 +23,7 @@ FactoryGirl.define do
   factory :observation_1, class: 'Observation' do
     observation_type 'AnnexOperator'
     active            true
-    evidence         'Lorem ipsum..'
+    evidence         'Operator observation'
     publication_date DateTime.now.to_date
     association :country, factory: :country
 
@@ -42,7 +42,7 @@ FactoryGirl.define do
   factory :observation_2, class: 'Observation' do
     observation_type 'AnnexGovernance'
     active            true
-    evidence         'Lorem ipsum..'
+    evidence         'Governance observation'
     publication_date (DateTime.now - 1.days).to_date
     association :country, factory: :country
 
