@@ -67,3 +67,10 @@ I want to manage a operator
     When I follow "English"
     Then I should have locale "en"
     And I should see "Operator new EN"
+
+  Scenario: Adminuser can delete operator
+    Given I am authenticated adminuser
+    And operator
+    When I go to the operators page
+    And I follow "Delete"
+    Then I should have zero operators

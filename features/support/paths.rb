@@ -97,6 +97,8 @@ module NavigationHelpers
       edit_annex_governance_path(AnnexGovernance.find_by(governance_problem: $1), locale: I18n.locale)
     when /the new annex_governance page/
       new_annex_governance_path(locale: I18n.locale)
+    when /the observations page/
+      observations_path(locale: I18n.locale)
     else
       begin
         page_name =~ /the (.*) page/

@@ -69,3 +69,10 @@ I want to edit, view, activate, deactivate and change user permissions
     And I press "Update"
     Then I should be on the user page for "pepe@exaple.com"
     Then I should have one operator for user
+
+  Scenario: Adminuser can delete user
+    Given I am authenticated adminuser
+    And user
+    When I go to the users page
+    And I follow "Delete"
+    Then I should have an user

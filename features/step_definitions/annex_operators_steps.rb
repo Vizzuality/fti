@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 Then /^I should have one annex_operator$/ do
-  AnnexOperator.all.size.should == 1
+  AnnexOperator.count == 1
 end
 
 Then /^I should have annex_operator for (.+)$/ do |annex_operator_name|
@@ -8,7 +8,7 @@ Then /^I should have annex_operator for (.+)$/ do |annex_operator_name|
 end
 
 Then /^I should have zero annex_operators$/ do
-  AnnexOperator.all.reload.size.should.zero?
+  AnnexOperator.count.zero?
 end
 
 Given /^annex_operator$/ do

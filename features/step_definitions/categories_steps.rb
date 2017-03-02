@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 Then /^I should have one category$/ do
-  Category.all.size.should == 1
+  Category.count == 1
 end
 
 Then /^I should have category for (.+)$/ do |category_name|
@@ -8,7 +8,7 @@ Then /^I should have category for (.+)$/ do |category_name|
 end
 
 Then /^I should have zero categories$/ do
-  Category.all.reload.size.should.zero?
+  Category.count.zero?
 end
 
 Given /^category$/ do

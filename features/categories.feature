@@ -41,3 +41,10 @@ I want to manage a category
     And I press "Update"
     Then I should see "Please review the problems below:"
     And I should see "can't be blank"
+
+  Scenario: Adminuser can delete category
+    Given I am authenticated adminuser
+    And category
+    When I go to the categories page
+    And I follow "Delete"
+    Then I should have zero categories

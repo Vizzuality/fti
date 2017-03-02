@@ -54,11 +54,9 @@ ActiveRecord::Schema.define(version: 20170301113324) do
 
   create_table "annex_operators", force: :cascade do |t|
     t.integer  "country_id"
-    t.integer  "law_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_annex_operators_on_country_id", using: :btree
-    t.index ["law_id"], name: "index_annex_operators_on_law_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -368,7 +366,6 @@ ActiveRecord::Schema.define(version: 20170301113324) do
   end
 
   add_foreign_key "annex_operators", "countries"
-  add_foreign_key "annex_operators", "laws"
   add_foreign_key "categorings", "categories"
   add_foreign_key "comments", "users"
   add_foreign_key "laws", "countries"
