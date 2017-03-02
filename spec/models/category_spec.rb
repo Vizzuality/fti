@@ -46,4 +46,8 @@ RSpec.describe Category, type: :model do
     @category.valid?
     expect { @category.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Name can't be blank")
   end
+
+  it 'Fetch all categories' do
+    expect(Category.fetch_all(nil).count).to eq(2)
+  end
 end

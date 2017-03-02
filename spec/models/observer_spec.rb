@@ -53,4 +53,12 @@ RSpec.describe Observer, type: :model do
     @monitor.valid?
     expect { @monitor.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Observer type Not in types is not a valid observer type")
   end
+
+  it 'Fetch all monitors' do
+    expect(Observer.fetch_all(nil).count).to eq(2)
+  end
+
+  it 'Monitor select' do
+    expect(Observer.observer_select.size).to eq(2)
+  end
 end

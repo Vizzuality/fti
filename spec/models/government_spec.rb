@@ -39,4 +39,12 @@ RSpec.describe Government, type: :model do
     I18n.locale = :en
     expect(@government.government_entity).to eq('A Government')
   end
+
+  it 'Fetch all governments' do
+    expect(Government.fetch_all(nil).count).to eq(2)
+  end
+
+  it 'Governnment select for country' do
+    expect(Government.entity_select(country_id: @government.country_id).size).to eq(1)
+  end
 end

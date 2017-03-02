@@ -50,6 +50,7 @@ FactoryGirl.define do
       annex = FactoryGirl.create(:annex_governance)
 
       observation.update(severity: FactoryGirl.create(:severity, severable: annex),
+                         annex_governance: annex,
                          user: FactoryGirl.create(:admin),
                          observer: FactoryGirl.create(:observer, name: "Observer #{Faker::Lorem.sentence}"),
                          government: FactoryGirl.create(:government),
