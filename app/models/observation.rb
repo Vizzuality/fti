@@ -65,17 +65,16 @@ class Observation < ApplicationRecord
                 { 'documents_attributes': %w[id name attachment document_type _destroy] }] }]
   end
 
-  scope :by_date_desc,  -> { includes(:translations).order('observations.publication_date DESC') }
-  scope :by_governance, -> { where(observation_type: 'AnnexGovernance')                          }
-  scope :by_operator,   -> { where(observation_type: 'AnnexOperator')                            }
+  scope :by_date_desc,  -> { order('observations.publication_date DESC') }
+  scope :by_governance, -> { where(observation_type: 'AnnexGovernance')  }
+  scope :by_operator,   -> { where(observation_type: 'AnnexOperator')    }
 
   default_scope { includes(:translations) }
 
   class << self
     def fetch_all(options)
-      observations = by_date_desc.includes([:translations, :documents, :photos,
-                                            :severity, :annex_operator, :annex_governance,
-                                            { severity: :translations },
+      observations = by_date_desc.includes([:documents, :photos,
+                                            :annex_operator, :annex_governance,
                                             { annex_operator: :translations },
                                             { annex_governance: :translations }])
       observations
