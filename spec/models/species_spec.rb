@@ -54,4 +54,8 @@ RSpec.describe Species, type: :model do
     @species.valid?
     expect { @species.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Name can't be blank")
   end
+
+  it 'Fetch all species' do
+    expect(Species.fetch_all(nil).count).to eq(2)
+  end
 end

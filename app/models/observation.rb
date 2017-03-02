@@ -103,7 +103,11 @@ class Observation < ApplicationRecord
   end
 
   def title
-    try(:annex_operator).try(:illegality) || try(:annex_governance).try(:governance_pillar)
+    if observation_type.include?('AnnexOperator')
+      annex_operator.illegality
+    else
+      annex_governance.governance_problem
+    end
   end
 
   def laws
@@ -146,9 +150,9 @@ class Observation < ApplicationRecord
           self.errors['annex_operator_id'] << 'You must select an operator' if self.annex_operator_id.blank?
           self.errors['operator_id']       << 'You must select an operator' if self.operator_id.blank?
         end
-        self.errors['observer_id']      << 'You must select an observer' if self.observer_id.blank?
+        self.errors['observer_id']      << 'You must select an observer'        if self.observer_id.blank?
         self.errors['publication_date'] << 'You must select a publication date' if self.publication_date.blank?
-        self.errors['severity_id']      << 'You must select a severity' if self.severity_id.blank?
+        self.errors['severity_id']      << 'You must select a severity'         if self.severity_id.blank?
       end
 
       if step_index >= step_order.index('attachments')

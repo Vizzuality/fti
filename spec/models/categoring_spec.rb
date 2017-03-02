@@ -24,4 +24,9 @@ RSpec.describe Categoring, type: :model do
     expect(@categoring.category.annex_operators.size).to eq(1)
     expect(AnnexOperator.all.last.categories.size).to    eq(1)
   end
+
+  it 'Build categoring' do
+    @categoring = Categoring.build(@annex, @category)
+    expect(@categoring.categorizable_type).to match('AnnexOperator')
+  end
 end

@@ -47,4 +47,12 @@ RSpec.describe Operator, type: :model do
     @operator.valid?
     expect { @operator.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Name can't be blank")
   end
+
+  it 'Fetch all operators' do
+    expect(Operator.fetch_all(nil).count).to eq(2)
+  end
+
+  it 'Operator select' do
+    expect(Operator.operator_select.size).to eq(2)
+  end
 end

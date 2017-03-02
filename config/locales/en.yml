@@ -8,6 +8,8 @@ en:
         restrict_dependent_destroy:
           has_one: "Cannot delete record because a dependent %{record} exists"
           has_many: "Cannot delete record because dependent %{record} exist"
+        carrierwave_processing_error: failed to be processed
+        carrierwave_integrity_error: is not an allowed file type
   date:
     abbr_day_names:
     - Sun
@@ -355,3 +357,8 @@ en:
     : "PalmOil"
     ? "Trader"
     : "Trader"
+
+  wicked:
+    types: 'observation-type'
+    info: 'observation-info'
+    attachments: 'observation-attachments'
