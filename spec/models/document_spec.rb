@@ -15,6 +15,15 @@
 require 'rails_helper'
 
 RSpec.describe Document, type: :model do
+  before :each do
+    @document = create(:document)
+  end
+
+  it 'Count on law' do
+    expect(Document.count).to eq(1)
+    expect(@document.attacheable.illegality).to eq('Illegality one')
+  end
+
   it 'Document type validation' do
     @document = Document.new(document_type: '')
 

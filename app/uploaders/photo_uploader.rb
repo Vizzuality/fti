@@ -20,10 +20,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  def content_type_whitelist
-    /image\//
-  end
-
   def default_url(*args)
     ActionController::Base.helpers.asset_path('' + [version_name, 'placeholder.png'].compact.join('_'))
   end

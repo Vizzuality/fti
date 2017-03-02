@@ -7,7 +7,7 @@
 
 .row
   .column.medium-4
-    = form.label :observer_id, label: 'Monitor', class: 'right inline'
+    = form.label :observer_id, label: '* Monitor', class: 'right inline'
   .column.medium-8
     = form.input :observer_id, collection: Observer.observer_select, as: :select, include_blank: 'Please select the monitor', label: false, input_html: { class: 'js-mselect' }
 .row
