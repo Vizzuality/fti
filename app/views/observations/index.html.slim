@@ -10,10 +10,12 @@
         .data-primary
           p
             - observation.photos.each do |photo|
-              = image_tag(photo.attachment_url(:thumbnail))
+              a href = photo.attachment_url
+                = image_tag(photo.attachment_url(:thumbnail))
           p
             - observation.documents.each do |document|
-              = document.name
+              a href = document.attachment_url #{document.name}
+              /= link_to document.name, document.attachment_url
           span.data.-primary
             = link_to "#{observation.translated_type} - #{observation.title}", observation_path(observation)
           span.data
