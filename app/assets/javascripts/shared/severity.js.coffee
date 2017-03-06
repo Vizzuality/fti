@@ -1,10 +1,4 @@
 jQuery ->
-  $('.js-severity').parent().hide() if $('.js-annex-severity :selected').text().length == 0
-
-  severities = $('.js-severity').html()
-
-  $('.js-annex-severity').change -> changeSeverity()
-
 
   changeSeverity = ->
     annex = $('.js-annex-severity :selected').text()
@@ -17,3 +11,12 @@ jQuery ->
     else
       $('.js-severity').empty()
       $('.js-severity').parent().hide()
+
+
+  severities = $('.js-severity').html()
+  if $('.js-annex-severity :selected').text().length == 0
+    $('.js-severity').parent().hide()
+  else
+    changeSeverity()
+
+  $('.js-annex-severity').change -> changeSeverity()
