@@ -15,7 +15,6 @@
           p
             - observation.documents.each do |document|
               a href = document.attachment_url #{document.name}
-              /= link_to document.name, document.attachment_url
           span.data.-primary
             = link_to "#{observation.translated_type} - #{observation.title}", observation_path(observation)
           span.data
