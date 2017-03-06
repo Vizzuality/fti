@@ -12,7 +12,7 @@
 
 FactoryGirl.define do
   factory :operator do
-    name 'Operator'
+    name "Operator #{Faker::Lorem.sentence}"
 
     after(:create) do |operator|
       operator.update(country: FactoryGirl.create(:country, name: "Country #{Faker::Lorem.sentence}",
