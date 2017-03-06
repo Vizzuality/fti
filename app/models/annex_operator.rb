@@ -43,9 +43,11 @@ class AnnexOperator < ApplicationRecord
       annex_operators
     end
 
-    def illegality_select(options)
-      country_id = options[:country_id] if options[:country_id].present?
-      by_country(country_id).by_illegality_asc.map { |il| [il.illegality, il.id] }
+    def illegality_select(options=nil)
+      country_id = options[:country_id] if options.present? && options[:country_id].present?
+      illegalities = all
+      illegalities = illegalities.by_country(country_id) if country_id.present?
+      illegalities.by_illegality_asc.map { |il| [il.illegality, il.id] }
     end
   end
 

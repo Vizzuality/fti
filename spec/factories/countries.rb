@@ -14,8 +14,8 @@
 
 FactoryGirl.define do
   factory :country do
-    sequence(:name) { |n| "Country #{Faker::Address.country}" }
-    sequence(:iso)  { |n| "C#{Faker::Address.country_code}" }
+    sequence(:name) { |n| "#{n} Country #{Faker::Address.country}" }
+    sequence(:iso)  { |n| "#{n}#{Faker::Address.country_code}" }
     region_name 'Australia/New Zealand'
     region_iso  'AZ'
     active true

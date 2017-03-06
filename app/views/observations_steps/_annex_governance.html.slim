@@ -2,7 +2,7 @@
   .column.medium-4
     = form.label :annex_governance_id, label: '* Governance problem', class: 'right inline'
   .column.medium-8
-    = form.input :annex_governance_id, collection: AnnexGovernance.governance_problem_select, as: :select, include_blank: 'Please select the governance problem', label: false, input_html: { class: 'js-mselect' }
+    = form.input :annex_governance_id, collection: AnnexGovernance.governance_problem_select, as: :select, include_blank: 'Please select the governance problem', label: false, input_html: { class: 'js-mselect js-annex-severity' }
 
 == yield
 

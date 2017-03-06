@@ -12,5 +12,6 @@ Then /^I should have zero annex_operators$/ do
 end
 
 Given /^annex_operator$/ do
-  FactoryGirl.create(:annex_operator, illegality: 'Illegality one')
+  @annex = FactoryGirl.create(:annex_operator, illegality: 'Illegality one')
+  FactoryGirl.create(:severity, level: 2, details: 'Lorem ipsum..', severable: @annex)
 end

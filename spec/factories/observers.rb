@@ -11,7 +11,7 @@
 
 FactoryGirl.define do
   factory :observer do
-    name          'Observer'
+    name          "Observer #{Faker::Lorem.sentence}"
     observer_type 'External'
   end
 end

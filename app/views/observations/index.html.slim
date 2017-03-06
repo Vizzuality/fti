@@ -13,7 +13,7 @@
               = image_tag(photo.attachment_url(:thumbnail))
           p
             - observation.documents.each do |document|
-              = document.name
+              = link_to document.name, document.attachment.url
           span.data.-primary
             = link_to "#{observation.translated_type} - #{observation.title}", observation_path(observation)
           span.data
