@@ -99,6 +99,14 @@ module NavigationHelpers
       new_annex_governance_path(locale: I18n.locale)
     when /the observations page/
       observations_path(locale: I18n.locale)
+    when /the create observation page/
+      new_observations_step_path(locale: I18n.locale)
+    when /the observation's first step/
+      observations_step_path(id: 'types', locale: I18n.locale)
+    when /the observation's second step/
+      observations_step_path(id: 'info', locale: I18n.locale)
+    when /the observation's third step/
+      observations_step_path(id: 'attachments', locale: I18n.locale)
     when /the observation page for "(.*)"$/
       observation_path(Observation.find_by(evidence: $1), locale: I18n.locale)
     when /the edit observation page for "(.*)"$/

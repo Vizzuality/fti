@@ -31,7 +31,7 @@ I want to manage a observation
     Then I should have one country
     When I go to the edit observation page for "Operator observation"
     And I select from the following hidden field ".js-annex-severity" with "Illegality two"
-    And I select from the following hidden field ".js-severity" with "2 - Lorem ipsum.."
+    And I select from the following hidden field ".js-severity" with "2 - Two"
     And I press "Update"
     Then I should be on the observations page
     And I should see "Illegality two"
@@ -42,3 +42,29 @@ I want to manage a observation
     When I go to the observations page
     And I follow "Delete"
     Then I should have zero observations
+
+  @javascript
+  Scenario: Adminuser can create an observation
+    Given I am authenticated adminuser
+    And observation matched annex_operator
+    When I go to the create observation page
+    Then I should be on the observation's first step
+    And I select from the following hidden field "#observation_country_id" with "Test Country"
+    When I select from the following hidden field "#observation_observation_type" with "Illegality"
+    And I press "Continue"
+    Then I should be on the observation's second step
+#    When I select from the following hidden field ".js-annex-severity" with "Illegality two"
+#    And I select from the following hidden field "#observation_severity_id" with "2 - Two"
+#    And I select datetime "2016 01 01" as the "#observation_publication_date"
+#    And I fill in "#observation_pv" with "PV"
+#    And I fill in "#observation_concern_opinion" with "Opinion"
+#    And I fill in "#observation_litigation_status" with "Status"
+#    And I select from the following hidden field "#observation_observer_id" with "observer"
+#    And I fill in "#observation_details" with "Details"
+#    And I fill in "#observation_evidence" with "Evidence"
+#    And I press "Continue"
+#    Then I should be on the observation's third step
+
+#    When I fill the observation's third step
+#    Then I should go to observations
+#    And I should have a new observation
