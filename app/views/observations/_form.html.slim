@@ -8,7 +8,7 @@
     - if @observation.is_operator?
       = form.input :annex_operator_id, collection: AnnexOperator.illegality_select(country_id: @observation.country_id), as: :select, input_html: { class: 'js-mselect js-annex-severity' }, include_blank: 'Please select the illegality', label: false, disabled: common_form?
     - else
-      = form.input :annex_governance_id, collection: AnnexGovernance.governance_problem_select, as: :select, input_html: { class: 'js-mselect' }, include_blank: 'Please select the governance problem', label: false, disabled: common_form?
+      = form.input :annex_governance_id, collection: AnnexGovernance.governance_problem_select, as: :select, input_html: { class: 'js-mselect js-annex-severity' }, include_blank: 'Please select the governance problem', label: false, disabled: common_form?
 = render 'observations_shared/severity', form: form
 .row
   .column.medium-4
