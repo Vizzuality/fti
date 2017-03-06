@@ -23,12 +23,12 @@ RSpec.describe Observer, type: :model do
   end
 
   it 'Order by name asc' do
-    expect(Observer.by_name_asc.first.name).to eq('Observer')
+    expect(Observer.by_name_asc.first.name).to match('Observer')
   end
 
   it 'Fallbacks for empty translations on observer' do
     I18n.locale = :fr
-    expect(@monitor.name).to eq('Observer')
+    expect(@monitor.name).to match('Observer')
     I18n.locale = :en
   end
 
@@ -37,7 +37,7 @@ RSpec.describe Observer, type: :model do
     I18n.locale = :fr
     expect(@monitor.name).to eq('Observer FR')
     I18n.locale = :en
-    expect(@monitor.name).to eq('Observer')
+    expect(@monitor.name).to match('Observer')
   end
 
   it 'Name and observer_type validation' do

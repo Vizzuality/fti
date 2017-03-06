@@ -24,12 +24,12 @@ RSpec.describe Operator, type: :model do
   end
 
   it 'Order by name asc' do
-    expect(Operator.by_name_asc.first.name).to eq('Operator')
+    expect(Operator.by_name_asc.first.name).to match('Operator')
   end
 
   it 'Fallbacks for empty translations on operator' do
     I18n.locale = :fr
-    expect(@operator.name).to eq('Operator')
+    expect(@operator.name).to match('Operator')
     I18n.locale = :en
   end
 
@@ -38,7 +38,7 @@ RSpec.describe Operator, type: :model do
     I18n.locale = :fr
     expect(@operator.name).to eq('Operator FR')
     I18n.locale = :en
-    expect(@operator.name).to eq('Operator')
+    expect(@operator.name).to match('Operator')
   end
 
   it 'Name validation' do
