@@ -53,18 +53,16 @@ I want to manage a observation
     When I select from the following hidden field "#observation_observation_type" with "Illegality"
     And I press "Continue"
     Then I should be on the observation's second step
+    And I fill in "observation_publication_date" with "01-01-2016"
+    And I fill in "observation_pv" with "PV"
+    And I fill in "observation_concern_opinion" with "Opinion"
+    And I fill in "observation_litigation_status" with "Status"
+    And I select from the following hidden field "#observation_observer_id" with "observer"
+    And I fill in "observation_details" with "Details"
+    And I fill in "observation_evidence" with "Evidence"
 #    When I select from the following hidden field ".js-annex-severity" with "Illegality two"
-#    And I select from the following hidden field "#observation_severity_id" with "2 - Two"
-#    And I select datetime "2016 01 01" as the "#observation_publication_date"
-#    And I fill in "#observation_pv" with "PV"
-#    And I fill in "#observation_concern_opinion" with "Opinion"
-#    And I fill in "#observation_litigation_status" with "Status"
-#    And I select from the following hidden field "#observation_observer_id" with "observer"
-#    And I fill in "#observation_details" with "Details"
-#    And I fill in "#observation_evidence" with "Evidence"
 #    And I press "Continue"
 #    Then I should be on the observation's third step
-
 #    When I fill the observation's third step
 #    Then I should go to observations
 #    And I should have a new observation
