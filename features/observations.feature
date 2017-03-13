@@ -43,26 +43,28 @@ I want to manage a observation
     And I follow "Delete"
     Then I should have zero observations
 
-  @javascript
-  Scenario: Adminuser can create an observation
-    Given I am authenticated adminuser
-    And observation matched annex_operator
-    When I go to the create observation page
-    Then I should be on the observation's first step
-    And I select from the following hidden field "#observation_country_id" with "Test Country"
-    When I select from the following hidden field "#observation_observation_type" with "Illegality"
-    And I press "Continue"
-    Then I should be on the observation's second step
-    And I fill in "observation_publication_date" with "01-01-2016"
-    And I fill in "observation_pv" with "PV"
-    And I fill in "observation_concern_opinion" with "Opinion"
-    And I fill in "observation_litigation_status" with "Status"
-    And I select from the following hidden field "#observation_observer_id" with "observer"
-    And I fill in "observation_details" with "Details"
-    And I fill in "observation_evidence" with "Evidence"
-#    When I select from the following hidden field ".js-annex-severity" with "Illegality two"
-#    And I press "Continue"
-#    Then I should be on the observation's third step
-#    When I fill the observation's third step
-#    Then I should go to observations
-#    And I should have a new observation
+  # @javascript
+  # Scenario: Adminuser can create an observation
+  #   Given I am authenticated adminuser
+  #   And country matched annex_operator
+  #   And monitor
+  #   When I go to the create observation page
+  #   Then I should be on the observation first step
+  #   When I select from the following hidden field "#observation_country_id" with "Test Country"
+  #   And I select from the following hidden field "#observation_observation_type" with "Illegality"
+  #   And I press "Continue"
+  #   Then I should be on the observation second step
+  #   When I select from the following hidden field ".js-annex-severity" with "Illegality two"
+  #   And I select from the following hidden field ".js-severity" with "2 - Lorem ipsum.."
+  #   And I fill in "observation_publication_date" with "01-01-2016"
+  #   And I fill in "observation_pv" with "PV"
+  #   And I fill in "observation_concern_opinion" with "Opinion"
+  #   And I fill in "observation_litigation_status" with "Status"
+  #   And I select from the following hidden field "#observation_observer_id" with "Monitor"
+  #   And I fill in "observation_details" with "Details"
+  #   And I fill in "observation_evidence" with "Evidence"
+  #   And I press "Continue"
+  #   Then I should be on the observation third step
+  #   When I fill the observation third step
+  #   Then I should go to observations
+  #   And I should have a new observation

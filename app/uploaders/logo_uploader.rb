@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-require 'carrierwave/processing/mini_magick'
-
-class PhotoUploader < CarrierWave::Uploader::Base
+class LogoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick

@@ -12,7 +12,8 @@ RSpec.describe OperatorsController, type: :controller do
   end
 
   let!(:attri) do
-    { name: 'New operator' }
+    { name: 'New operator',
+      logo: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'image.png')) }
   end
 
   let!(:attri_fail) do

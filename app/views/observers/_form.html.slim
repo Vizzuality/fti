@@ -4,6 +4,16 @@
     .form-inputs
       .row
         .column.medium-4
+          = form.label :logo, label: "Logo", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          p
+            = image_tag(@observer.logo_url(:thumbnail)) if @observer.logo.present?
+          - unless common_form?
+            button.file-upload.button.-primary
+              = t('shared.select_file')
+              = form.file_field :logo
+      .row
+        .column.medium-4
           = form.label :name, label: "Name", class: 'right inline', disabled: common_form?
         .column.medium-8
           = form.input :name, label: false, disabled: common_form?

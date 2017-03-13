@@ -47,7 +47,6 @@ class ObservationsStepsController < ApplicationController
           save_observation
           redirect_to wizard_path(next_step_name)
         end
-
       else
         render_wizard
       end

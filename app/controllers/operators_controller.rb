@@ -48,7 +48,7 @@ class OperatorsController < ApplicationController
     end
 
     def operator_params
-      params.require(:operator).permit(:name, :details, :operator_type, :country_id, :concession, user_ids: [])
+      params.require(:operator).permit(:name, :details, :operator_type, :logo, :country_id, :concession, user_ids: [])
     end
 
     def menu_highlight

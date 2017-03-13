@@ -32,3 +32,8 @@
           = form.label :region_centroid, label: 'Region centroid', class: 'right inline', disabled: common_form?
         .column.medium-8
           = form.text_field :region_centroid, label: false, disabled: common_form?
+      .row
+        .column.medium-4
+          = form.label :active, label: 'Available for observations?', class: 'right inline', disabled: common_form?
+        .column.medium-8
+          = form.input :active, label: false, disabled: common_form?

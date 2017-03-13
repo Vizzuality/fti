@@ -21,8 +21,8 @@ end
 
 Given /^observation matched annex_operator$/ do
   FactoryGirl.create(:country, name: 'Test Country', active: true)
-  FactoryGirl.create(:annex_operator, illegality: 'Illegality two', country_id: Country.last.id)
+  FactoryGirl.create(:annex_operator, illegality: 'Illegality two', country_id: ::Country.last.id)
   FactoryGirl.create(:severity, level: 2, details: 'Two', severable: AnnexOperator.last)
-  FactoryGirl.create(:observation_1, evidence: 'Operator observation', country_id: AnnexOperator.last.country.id)
+  FactoryGirl.create(:observation_1, evidence: 'Operator observation', country_id: ::AnnexOperator.last.country.id)
   FactoryGirl.create(:observer, name: 'observer')
 end

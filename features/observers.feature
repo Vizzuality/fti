@@ -38,6 +38,7 @@ I want to manage a monitor
     And I fill in "observer_name" with "Monitor new name"
     And I select "Australia" from "observer_country_id"
     And I select "External" from "observer_observer_type"
+    And I attach the file "spec/support/files/image.png" to "observer_logo"
     And I press "Create"
     Then I should have monitor for "Monitor new name"
 
