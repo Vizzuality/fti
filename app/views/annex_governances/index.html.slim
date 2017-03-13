@@ -20,7 +20,7 @@
           span.data._hidden
           - if can?(:edit, annex_governance)
             span.data.-linkdata
-              = link_to edit_annex_governance_path(annex_governance) do
+              = link_to edit_annex_governance_path(annex_governance), data: { turbolinks: 'false' } do
                 = image_tag "edit.svg", class: 'icon'
                 span
                   = t('shared.edit')
@@ -36,4 +36,4 @@
   .row.footer-helper
     .row.fixed-row
       .button-collection.-formcollection
-        = link_to t('shared.create'), new_annex_governance_url, class: "button -large -type-e"
+        = link_to t('shared.create'), new_annex_governance_url, class: "button -large -type-e", data: { turbolinks: 'false' }

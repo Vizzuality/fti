@@ -1,19 +1,19 @@
 require 'rails_helper'
 require 'carrierwave/test/matchers'
 
-RSpec.describe PhotoUploader do
+RSpec.describe LogoUploader do
   include CarrierWave::Test::Matchers
 
   before do
-    PhotoUploader.enable_processing = true
-    @photo    = create(:photo)
-    @uploader = PhotoUploader.new(@photo, Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'image.png')))
+    LogoUploader.enable_processing = true
+    @operator = create(:operator)
+    @uploader = LogoUploader.new(@operator, Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'image.png')))
     @uploader.store!(File.open(File.join(Rails.root, 'spec', 'support', 'files', 'image.png')))
   end
 
   after do
     @uploader.remove!
-    PhotoUploader.enable_processing = false
+    LogoUploader.enable_processing = false
   end
 
   context 'the thumbnail version' do

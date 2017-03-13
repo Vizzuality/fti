@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ActionDispatch::TestProcess
 
 RSpec.describe ObservationsStepsController, type: :controller do
   before :each do
@@ -43,7 +44,8 @@ RSpec.describe ObservationsStepsController, type: :controller do
   end
 
   let!(:third_step_params) do
-   @photo.attributes
+    { observation_photos_attributes: { name: 'Test photo',
+                                       attachment: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'image.png')) } }
   end
 
   context 'For authenticated adminuser' do
@@ -107,13 +109,13 @@ RSpec.describe ObservationsStepsController, type: :controller do
         expect(response).to have_http_status(200)
       end
 
-#      it 'PUT third step - attachments' do
-#        put :update, params: { id: 'attachments', observation: { photos_attributes: {"#{@photo.object_id}": third_step_params }} },
-#                     session: { observation: first_step_params.merge!(second_step_params) }
-#        expect(response).to be_redirect
-#        expect(response).to have_http_status(302)
-#        expect(response).to redirect_to(observations_path)
-#      end
+     it 'PUT third step - attachments' do
+       put :update, params: { id: 'attachments', observation: third_step_params },
+                    session: { observation: first_step_params.merge!(second_step_params) }
+       expect(response).to be_redirect
+       expect(response).to have_http_status(302)
+       expect(response).to redirect_to(observations_path)
+     end
     end
   end
 

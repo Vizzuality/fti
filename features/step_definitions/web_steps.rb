@@ -6,6 +6,15 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+When(/^I am in (.*) browser$/) do |name|
+  Capybara.session_name = name
+end
+
+When(/^(?!I am in)(.*(?= in)) in (.*) browser$/) do |other_step, name|
+  step("I am in #{name} browser")
+  step(other_step)
+end
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end

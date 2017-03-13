@@ -9,6 +9,8 @@
       .table-row
         .data-primary
           span.data.-primary
+            span.logo-tiny
+              = image_tag(observer.logo_url(:thumbnail))
             = observer.name
           span.data
             = "#{t('shared.created')}: #{observer.created_at.to_formatted_s(:create_update_date).to_s} / "

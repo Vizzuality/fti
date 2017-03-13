@@ -12,7 +12,8 @@ RSpec.describe ObserversController, type: :controller do
   end
 
   let!(:attri) do
-    { name: 'New observer', observer_type: 'External' }
+    { name: 'New observer', observer_type: 'External',
+      logo: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'image.png')) }
   end
 
   let!(:attri_fail) do
