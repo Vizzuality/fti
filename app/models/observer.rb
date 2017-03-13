@@ -8,10 +8,14 @@
 #  country_id    :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  active        :boolean          default(TRUE)
+#  logo          :string
 #
 
 class Observer < ApplicationRecord
   translates :name, :organization
+
+  mount_uploader :logo, LogoUploader
 
   belongs_to :country, inverse_of: :observers, optional: true
 

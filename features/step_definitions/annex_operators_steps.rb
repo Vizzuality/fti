@@ -15,3 +15,9 @@ Given /^annex_operator$/ do
   @annex = FactoryGirl.create(:annex_operator, illegality: 'Illegality one')
   FactoryGirl.create(:severity, level: 2, details: 'Lorem ipsum..', severable: @annex)
 end
+
+Given /^country matched annex_operator$/ do
+  FactoryGirl.create(:country, id: 5, name: 'Test Country', active: true)
+  FactoryGirl.create(:annex_operator, id: 5, illegality: 'Illegality two', country_id: 5)
+  FactoryGirl.create(:severity, level: 2, details: 'Lorem ipsum..', severable: AnnexOperator.find(5))
+end

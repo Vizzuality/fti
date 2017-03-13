@@ -9,10 +9,14 @@
 #  concession    :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  active        :boolean          default(TRUE)
+#  logo          :string
 #
 
 class Operator < ApplicationRecord
   translates :name, :details
+
+  mount_uploader :logo, LogoUploader
 
   belongs_to :country, inverse_of: :operators, optional: true
 
@@ -40,7 +44,7 @@ class Operator < ApplicationRecord
     end
 
     def types
-      %w(Company Artisanal Sawmill CommunityForest ARB1327 PalmOil Trader).freeze
+      %w(Logging\ Company Artisanal Sawmill CommunityForest ARB1327 PalmOil Trader Company).freeze
     end
 
     def translated_types

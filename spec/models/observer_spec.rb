@@ -7,6 +7,8 @@
 #  country_id    :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  active        :boolean          default(TRUE)
+#  logo          :string
 #
 
 require 'rails_helper'

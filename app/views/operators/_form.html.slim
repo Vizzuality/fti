@@ -4,6 +4,16 @@
     .form-inputs
       .row
         .column.medium-4
+          = form.label :logo, label: "Logo", class: 'right inline', disabled: common_form?
+        .column.medium-8
+          p
+            = image_tag(@operator.logo_url(:thumbnail)) if @operator.logo.present?
+          - unless common_form?
+            button.file-upload.button.-primary
+              = t('shared.select_file')
+              = form.file_field :logo
+      .row
+        .column.medium-4
           = form.label :name, label: "Name", class: 'right inline', disabled: common_form?
         .column.medium-8
           = form.input :name, label: false, disabled: common_form?
@@ -35,3 +45,9 @@
             as: :select, label: false,
             input_html: { class: 'js-mselect', multiple: true },
             disabled: common_form?
+      - if current_user.present? && current_user.admin?
+        .row
+          .column.medium-4
+            = form.label :active, label: 'Active', class: 'right inline', disabled: common_form?
+          .column.medium-8
+            = form.input :active, label: false, disabled: common_form?

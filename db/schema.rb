@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301113324) do
+ActiveRecord::Schema.define(version: 20170313092437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -214,10 +214,12 @@ ActiveRecord::Schema.define(version: 20170301113324) do
   end
 
   create_table "observers", force: :cascade do |t|
-    t.string   "observer_type", null: false
+    t.string   "observer_type",                null: false
     t.integer  "country_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "active",        default: true
+    t.string   "logo"
     t.index ["country_id"], name: "index_observers_on_country_id", using: :btree
   end
 
@@ -236,8 +238,10 @@ ActiveRecord::Schema.define(version: 20170301113324) do
     t.string   "operator_type"
     t.integer  "country_id"
     t.string   "concession"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "active",        default: true
+    t.string   "logo"
     t.index ["country_id"], name: "index_operators_on_country_id", using: :btree
   end
 

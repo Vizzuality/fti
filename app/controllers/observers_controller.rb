@@ -49,7 +49,7 @@ class ObserversController < ApplicationController
     end
 
     def observer_params
-      params.require(:observer).permit(:name, :organization, :observer_type, :country_id, user_ids: [])
+      params.require(:observer).permit(:name, :organization, :observer_type, :logo, :country_id, user_ids: [])
     end
 
     def menu_highlight
