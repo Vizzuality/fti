@@ -19,7 +19,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   end
 
   def default_url(*args)
-    ActionController::Base.helpers.asset_path('' + [version_name, 'placeholder.png'].compact.join('_'))
+    ActionController::Base.helpers.asset_path('assets' + [version_name, 'placeholder.png'].compact.join('_'))
   end
 
   process resize_to_fit: [1200, 1200]
