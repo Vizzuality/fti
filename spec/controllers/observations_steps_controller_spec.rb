@@ -1,6 +1,5 @@
 require 'rails_helper'
 include ActionDispatch::TestProcess
-include Rack::Test::Methods
 
 RSpec.describe ObservationsStepsController, type: :controller do
   before :each do

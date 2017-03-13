@@ -3,7 +3,6 @@ require 'carrierwave/test/matchers'
 
 RSpec.describe DocumentUploader do
   include CarrierWave::Test::Matchers
-  include Rack::Test::Methods
 
   before :each do
     DocumentUploader.enable_processing = true

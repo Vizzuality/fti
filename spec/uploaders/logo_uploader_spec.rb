@@ -3,7 +3,6 @@ require 'carrierwave/test/matchers'
 
 RSpec.describe LogoUploader do
   include CarrierWave::Test::Matchers
-  include Rack::Test::Methods
 
   before do
     LogoUploader.enable_processing = true
