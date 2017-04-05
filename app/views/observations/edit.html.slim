@@ -6,29 +6,33 @@
           h2.form-title
             | Edit
             '
-            = @observation.illegality
-            - if @observation.user_name.present?
-              '
-              = "(created by #{@observation.user_name})"
+          .tabs
+            - if @observation.is_governance?
+              .tab-title.active
+                = content_tag :a, 'Governance'
+              .tab-title
+                = content_tag :a, 'Operator'
+            - else
+              .tab-title
+                = content_tag :a, 'Governance'
+              .tab-title.active
+                = content_tag :a, 'Operator'
 
-  = simple_form_for @observation do |f|
-    .row
-      .column.medium-8.medium-offset-1
-        = f.error_notification
-        .form-inputs
-          .row
-            .column.medium-4
-              = f.label :observation_type, label: 'Type', class: 'right inline', disabled: true
-            .column.medium-8
-              = f.input :observation_type, as: :select, collection: Observation.translated_types, label: false, disabled: true
-          .row
-            .column.medium-4
-              = f.label :country_id, label: 'Country', class: 'right inline', disabled: true
-            .column.medium-8
-              = f.input :country_id, collection: Country.country_select, as: :select, include_blank: 'Please select Your country', label: false, disabled: true
-          = render partial: f
+= simple_form_for @observation do |f|
+  .row
+    .column.medium-8.medium-offset-1
+      = f.error_notification
+      .form-inputs
+        .row
+          .column.medium-4
+            = f.label :severity_id, label: '* Severity', class: 'right inline'
+          .column.medium-8
+            = f.input :severity_id, collection: Severity.severity_select(severable_type: @observation.observation_type, annex_operator_id: @observation.annex_operator_id, annex_governance_id: @observation.annex_governance_id), as: :select, input_html: {class: 'js-mselect'}, label: false
+            /= f.input :severity_id, collection: Severity.severity_select(severable_type: @observation.observation_type, severable_id: @observation.annex_id), as: :select, input_html: {class: 'js-mselect'}, label: false
+        = render partial: f
 
-    .row.footer-helper
-    .row.fixed-row
-      .button-collection.-formcollection
-        = f.button :submit, t('shared.update'), class: '-primary'
+  .row.footer-helper
+  .row.fixed-row
+    .button-collection.-formcollection
+      = f.button :submit, t('shared.update'), class: '-primary'
+

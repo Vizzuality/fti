@@ -1,0 +1,48 @@
+.form-actions
+  .row
+    .column.medium-8.medium-offset-1
+      .row
+        .column.medium-8.medium-offset-4
+          h2.form-title
+            | New Observation
+            '
+          .tabs
+            - if @observation.is_governance?
+              .tab-title.active
+                = content_tag :a, 'Governance'
+              .tab-title
+                = link_to 'Operator', new_observation_path(type: 'operator')
+            - else
+              .tab-title
+                =  link_to 'Governance', new_observation_path(type: 'governance')
+              .tab-title.active
+                = content_tag :a, 'Operator'
+
+= simple_form_for @observation do |f|
+  = f.hidden_field :observation_type, label: 'Type', class: 'right inline', disabled: true
+  .row
+    .column.medium-8.medium-offset-1
+      = f.error_notification
+      .form-inputs
+        .row
+          .column.medium-4
+            = f.label :country_id, label: 'Country', class: 'right inline'
+          .column.medium-8
+            = f.input :country_id, collection: Country.country_select, as: :select, include_blank: 'Please select Your country', label: false
+          .column.medium-4
+            - if @observation.is_operator?
+              = f.label :annex_operator_id, label: '* Illegality', class: 'right inline', disabled: common_form?
+            - else
+              = f.label :annex_governance_id, label: '* Governance problem', input_html: {class: 'js-mselect js-annex-severity'}, class: 'right inline', disabled: common_form?
+          .column.medium-8
+            - if @observation.is_operator?
+              = f.input :annex_operator_id, collection: AnnexOperator.illegality_select(country_id: @observation.country_id), as: :select, input_html: {class: 'js-mselect js-annex-severity'}, include_blank: 'Please select the illegality', label: false, disabled: common_form?
+            - else
+              = f.input :annex_governance_id, collection: AnnexGovernance.governance_problem_select, as: :select, input_html: {class: 'js-mselect js-annex-severity'}, include_blank: 'Please select the governance problem', label: false, disabled: common_form?
+        = render 'observations_shared/severity', form: f
+        = render partial: f
+
+  .row.footer-helper
+  .row.fixed-row
+    .button-collection.-formcollection
+      = f.button :submit, t('shared.update'), class: '-primary'

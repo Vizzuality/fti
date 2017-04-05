@@ -14,9 +14,28 @@ class ObservationsController < ApplicationController
 
   def edit; end
 
+  def new
+    if params[:type] == 'governance'
+      @observation = Observation.new observation_type: 'AnnexGovernance'
+    else
+      @observation = Observation.new observation_type: 'AnnexOperator'
+    end
+    render :new
+  end
+
+  def create
+    @observation = Observation.new
+    @observation.assign_attributes observation_params if params[:observation]
+    if @observation.save
+      redirect_to observations_path
+    else
+      render :new, notice: @observation.errors.full_messages
+    end
+  end
+
   def update
     if @observation.update(observation_params)
-      redirect_to observations_url, notice: 'Observation succesfully updated.'
+      redirect_to observations_url, notice: 'Observation successfully updated.'
     else
       render :edit, notice: @observation.errors.full_messages
     end
