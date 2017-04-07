@@ -68,3 +68,49 @@
     border-bottom: 1px solid $color-13;
   }
 }
+
+.observation_tabs{
+  display: flex;
+  border-bottom: 4px solid $color-2;
+
+  .tab-title {
+    text-align: center;
+    text-transform: uppercase;
+    color: $color-2;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    &:not(:first-child) {
+      margin-left: 20px;
+    }
+    @include font(helvetica, xxsmall, medium, 1);
+  }
+
+  &.active{
+    border-bottom: 10px solid $color-3;
+  }
+
+  a {
+    &:hover {
+      border-bottom: 10px solid $color-2;
+    }
+  }
+
+  &:before {
+    content: " ";
+    position: absolute;
+    left: -191px;
+    width: 200px;
+    height: 48px;
+    border-bottom: 1px solid $color-13;
+  }
+
+  &:after {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    left: -191px;
+    width: 200px;
+    height: 48px;
+    border-bottom: 1px solid $color-13;
+  }
+}

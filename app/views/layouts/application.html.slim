@@ -10,10 +10,8 @@ html lang='en'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .l-page
-      .l-header
+      .l-sidebar
         .row: .small-12.medium-12.large-12.columns#header
-          #otp-logo
-            = link_to (image_tag 'otp_logo.png'), root_url
           = render 'shared/navbar'
 
       - if notice || alert
@@ -33,6 +31,6 @@ html lang='en'
                 a.close href='#' &times;
 
       .l-content
-        .row: .small-12.medium-12.large-12.columns
+        .small-12.medium-12.large-12.columns
           = yield
         .footer-helper

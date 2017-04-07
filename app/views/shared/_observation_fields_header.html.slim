@@ -1,0 +1,29 @@
+- if current_user.admin?
+  .observation_tabs
+    - if can?(:manage, Category)
+      .tab-title
+        = link_to t('navbar.categories'), categories_url, class: "#{'active' if menu_highlight?(:categories)}"
+    - if can?(:manage, AnnexOperator)
+      .tab-title
+        = link_to t('navbar.annex_operators'), annex_operators_url, class: "#{'active' if menu_highlight?(:annex_operators)}"
+    - if can?(:manage, AnnexGovernance)
+      .tab-title
+        = link_to t('navbar.annex_governances'), annex_governances_url, class: "#{'active' if menu_highlight?(:annex_governances)}"
+    - if can?(:manage, Species)
+      .tab-title
+        = link_to t('navbar.species'), species_index_url, class: "#{'active' if menu_highlight?(:species)}"
+    - if can?(:manage, Country)
+      .tab-title
+        = link_to t('navbar.countries'), countries_url, class: "#{'active' if menu_highlight?(:countries)}"
+    - if can?(:manage, Government)
+      .tab-title
+        = link_to t('navbar.governments'), governments_url, class: "#{'active' if menu_highlight?(:governments)}"
+    - if can?(:manage, Operator)
+      .tab-title
+        = link_to t('navbar.operators'), operators_url, class: "#{'active' if menu_highlight?(:operators)}"
+    - if can?(:manage, Observer)
+      .tab-title
+        = link_to t('navbar.observers'), monitors_url, class: "#{'active' if menu_highlight?(:observers)}"
+    - if can?(:manage, Law)
+      .tab-title
+        = link_to t('navbar.laws'), laws_url, class: "#{'active' if menu_highlight?(:laws)}"

@@ -7,9 +7,8 @@
 
   a {
     @include font(null, xsmall, medium, 1);
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: $color-3;
-    border-top: 4px solid transparent;
     padding: 30px 15px 6px;
 
     @media screen and (max-width: 1060px) {
@@ -17,14 +16,14 @@
     }
 
     &.is-active {
-      border-color: $color-8;
+      background: $color-8;
     }
 
     &:hover {
-      border-color: $grey-2;
+      background: $grey-2;
 
       &.is-active {
-        border-color: $color-8;
+        background: $color-8;
       }
     }
   }

@@ -270,6 +270,7 @@ en:
     observations: 'Observations'
     species: 'Species'
     administration: 'Admin'
+    observation_fields: 'Observation fields'
     operators: 'Operators'
     observers: 'Monitors'
     categories: 'Categories'
